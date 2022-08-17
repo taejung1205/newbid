@@ -29,9 +29,7 @@ export default function Index() {
           </a>
         </li>
         <li>
-          <Link to={"/test"}>
-            HHHH
-          </Link>
+          <Link to={"/test"}>HHHH</Link>
         </li>
       </ul>
     </div>

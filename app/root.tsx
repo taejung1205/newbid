@@ -10,6 +10,7 @@ import {
 } from "@remix-run/react";
 
 import globalStyle from "~/globalStyle.css";
+import Header from "./components/Header";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -21,9 +22,9 @@ export function links() {
   return [
     {
       rel: "stylesheet",
-      href: globalStyle
-    }
-  ]
+      href: globalStyle,
+    },
+  ];
 }
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <Header />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
