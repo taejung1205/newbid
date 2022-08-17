@@ -9,6 +9,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import { MantineProvider } from '@mantine/core';
+
 import globalStyle from "~/globalStyle.css";
 import Header from "./components/Header";
 
@@ -29,10 +31,14 @@ export function links() {
 
 export default function App() {
   return (
+    <MantineProvider>
     <html lang="en">
       <head>
         <Meta />
         <Links />
+        {typeof document === "undefined"
+          ? "__STYLES__"
+          : null}
       </head>
       <body>
         <Header />
@@ -42,5 +48,6 @@ export default function App() {
         <LiveReload />
       </body>
     </html>
+    </MantineProvider>
   );
 }
