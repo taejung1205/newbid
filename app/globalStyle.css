@@ -4,3 +4,14 @@
   font-family: "Spoqa Han Sans Neo", "sans-serif";
   text-align: center;
 }
+
+body {
+  margin: auto;
+  width: 100%;
+}
+
+@media only screen and (min-width: 750px) {
+  body {
+    width: 650px;
+  }
+}
