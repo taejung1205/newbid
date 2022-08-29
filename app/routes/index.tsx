@@ -9,10 +9,28 @@ const RootBox = styled.div`
 
 const TopText = styled.text`
   display: block;
+  font-size: 24px;
+  text-decoration: underline;
+
+  font-weight: 700;
+`;
+
+const ExplanationText = styled.text`
+  display: block;
+  font-size: 16px;
+`;
+
+const ByText = styled.text`
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
 `;
 
 const ScrollBox = styled.div`
   position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
   animation-name: first;
   animation-duration: 20s;
   animation-iteration-count: infinite;
@@ -43,7 +61,7 @@ const SecondScrollBox = styled(ScrollBox)`
 
 function ScrollingBox() {
   return (
-    <div style={{ display: "flex", position: "relative", height: "400px"}}>
+    <div style={{ display: "flex", position: "relative", height: "200px" }}>
       <ScrollBox>
         <img src={"image/autoscroll_dummy.jpg"} />
       </ScrollBox>
@@ -57,10 +75,18 @@ function ScrollingBox() {
 export default function Index() {
   return (
     <RootBox>
-      <Space height={100} />
+      <Space height={130} />
       <TopText>COEX D HALL</TopText>
       <TopText>10.12-10.16</TopText>
       <ScrollingBox />
+      <ExplanationText>아티스트의 제품을 구매하는</ExplanationText>
+      <ExplanationText>가장 오래된 방식의</ExplanationText>
+      <ExplanationText>새로운 해석</ExplanationText>
+      <ByText>NEWBID</ByText>
+      <ByText>BY LOFA SEOUL</ByText>
+      <Link to={"/login"}>
+        GO
+      </Link>
     </RootBox>
   );
 }

@@ -13,6 +13,7 @@ import { MantineProvider } from '@mantine/core';
 
 import globalStyle from "~/globalStyle.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -42,6 +43,7 @@ export default function App() {
       <body>
         <Header />
         <Outlet />
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
