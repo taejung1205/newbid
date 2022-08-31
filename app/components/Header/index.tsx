@@ -21,9 +21,9 @@ const HeaderBox = styled.div<HeaderBoxProps>`
   background: ${(props) =>
     props.isStartPage
       ? "#152DFF"
-      :  props.isMenuOpen
-        ? "linear-gradient(0deg, rgba(255, 255, 255, 0) 3.65%, #152DFF 43.75%)"
-        : ""};
+      : props.isMenuOpen
+      ? "linear-gradient(0deg, rgba(255, 255, 255, 0) 3.65%, #152DFF 43.75%)"
+      : ""};
 `;
 
 const LogoImage = styled.img`
@@ -53,10 +53,18 @@ export default function Header({}: {}) {
   const location = useLocation();
   const pathname = location.pathname;
 
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+
   return (
     <HeaderBox isMenuOpen={isMenuOpen} isStartPage={pathname === "/"}>
       <LogoImage
-        src={(pathname === "/" || isMenuOpen) ? "image/logo_white.png" : "image/logo_black.png"}
+        src={
+          pathname === "/" || isMenuOpen
+            ? "image/logo_white.png"
+            : "image/logo_black.png"
+        }
         onClick={() => {
           if (pathname !== "/") setIsMenuOpen(!isMenuOpen);
         }}
@@ -64,13 +72,20 @@ export default function Header({}: {}) {
       {isMenuOpen && (
         <>
           <Space height={10} />
-          <Link to="/">
-            <LinkText>VIEW ALL</LinkText>
-          </Link>
-          <Link to="/">
+          {pathname !== "/tile" && (
+            <Link to="/tile">
+              <LinkText>VIEW ALL</LinkText>
+            </Link>
+          )}
+          {pathname === "/tile" && (
+            <Link to="/list">
+              <LinkText>LIST VIEW</LinkText>
+            </Link>
+          )}
+          <Link to="/mybid">
             <LinkText>MY BID</LinkText>
           </Link>
-          <Link to="/">
+          <Link to="/about">
             <LinkText>ABOUT</LinkText>
           </Link>
         </>

@@ -14,7 +14,7 @@ const MyBidPageBox = styled.div`
 export default function Index() {
   return (
     <MyBidPageBox>
-      <h1>로그인 페이지</h1>
+      <h1>내 비딩 페이지</h1>
     </MyBidPageBox>
   );
 }

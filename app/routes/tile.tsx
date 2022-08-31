@@ -14,7 +14,7 @@ const TilePageBox = styled.div`
 export default function Index() {
   return (
     <TilePageBox>
-      <h1>로그인 페이지</h1>
+      <h1>타일 페이지</h1>
     </TilePageBox>
   );
 }
