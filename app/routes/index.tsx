@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ScrollingImage } from "~/components/Animated";
 import { Space } from "~/components/Space";
@@ -21,6 +22,15 @@ const TopText = styled.text`
   color: #cccccc;
 `;
 
+const LoginImage = styled.img`
+  margin-top: 40px;
+  max-height: 290px;
+  @media (max-height: 800px) {
+    margin-top: 10px;
+    max-height: 180px;
+  }
+`
+
 const ByText = styled.text`
   display: block;
   font-size: 16px;
@@ -39,14 +49,14 @@ const ExplanationText = styled.text`
 `;
 
 export default function Index() {
+
   return (
     <StartPageBox>
-      <Space height={170} />
+      <Space height={160} />
       <TopText>COEX D HALL</TopText>
       <TopText>10.12-10.16</TopText>
-      <Space height={40} />
       <Link to={"/login"}>
-        <img src={"image/start_center.png"} />
+        <LoginImage src={"image/start_center.png"} />
       </Link>
       <Space height={11} />
       <ByText>
