@@ -56,7 +56,7 @@ export default function Header({}: {}) {
   return (
     <HeaderBox isMenuOpen={isMenuOpen} isStartPage={pathname === "/"}>
       <LogoImage
-        src={pathname === "/" ? "image/logo_white.png" : "image/logo_black.png"}
+        src={(pathname === "/" || isMenuOpen) ? "image/logo_white.png" : "image/logo_black.png"}
         onClick={() => {
           if (pathname !== "/") setIsMenuOpen(!isMenuOpen);
         }}
