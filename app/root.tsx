@@ -11,7 +11,7 @@ import {
 
 import { MantineProvider } from '@mantine/core';
 
-import globalStyle from "~/globalStyle.css";
+import globalStyle from "~/global.style.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 

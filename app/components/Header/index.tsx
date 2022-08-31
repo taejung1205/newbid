@@ -1,49 +1,80 @@
 import { Box, Button, Text } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Space } from "../Space";
 
-const MainBox = styled.div`
+interface HeaderBoxProps {
+  isMenuOpen: boolean;
+  isStartPage: boolean;
+}
+
+const HeaderBox = styled.div<HeaderBoxProps>`
   position: fixed;
   display: flex;
   flex-direction: column;
   width: inherit;
-  justify-content: center;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: ${(props) => (props.isMenuOpen ? "550px" : "")};
+  justify-content: start;
+  background: ${(props) =>
+    props.isStartPage
+      ? "#152DFF"
+      :  props.isMenuOpen
+        ? "linear-gradient(0deg, rgba(255, 255, 255, 0) 3.65%, #152DFF 43.75%)"
+        : ""};
+`;
+
+const LogoImage = styled.img`
+  max-height: 150px;
+  object-fit: contain;
+`;
+
+const LinkText = styled.text`
+  font-family: rubik;
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: underline;
+  color: #ffffff;
+  font-size: 30px;
+  position: relative;
+  line-height: 45px;
 `;
 
 const ButtonIcon = styled.img`
   object-fit: contain;
   width: 40px;
   height: 40px;
-`
+`;
 
-function ItemsButton() {
-  return (
-    <Link to={"/items"}>
-      <ButtonIcon src="image/icon_dummy.svg" />
-    </Link>
-  );
-}
+export default function Header({}: {}) {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const location = useLocation();
+  const pathname = location.pathname;
 
-function ListButton() {
   return (
-    <Link to={"/list"}>
-      <ButtonIcon src="image/icon_dummy.svg" />
-    </Link>
-  );
-}
-
-export default function Header() {
-  return (
-    <MainBox>
-      <Link to={"/"} style={{textDecoration: 'none'}}>
-        <h1>NEWBID뉴-비드</h1>
-      </Link>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <ItemsButton />
-        <Space width={40} />
-        <ListButton />
-      </div>
-    </MainBox>
+    <HeaderBox isMenuOpen={isMenuOpen} isStartPage={pathname === "/"}>
+      <LogoImage
+        src={pathname === "/" ? "image/logo_white.png" : "image/logo_black.png"}
+        onClick={() => {
+          if (pathname !== "/") setIsMenuOpen(!isMenuOpen);
+        }}
+      />
+      {isMenuOpen && (
+        <>
+          <Space height={10} />
+          <Link to="/">
+            <LinkText>VIEW ALL</LinkText>
+          </Link>
+          <Link to="/">
+            <LinkText>MY BID</LinkText>
+          </Link>
+          <Link to="/">
+            <LinkText>ABOUT</LinkText>
+          </Link>
+        </>
+      )}
+    </HeaderBox>
   );
 }
