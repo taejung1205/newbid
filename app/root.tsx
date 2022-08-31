@@ -25,10 +25,6 @@ export function links() {
     {
       rel: "stylesheet",
       href: globalStyle,
-    },
-    {
-      rel: "stylesheet",
-      href: "https://use.typekit.net/ivi5rii.css"
     }
   ];
 }

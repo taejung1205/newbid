@@ -1,7 +1,5 @@
 import { Link } from "@remix-run/react";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { ScrollingImage } from "~/components/Animated";
 import { Space } from "~/components/Space";
 
 const StartPageBox = styled.div`
