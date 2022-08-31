@@ -45,7 +45,9 @@ export default function Index() {
       <TopText>COEX D HALL</TopText>
       <TopText>10.12-10.16</TopText>
       <Space height={40} />
-      <img src={"image/start_center.png"} />
+      <Link to={"/login"}>
+        <img src={"image/start_center.png"} />
+      </Link>
       <Space height={11} />
       <ByText>
         NEW BID BY <br /> LOFA SEOUL
