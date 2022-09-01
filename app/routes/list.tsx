@@ -1,20 +1,29 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Item from "~/components/Item";
 import { Space } from "~/components/Space";
+import itemsJson from "~/data/items.json";
 
 const ListPageBox = styled.div`
-  overflow: hidden;
   width: inherit;
   height: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 `;
 
 export default function Index() {
   return (
     <ListPageBox>
-      <h1>리스트 페이지</h1>
+      <Space height={160} />
+      {itemsJson.items.map((item, index) => {
+        return (
+          <Item
+            imgSrc={item.src}
+            title={item.title}
+            body={item.body}
+            currentPrice={80000}
+            startPrice={item.startPrice}
+          />
+        );
+      })}
+      <Space height={120} />
     </ListPageBox>
   );
 }

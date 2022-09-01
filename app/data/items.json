@@ -1,0 +1,16 @@
+{
+    "items": [
+        {
+            "src": "image/item_image_example.png",
+            "title": "로아키 화병",
+            "body": "나베나베페누아의 드로잉이 더해진 화병입니다.\n기존 로이키 시리즈와 다르게\n뉴비드 웹사이트에서만\n선보이는 리미티드 컬러만 제공합니다.",
+            "startPrice": 50000
+        },
+        {
+            "src": "image/item_image_example.png",
+            "title": "로아키 화병",
+            "body": "나베나베페누아의 드로잉이 더해진 화병입니다.\n기존 로이키 시리즈와 다르게\n뉴비드 웹사이트에서만\n선보이는 리미티드 컬러만 제공합니다.",
+            "startPrice": 50000
+        }
+    ]
+}
