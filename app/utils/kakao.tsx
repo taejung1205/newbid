@@ -19,14 +19,16 @@ export function kakaoLogin() {
 }
 
 export function kakaoApiRequest() {
-  const kakao = (window as any).Kakao;
-  kakao.API.request({
-    url: "/v2/user/me",
-    success: function (response: any) {
-      console.log(response);
-    },
-    fail: function (error: any) {
-      console.log(error);
-    },
-  });
+  if (window !== undefined && typeof window !== "undefined") {
+    const kakao = (window as any).Kakao;
+    kakao.API.request({
+      url: "/v2/user/me",
+      success: function (response: any) {
+        console.log(response);
+      },
+      fail: function (error: any) {
+        console.log(error);
+      },
+    });
+  }
 }
