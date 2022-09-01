@@ -17,3 +17,16 @@ export function kakaoLogin() {
   const kakao = kakaoInit();
   kakao.Auth.authorize({ redirectUri: "https://newbid.netlify.app/login/" });
 }
+
+export function kakaoApiRequest() {
+  const kakao = (window as any).Kakao;
+  kakao.API.request({
+    url: "/v2/user/me",
+    success: function (response: any) {
+      console.log(response);
+    },
+    fail: function (error: any) {
+      console.log(error);
+    },
+  });
+}
