@@ -15,5 +15,5 @@ export function isKakaoInitialized(): boolean {
 
 export function kakaoLogin() {
   const kakao = kakaoInit();
-  kakao.Auth.authorize({ redirectUri: "http://newbid.netlify.app/login" });
+  kakao.Auth.authorize({ redirectUri: "https://newbid.netlify.app/login/" });
 }
