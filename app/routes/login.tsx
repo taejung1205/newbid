@@ -1,27 +1,28 @@
-import { redirect } from "@remix-run/node";
+import { ActionFunction, redirect } from "@remix-run/node";
+import { useSubmit } from "@remix-run/react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Space } from "~/components/Space";
-import { kakaoApiRequest } from "~/utils/kakao";
+import { requestTokens } from "~/utils/kakao";
 
-
+export const action: ActionFunction = async () => {
+  console.log("redirect");
+  return redirect("/list");
+};
 
 export default function Index() {
 
-  // useEffect(() => {kakaoApiRequest();}, []);
+  const submit = useSubmit();
   
-
   useEffect(() => {
     const params = new URL(window.location.href).searchParams;
     const code = params.get('code');
     const error = params.get('error');
     if (code !== null && error === null) {
       console.log(`code: ${code}`);
+      requestTokens({code: code});
     } else {
       console.log(`error: ${error}`);
     }
-    // redirect("/list");
+    submit(null, {method: "post"})
   }, []);
 
   return (

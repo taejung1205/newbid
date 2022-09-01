@@ -28,6 +28,7 @@ const LoginImage = styled.img`
     margin-top: 10px;
     max-height: 180px;
   }
+  cursor: pointer;
 `;
 
 const ByText = styled.text`
@@ -52,16 +53,13 @@ export default function Index() {
     <StartPageBox>
       <Space height={160} />
       <TopText>COEX D HALL</TopText>
-      <TopText
+      <TopText>10.12-10.16</TopText>
+      <LoginImage
+        src={"image/start_center.png"}
         onClick={() => {
           kakaoLogin();
         }}
-      >
-        10.12-10.16
-      </TopText>
-      <Link to={"/login"}>
-        <LoginImage src={"image/start_center.png"} />
-      </Link>
+      />
       <Space height={11} />
       <ByText>
         NEW BID BY <br /> LOFA SEOUL

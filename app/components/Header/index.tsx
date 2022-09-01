@@ -2,6 +2,7 @@ import { Box, Button, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { requestUser } from "~/utils/kakao";
 import { Space } from "../Space";
 
 interface HeaderBoxProps {
@@ -51,6 +52,7 @@ const ButtonIcon = styled.img`
 
 export default function Header({}: {}) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [userName, setUserName] =  useState<string>("NO"); //For debug
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -58,16 +60,23 @@ export default function Header({}: {}) {
     setIsMenuOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    const user = requestUser({successCallback: (res: any) => setUserName(res.properties.nickname)});
+  }, []);
+
   return (
     <HeaderBox isMenuOpen={isMenuOpen} isStartPage={pathname === "/"}>
       <LogoImage
         src={
           pathname === "/" || isMenuOpen
-            ? "image/logo_white.png"
-            : "image/logo_black.png"
+            ? "/image/logo_white.png"
+            : "/image/logo_black.png"
         }
         onClick={() => {
-          if (pathname !== "/") setIsMenuOpen(!isMenuOpen);
+          if (pathname !== "/") {
+            setIsMenuOpen(!isMenuOpen);
+            
+          };
         }}
       />
       {isMenuOpen && (
@@ -89,6 +98,7 @@ export default function Header({}: {}) {
           <Link to="/about">
             <LinkText>ABOUT</LinkText>
           </Link>
+          <h1>{userName}</h1>
         </>
       )}
     </HeaderBox>

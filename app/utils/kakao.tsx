@@ -1,5 +1,9 @@
 import { redirect } from "@remix-run/node";
 
+// const REDIRECT_URI = "http://localhost:3000/login/";
+const REDIRECT_URI =  "https://newbid.netlify.app/login/";
+const CLIENT_ID = "13cb50f748fa0ea1bf651c4311112be7";
+
 export function kakaoInit(): any {
   const kakao = (window as any).Kakao;
   if (!kakao.isInitialized()) {
@@ -15,20 +19,53 @@ export function isKakaoInitialized(): boolean {
 
 export function kakaoLogin() {
   const kakao = kakaoInit();
-  kakao.Auth.authorize({ redirectUri: "https://newbid.netlify.app/login/" });
+  kakao.Auth.authorize({ redirectUri: REDIRECT_URI });
 }
 
-export function kakaoApiRequest() {
-  if (window !== undefined && typeof window !== "undefined") {
-    const kakao = (window as any).Kakao;
-    kakao.API.request({
-      url: "/v2/user/me",
-      success: function (response: any) {
-        console.log(response);
-      },
-      fail: function (error: any) {
-        console.log(error);
-      },
+// export function kakaoApiRequest() {
+//
+// }
+
+export async function requestTokens({ code }: { code: string }) {
+  console.log("requesting token");
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
+  await fetch(
+    `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&code=${code}`,
+    requestOptions
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      console.log(data.access_token);
+      setKakaoAccessToken({ token: data.access_token });
     });
-  }
+  console.log((window as any).Kakao);
+}
+
+export function setKakaoAccessToken({ token }: { token: string }) {
+  const kakao = kakaoInit();
+  kakao.Auth.setAccessToken(token);
+}
+
+export function getKakaoAccessToken() {
+  const kakao = kakaoInit();
+  return kakao.Auth.getAccessToken();
+}
+
+export function requestUser({successCallback} : {
+    successCallback: (res: any) => void;
+}) {
+  const kakao = kakaoInit();
+  kakao.API.request({
+    url: "/v2/user/me",
+    success: successCallback,
+    fail: (error: any) => {
+      console.error(error);
+    },
+  });
 }
