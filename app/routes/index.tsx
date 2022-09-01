@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
+import { isKakaoInitialized, kakaoInit, kakaoLogin } from "~/utils/kakao";
 
 const StartPageBox = styled.div`
   overflow: hidden;
@@ -27,7 +28,7 @@ const LoginImage = styled.img`
     margin-top: 10px;
     max-height: 180px;
   }
-`
+`;
 
 const ByText = styled.text`
   display: block;
@@ -47,12 +48,17 @@ const ExplanationText = styled.text`
 `;
 
 export default function Index() {
-
   return (
     <StartPageBox>
       <Space height={160} />
       <TopText>COEX D HALL</TopText>
-      <TopText>10.12-10.16</TopText>
+      <TopText
+        onClick={() => {
+          kakaoLogin();
+        }}
+      >
+        10.12-10.16
+      </TopText>
       <Link to={"/login"}>
         <LoginImage src={"image/start_center.png"} />
       </Link>

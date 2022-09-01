@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider } from "@mantine/core";
 
 import globalStyle from "~/global.style.css";
 import Header from "./components/Header";
@@ -25,30 +25,29 @@ export function links() {
     {
       rel: "stylesheet",
       href: globalStyle,
-    }
+    },
   ];
 }
 
 export default function App() {
   return (
     <MantineProvider>
-    <html lang="en">
-      <head>
-        <Meta />
-        <Links />
-        {typeof document === "undefined"
-          ? "__STYLES__"
-          : null}
-      </head>
-      <body>
-        <Header />
-        <Outlet />
-        <Footer />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
+      <html lang="en">
+        <head>
+          <Meta />
+          <Links />
+          {typeof document === "undefined" ? "__STYLES__" : null}
+        </head>
+        <body>
+          <Header />
+          <Outlet />
+          <Footer />
+          <ScrollRestoration />
+          <script src="https://developers.kakao.com/sdk/js/kakao.js" />
+          <Scripts />
+          <LiveReload />
+        </body>
+      </html>
     </MantineProvider>
   );
 }
