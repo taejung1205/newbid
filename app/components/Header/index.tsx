@@ -29,6 +29,7 @@ const HeaderBox = styled.div<HeaderBoxProps>`
 const LogoImage = styled.img`
   max-height: 150px;
   object-fit: contain;
+  cursor: pointer;
 `;
 
 const LinkText = styled.text`
