@@ -15,6 +15,7 @@ export default function Index() {
       {itemsJson.items.map((item, index) => {
         return (
           <Item
+            key={`ListItem-${index}`}
             imgSrc={item.src}
             title={item.title}
             body={item.body}

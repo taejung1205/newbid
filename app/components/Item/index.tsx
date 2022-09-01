@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { Space } from "../Space";
 
 const ItemImage = styled.img`
-  margin-left: 50px;
-  margin-right: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 100%;
+  object-fit: contain;
 `;
 
 const ItemTitle = styled.text`
