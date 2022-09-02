@@ -1,7 +1,6 @@
-import { Link } from "@remix-run/react";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
-import { isKakaoInitialized, kakaoInit, kakaoLogin } from "~/utils/kakao";
+import { kakaoLogin } from "~/utils/kakao";
 
 const StartPageBox = styled.div`
   overflow: hidden;

@@ -1,7 +1,5 @@
-import { redirect } from "@remix-run/node";
-
-const REDIRECT_URI = "http://localhost:3000/login/";
-// const REDIRECT_URI =  "https://newbid.netlify.app/login/";
+// const REDIRECT_URI = "http://localhost:3000/login/";
+const REDIRECT_URI =  "https://newbid.netlify.app/login/";
 const CLIENT_ID = "13cb50f748fa0ea1bf651c4311112be7";
 
 export function kakaoInit(): any {
@@ -57,12 +55,43 @@ export function getKakaoAccessToken() {
   return kakao.Auth.getAccessToken();
 }
 
-export function requestUser({successCallback} : {
-    successCallback: (res: any) => void;
+export function requestUser({
+  successCallback,
+}: {
+  successCallback: (res: any) => void;
 }) {
   const kakao = kakaoInit();
   kakao.API.request({
     url: "/v2/user/me",
+    success: successCallback,
+    fail: (error: any) => {
+      console.error(error);
+    },
+  });
+}
+
+export function requestLogout({
+  successCallback,
+}: {
+  successCallback: () => void;
+}) {
+  const kakao = kakaoInit();
+  if (!kakao.Auth.getAccessToken()) {
+    console.log("로그인이 되어 있지 않습니다.");
+    return;
+  }
+
+  kakao.Auth.logout(successCallback);
+}
+
+export function requestUnlink({
+  successCallback,
+}: {
+  successCallback: (res: any) => void;
+}) {
+  const kakao = kakaoInit();
+  kakao.API.request({
+    url: "/v1/user/unlink",
     success: successCallback,
     fail: (error: any) => {
       console.error(error);

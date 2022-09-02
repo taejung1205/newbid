@@ -1,9 +1,7 @@
-import { Box, Button, Text } from "@mantine/core";
-import { transitions } from "@mantine/core/lib/Transition/transitions";
+
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { requestUser } from "~/utils/kakao";
 import { Space } from "../Space";
 
 interface HeaderBoxProps {
@@ -113,12 +111,6 @@ export default function Header({}: {}) {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
-
-  useEffect(() => {
-    const user = requestUser({
-      successCallback: (res: any) => setUserName(res.properties.nickname),
-    });
-  }, []);
 
   return (
     <HeaderBox isMenuOpen={isMenuOpen} isStartPage={pathname === "/"}>
