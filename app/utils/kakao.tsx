@@ -1,7 +1,7 @@
 import { redirect } from "@remix-run/node";
 
-// const REDIRECT_URI = "http://localhost:3000/login/";
-const REDIRECT_URI =  "https://newbid.netlify.app/login/";
+const REDIRECT_URI = "http://localhost:3000/login/";
+// const REDIRECT_URI =  "https://newbid.netlify.app/login/";
 const CLIENT_ID = "13cb50f748fa0ea1bf651c4311112be7";
 
 export function kakaoInit(): any {
