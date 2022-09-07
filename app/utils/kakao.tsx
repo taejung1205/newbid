@@ -1,5 +1,5 @@
-// const REDIRECT_URI = "http://localhost:3000/login/";
-const REDIRECT_URI =  "https://newbid.netlify.app/login/";
+// const REDIRECT_URI = "http://localhost:3000/auth/";
+const REDIRECT_URI =  "https://newbid.netlify.app/auth/";
 const CLIENT_ID = "13cb50f748fa0ea1bf651c4311112be7";
 
 export function kakaoInit(): any {
@@ -15,14 +15,26 @@ export function isKakaoInitialized(): boolean {
   return kakao.isInitialized();
 }
 
-export function kakaoLogin() {
+export function doKakaoLogin() {
   const kakao = kakaoInit();
   kakao.Auth.authorize({ redirectUri: REDIRECT_URI });
 }
 
-// export function kakaoApiRequest() {
-//
-// }
+export function checkLoggedIn({
+  trueCallback, falseCallback
+}: {
+  trueCallback: () => void;
+  falseCallback: () => void;
+}){
+  const kakao = kakaoInit();
+  kakao.Auth.getStatusInfo((status: any) => {
+    if(status.status === "connected"){
+      trueCallback();
+    } else {
+      falseCallback();
+    }
+  });
+}
 
 export async function requestTokens({ code }: { code: string }) {
   console.log("requesting token");

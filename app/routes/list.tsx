@@ -1,3 +1,4 @@
+import { ActionFunction } from "@remix-run/node";
 import styled from "styled-components";
 import Item from "~/components/Item";
 import { Space } from "~/components/Space";
@@ -7,6 +8,10 @@ const ListPageBox = styled.div`
   width: inherit;
   height: inherit;
 `;
+
+export const action: ActionFunction = async () => {
+  return null;
+};
 
 export default function Index() {
   return (

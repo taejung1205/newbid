@@ -1,6 +1,8 @@
+import { ActionFunction, redirect } from "@remix-run/node";
+import { useSubmit } from "@remix-run/react";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
-import { kakaoLogin } from "~/utils/kakao";
+import { checkLoggedIn, doKakaoLogin } from "~/utils/kakao";
 
 const StartPageBox = styled.div`
   overflow: hidden;
@@ -47,7 +49,13 @@ const ExplanationText = styled.text`
   color: white;
 `;
 
+export const action: ActionFunction = async ({request}) => {
+  return null;
+  //return redirect("/list");
+};
+
 export default function Index() {
+  const submit = useSubmit();
   return (
     <StartPageBox>
       <Space height={160} />
@@ -56,7 +64,11 @@ export default function Index() {
       <LoginImage
         src={"image/start_center.png"}
         onClick={() => {
-          kakaoLogin();
+          checkLoggedIn({
+            trueCallback: () => { submit(null, {method: "post", action: "/list"}); },
+            falseCallback: () => { submit(null, {method: "post", action: "/login"});}
+          })
+          // doKakaoLogin();
         }}
       />
       <Space height={11} />
