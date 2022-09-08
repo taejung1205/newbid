@@ -1,11 +1,12 @@
-// const REDIRECT_URI = "http://localhost:3000/auth/";
-const REDIRECT_URI =  "https://newbid.netlify.app/auth/";
-const CLIENT_ID = "13cb50f748fa0ea1bf651c4311112be7";
+import { URL, KAKAO_REST_KEY, KAKAO_JS_KEY } from "../config";
+
+const REDIRECT_URI = `${URL}/auth/`;
+// const REDIRECT_URI =  "https://newbid.netlify.app/auth/";
 
 export function kakaoInit(): any {
   const kakao = (window as any).Kakao;
   if (!kakao.isInitialized()) {
-    kakao.init("810b82491c5d0c99501bf55ab85bce0f");
+    kakao.init(KAKAO_JS_KEY);
   }
   return kakao;
 }
@@ -45,7 +46,7 @@ export async function requestTokens({ code }: { code: string }) {
     },
   };
   await fetch(
-    `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&code=${code}`,
+    `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${KAKAO_REST_KEY}&redirect_uri=${REDIRECT_URI}&code=${code}`,
     requestOptions
   )
     .then((response) => response.json())
