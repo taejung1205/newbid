@@ -7,7 +7,7 @@ import { checkLoggedIn, doKakaoLogin } from "~/utils/kakao";
 const StartPageBox = styled.div`
   overflow: hidden;
   width: inherit;
-  height: inherit;
+  height: 100vh;
   background-color: #152dff;
 `;
 
