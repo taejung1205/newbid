@@ -7,7 +7,7 @@ import { doKakaoLogin } from "~/utils/kakao";
 const LoginPageBox = styled.div`
   overflow: hidden;
   width: inherit;
-  height: inherit;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

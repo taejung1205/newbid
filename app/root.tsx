@@ -38,7 +38,7 @@ export default function App() {
           <Links />
           {typeof document === "undefined" ? "__STYLES__" : null}
         </head>
-        <body>
+        <body onLoad={() => window.scrollTo(0, 1)}>
           <Header />
           <Outlet />
           <Footer />

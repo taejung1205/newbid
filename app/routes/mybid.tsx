@@ -9,7 +9,7 @@ import { requestUnlink, requestUser } from "~/utils/kakao";
 const MyBidPageBox = styled.div`
   overflow: hidden;
   width: inherit;
-  height: inherit;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
