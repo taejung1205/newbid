@@ -24,6 +24,7 @@ const HeaderBox = styled.div<HeaderBoxProps>`
   height: ${(props) => (props.isMenuOpen ? "550px" : "150px")};
   transition: height 1s ease;
   align-items: center;
+  z-index: 99;
   &::before {
     content: "";
     top: 0;

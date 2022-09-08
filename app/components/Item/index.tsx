@@ -60,15 +60,17 @@ export default function Item({
   body,
   currentPrice,
   startPrice,
+  onClick,
 }: {
   imgSrc: string;
   title: string;
   body: string;
   currentPrice: number;
   startPrice: number;
+  onClick: () => void;
 }) {
   return (
-    <div>
+    <div onClick={onClick}>
       <ItemImage src={imgSrc} />
       <Space height={30} />
       <ItemTitle>{title}</ItemTitle>

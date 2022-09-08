@@ -1,4 +1,5 @@
 import { ActionFunction } from "@remix-run/node";
+import { useSubmit } from "@remix-run/react";
 import styled from "styled-components";
 import Item from "~/components/Item";
 import { Space } from "~/components/Space";
@@ -14,6 +15,7 @@ export const action: ActionFunction = async () => {
 };
 
 export default function Index() {
+  const submit = useSubmit();
   return (
     <ListPageBox>
       <Space height={160} />
@@ -26,6 +28,7 @@ export default function Index() {
             body={item.body}
             currentPrice={80000}
             startPrice={item.startPrice}
+            onClick={() => submit(null, {method: "post", action: `/item?index=${index}`})}
           />
         );
       })}

@@ -1,6 +1,5 @@
 import { ActionFunction, redirect } from "@remix-run/node";
 import { Link } from "@remix-run/react";
-import { useEffect } from "react";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
 import { doKakaoLogin } from "~/utils/kakao";
