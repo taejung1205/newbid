@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -77,7 +76,10 @@ function HeaderLogo({
         maxHeight: isPageBlue ? "125px" : "150px",
       }}
     >
-      <LogoImage isVisible={!(isMenuOpen || isPageBlue)} src={"/image/logo_newbid_black.png"} />
+      <LogoImage
+        isVisible={!(isMenuOpen || isPageBlue)}
+        src={"/image/logo_newbid_black.png"}
+      />
       <LogoImageGrey
         isVisible={isMenuOpen || isPageBlue}
         src={"/image/logo_newbid_grey.png"}
@@ -122,7 +124,7 @@ export default function Header({}: {}) {
           }
         }}
         isMenuOpen={isMenuOpen}
-        isPageBlue={pathname === "/"}
+        isPageBlue={pathname === "/" || pathname === "/about"}
       />
       <div
         style={{

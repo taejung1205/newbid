@@ -36,7 +36,10 @@ const WithoutLoginLinkText = styled.text`
 
 function WithoutLoginLink() {
   return (
-    <Link to={"/list"} style={{ position: "absolute", bottom: "120px", color: "black"}}>
+    <Link
+      to={"/list"}
+      style={{ position: "absolute", bottom: "120px", color: "black" }}
+    >
       <WithoutLoginLinkText>둘러만 볼게요</WithoutLoginLinkText>
     </Link>
   );

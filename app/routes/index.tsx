@@ -49,7 +49,7 @@ const ExplanationText = styled.text`
   color: white;
 `;
 
-export const action: ActionFunction = async ({request}) => {
+export const action: ActionFunction = async ({ request }) => {
   return null;
   //return redirect("/list");
 };
@@ -65,9 +65,13 @@ export default function Index() {
         src={"image/start_center.png"}
         onClick={() => {
           checkLoggedIn({
-            trueCallback: () => { submit(null, {method: "post", action: "/list"}); },
-            falseCallback: () => { submit(null, {method: "post", action: "/login"});}
-          })
+            trueCallback: () => {
+              submit(null, { method: "post", action: "/list" });
+            },
+            falseCallback: () => {
+              submit(null, { method: "post", action: "/login" });
+            },
+          });
           // doKakaoLogin();
         }}
       />

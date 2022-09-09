@@ -33,6 +33,34 @@ const SecondScrollBox = styled(ScrollBox)`
   }
 `;
 
+interface MarqueeProps {
+  duration: number;
+}
+
+const MarqueeText = styled.text<MarqueeProps>`
+  @keyframes animate {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% - 1rem));
+    }
+  }
+  animation: ${(props) => `animate ${props.duration}s linear infinite`};
+`;
+
+const MarqueeReverseText = styled(MarqueeText)`
+  @keyframes animate_reverse {
+    0% {
+      transform: translateX(calc(-100% - 1rem));
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  animation: ${(props) => `animate_reverse ${props.duration}s linear infinite`};
+`;
+
 export function ScrollingImage({ src }: { src: string }) {
   return (
     <div style={{ display: "flex", position: "relative", height: "200px" }}>
@@ -44,4 +72,34 @@ export function ScrollingImage({ src }: { src: string }) {
       </SecondScrollBox>
     </div>
   );
+}
+
+export function Marquee({
+  children,
+  duration,
+  isReverse = false,
+}: {
+  children: React.ReactNode;
+  duration: number;
+  isReverse?: boolean;
+}) {
+  if (!isReverse) {
+    return (
+      <div style={{ display: "flex", position: "relative", gap: "1rem" }}>
+        <MarqueeText duration={duration}>{children}</MarqueeText>
+        <MarqueeText duration={duration}>{children}</MarqueeText>
+        <MarqueeText duration={duration}>{children}</MarqueeText>
+        <MarqueeText duration={duration}>{children}</MarqueeText>
+      </div>
+    );
+  } else {
+    return (
+      <div style={{ display: "flex", position: "relative", gap: "1rem" }}>
+        <MarqueeReverseText duration={duration}>{children}</MarqueeReverseText>
+        <MarqueeReverseText duration={duration}>{children}</MarqueeReverseText>
+        <MarqueeReverseText duration={duration}>{children}</MarqueeReverseText>
+        <MarqueeReverseText duration={duration}>{children}</MarqueeReverseText>
+      </div>
+    );
+  }
 }

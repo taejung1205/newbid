@@ -28,7 +28,9 @@ export default function Index() {
             body={item.body}
             currentPrice={80000}
             startPrice={item.startPrice}
-            onClick={() => submit(null, {method: "post", action: `/item?index=${index}`})}
+            onClick={() =>
+              submit(null, { method: "post", action: `/item?index=${index}` })
+            }
           />
         );
       })}

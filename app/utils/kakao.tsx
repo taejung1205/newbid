@@ -22,14 +22,15 @@ export function doKakaoLogin() {
 }
 
 export function checkLoggedIn({
-  trueCallback, falseCallback
+  trueCallback,
+  falseCallback,
 }: {
   trueCallback: () => void;
   falseCallback: () => void;
-}){
+}) {
   const kakao = kakaoInit();
   kakao.Auth.getStatusInfo((status: any) => {
-    if(status.status === "connected"){
+    if (status.status === "connected") {
       trueCallback();
     } else {
       falseCallback();

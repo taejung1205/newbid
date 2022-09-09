@@ -101,7 +101,8 @@ interface BorderBottomProp {
 const DetailBox = styled.div<BorderBottomProp>`
   display: flex;
   padding: 8px;
-  border-bottom: ${props => props.isBorderBottom ? "1px solid #152dff" : "none"};
+  border-bottom: ${(props) =>
+    props.isBorderBottom ? "1px solid #152dff" : "none"};
   text-align: left;
   min-height: 110px;
 `;
@@ -126,11 +127,11 @@ function NotFound() {
 function ItemDetail({
   leftElement,
   rightElement,
-  noBottomBorder = false
+  noBottomBorder = false,
 }: {
   leftElement: JSX.Element;
   rightElement: JSX.Element;
-  noBottomBorder? : boolean;
+  noBottomBorder?: boolean;
 }) {
   return (
     <DetailBox isBorderBottom={!noBottomBorder}>
