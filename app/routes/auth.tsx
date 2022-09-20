@@ -24,5 +24,5 @@ export default function Index() {
     submit(null, { method: "post" });
   }, []);
 
-  return <h1>로그인 페이지</h1>;
+  return <></>;
 }

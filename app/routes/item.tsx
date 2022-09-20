@@ -1,12 +1,11 @@
 import { useWindowScroll } from "@mantine/hooks";
-import { ActionFunction } from "@remix-run/node";
-import { useSearchParams } from "@remix-run/react";
+import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
+import { useLoaderData, useSearchParams } from "@remix-run/react";
 import styled from "styled-components";
 import Item from "~/components/Item";
 import { Space } from "~/components/Space";
 import itemsJson from "~/data/items.json";
-
-const currentPrice = 80000; //TODO
+import { getCurrentPrice } from "~/utils/firebase.server";
 
 const ItemPageBox = styled.div`
   width: inherit;
@@ -14,8 +13,9 @@ const ItemPageBox = styled.div`
 `;
 
 const NotFoundBox = styled.div`
+  overflow: hidden;
   width: inherit;
-  height: inherit;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,22 +141,28 @@ function ItemDetail({
   );
 }
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const indexStr = url.searchParams.get("index");
+  const index = Number(indexStr);
+  console.log(index);
+  const price = await getCurrentPrice({ itemIndex: index });
+  return json({index: index, currentPrice: price});
+}
+
 export const action: ActionFunction = async () => {
   return null;
 };
 
 export default function Index() {
-  const [searchParams] = useSearchParams();
-  const [scroll] = useWindowScroll();
-  const itemIndexStr = searchParams.get("index");
+  const data = useLoaderData();
+  const itemIndex = data.index;
 
-  if (itemIndexStr === null) {
+
+  if (itemIndex === null || itemIndex === undefined) {
     return <NotFound />;
   }
 
-  console.log(scroll.y);
-
-  const itemIndex = parseInt(itemIndexStr);
   const item = itemsJson.items[itemIndex];
   if (item === undefined) {
     return <NotFound />;
@@ -171,7 +177,7 @@ export default function Index() {
       <Space height={10} />
       <BidBox>
         <CurrentlyText>CURRENTLY</CurrentlyText>
-        <CurrentPrice>{currentPrice}</CurrentPrice>
+        <CurrentPrice>{data.currentPrice}</CurrentPrice>
         <BidButton>BID</BidButton>
         <BidLogText>비드 이력 보기</BidLogText>
       </BidBox>

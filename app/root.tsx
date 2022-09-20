@@ -44,6 +44,8 @@ export default function App() {
           <Footer />
           <ScrollRestoration />
           <script src="https://developers.kakao.com/sdk/js/kakao.js" />
+          <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" />
+          <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" />
           <Scripts />
           <LiveReload />
         </body>
