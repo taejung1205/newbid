@@ -138,14 +138,14 @@ export default function Header({}: {}) {
         }}
       >
         <Space height={10} />
-        {pathname !== "/tile" && (
-          <Link to="/tile">
-            <LinkText>VIEW ALL</LinkText>
-          </Link>
-        )}
-        {pathname === "/tile" && (
+        {pathname !== "/list" && (
           <Link to="/list">
             <LinkText>LIST VIEW</LinkText>
+          </Link>
+        )}
+        {pathname === "/list" && (
+          <Link to="/tile">
+            <LinkText>VIEW ALL</LinkText>
           </Link>
         )}
         <Link to="/mybid">
