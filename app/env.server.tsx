@@ -2,6 +2,7 @@ export function getEnv() {
   return {
     KAKAO_JS_KEY: process.env.KAKAO_JS_KEY,
     KAKAO_REST_KEY: process.env.KAKAO_REST_KEY,
+    URL: process.env.URL
   };
 }
 

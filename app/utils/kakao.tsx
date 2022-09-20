@@ -1,6 +1,5 @@
-import { URL } from "../config";
 
-const REDIRECT_URI = `${URL}/auth/`;
+const REDIRECT_URI = `${ENV.URL}/auth/`;
 // const REDIRECT_URI =  "https://newbid.netlify.app/auth/";
 
 export function kakaoInit(): any {
