@@ -3,6 +3,9 @@ import { RemixServer } from "@remix-run/react";
 import type { EntryContext } from "@remix-run/node";
 import { injectStyles, createStylesServer } from "@mantine/remix";
 import { ServerStyleSheet } from "styled-components";
+import { getEnv } from "./env.server";
+
+global.ENV = getEnv();
 
 const server = createStylesServer();
 

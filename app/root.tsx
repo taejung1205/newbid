@@ -1,4 +1,9 @@
-import type { MetaFunction, LinksFunction } from "@remix-run/node";
+import {
+  MetaFunction,
+  LinksFunction,
+  LoaderFunction,
+  json,
+} from "@remix-run/node";
 
 import {
   Links,
@@ -7,6 +12,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 
 import { MantineProvider } from "@mantine/core";
@@ -14,6 +20,7 @@ import { MantineProvider } from "@mantine/core";
 import globalStyle from "~/global.style.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { getEnv } from "./env.server";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -28,8 +35,14 @@ export function links() {
     },
   ];
 }
+export const loader: LoaderFunction = async ({ request }) => {
+  return json({
+    ENV: getEnv(),
+  });
+};
 
 export default function App() {
+  const data = useLoaderData();
   return (
     <MantineProvider>
       <html lang="en">
@@ -43,10 +56,11 @@ export default function App() {
           <Outlet />
           <Footer />
           <ScrollRestoration />
+          <Scripts />
           <script src="https://developers.kakao.com/sdk/js/kakao.js" />
           <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" />
           <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" />
-          <Scripts />
+          <script dangerouslySetInnerHTML={{__html: `window.ENV =  ${JSON.stringify(data.ENV)}`}} />
           <LiveReload />
         </body>
       </html>
