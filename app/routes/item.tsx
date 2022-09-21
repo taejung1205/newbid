@@ -1,6 +1,6 @@
 import { useWindowScroll } from "@mantine/hooks";
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
-import { useLoaderData, useSearchParams } from "@remix-run/react";
+import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
 import styled from "styled-components";
 import Item from "~/components/Item";
 import { Space } from "~/components/Space";
@@ -148,9 +148,9 @@ export const loader: LoaderFunction = async ({ request }) => {
   const index = Number(indexStr);
   console.log(index);
   const price = await getCurrentPrice({ itemIndex: index });
-  const bidderCount =  await getBidderCount({ itemIndex: index});
-  return json({index: index, currentPrice: price, bidderCount: bidderCount});
-}
+  const bidderCount = await getBidderCount({ itemIndex: index });
+  return json({ index: index, currentPrice: price, bidderCount: bidderCount });
+};
 
 export const action: ActionFunction = async () => {
   return null;
@@ -159,7 +159,6 @@ export const action: ActionFunction = async () => {
 export default function Index() {
   const data = useLoaderData();
   const itemIndex = data.index;
-
 
   if (itemIndex === null || itemIndex === undefined) {
     return <NotFound />;
@@ -180,8 +179,12 @@ export default function Index() {
       <BidBox>
         <CurrentlyText>CURRENTLY</CurrentlyText>
         <CurrentPrice>{data.currentPrice}</CurrentPrice>
-        <BidButton>BID</BidButton>
-        <BidLogText>지금까지 총 {data.bidderCount}명이 비딩에 참여하셨습니다.</BidLogText>
+        <BidButton>
+          <Link to={`/bidding?index=${data.index}`}>BID</Link>
+        </BidButton>
+        <BidLogText>
+          지금까지 총 {data.bidderCount}명이 비딩에 참여하셨습니다.
+        </BidLogText>
       </BidBox>
       <ItemDetail
         leftElement={

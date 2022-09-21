@@ -124,7 +124,7 @@ export default function Header({}: {}) {
           }
         }}
         isMenuOpen={isMenuOpen}
-        isPageBlue={pathname === "/" || pathname === "/about"}
+        isPageBlue={pathname === "/" || pathname === "/about" || pathname === "/bidding"}
       />
       <div
         style={{
