@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Item from "~/components/Item";
 import { Space } from "~/components/Space";
 import itemsJson from "~/data/items.json";
-import { getCurrentPrice } from "~/utils/firebase.server";
+import { getBidderCount, getCurrentPrice } from "~/utils/firebase.server";
 
 const ItemPageBox = styled.div`
   width: inherit;
@@ -86,6 +86,7 @@ const BidButton = styled.div`
   background-color: #152dff;
   margin: 18px;
   color: white;
+  cursor: pointer;
 `;
 
 const BidLogText = styled.text`
@@ -147,7 +148,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   const index = Number(indexStr);
   console.log(index);
   const price = await getCurrentPrice({ itemIndex: index });
-  return json({index: index, currentPrice: price});
+  const bidderCount =  await getBidderCount({ itemIndex: index});
+  return json({index: index, currentPrice: price, bidderCount: bidderCount});
 }
 
 export const action: ActionFunction = async () => {
@@ -179,7 +181,7 @@ export default function Index() {
         <CurrentlyText>CURRENTLY</CurrentlyText>
         <CurrentPrice>{data.currentPrice}</CurrentPrice>
         <BidButton>BID</BidButton>
-        <BidLogText>비드 이력 보기</BidLogText>
+        <BidLogText>지금까지 총 {data.bidderCount}명이 비딩에 참여하셨습니다.</BidLogText>
       </BidBox>
       <ItemDetail
         leftElement={

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -46,11 +46,15 @@ export async function getCurrentPrice({itemIndex} : {itemIndex: number}){
   const docRef = doc(firestore, "items", `item-${itemIndex}`);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
     return docSnap.data().currentPrice;
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
     return null;
   }
+}
+
+export async function getBidderCount({itemIndex} : {itemIndex: number}){
+  const querySnapshot = await getDocs(collection(firestore, `items/item-${itemIndex}/bidLog`));
+  return querySnapshot.docs.length - 1;
 }

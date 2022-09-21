@@ -6,6 +6,7 @@ const ItemImage = styled.img`
   padding-right: 50px;
   width: 100%;
   object-fit: contain;
+  cursor: pointer;
 `;
 
 const ItemTitle = styled.text`
@@ -70,8 +71,8 @@ export default function Item({
   onClick: () => void;
 }) {
   return (
-    <div onClick={onClick}>
-      <ItemImage src={imgSrc} />
+    <div>
+      <ItemImage src={imgSrc} onClick={onClick}/>
       <Space height={30} />
       <ItemTitle>{title}</ItemTitle>
       <Space height={10} />

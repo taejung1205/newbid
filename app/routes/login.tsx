@@ -24,6 +24,7 @@ const RequireLoginText = styled.text`
 const KakaoLoginButton = styled.img`
   width: 175px;
   height: 43px;
+  cursor: pointer;
 `;
 const WithoutLoginLinkText = styled.text`
   font-size: 16px;
