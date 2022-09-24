@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { Marquee } from "~/components/Animated";
 import { Space } from "~/components/Space";
 import { getCurrentPrice } from "~/utils/firebase.server";
+import {createToken, sendMessage} from "~/utils/aligo";
 
 const BiddingPageBox = styled.div`
   overflow: hidden;
@@ -31,6 +32,7 @@ const CenterBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   left: 0;
   right: 0;
 `;
@@ -106,13 +108,20 @@ export default function Index() {
         <CurrentPrice>{data.currentPrice}</CurrentPrice>
       </TopBox>
       <CenterBox>
-        <button onClick={() => setMyBidPrice(prev => prev + 1000)}/>
+        <button onClick={() => setMyBidPrice(prev => prev + 1000)} style={{width: "100px", height: "20px"}}> UP </button>
         <MyBidText>MY BID</MyBidText>
         <MyBidPrice>{myBidPrice}</MyBidPrice>
-        <button onClick={() => setMyBidPrice(prev => prev - 1000)}/>
+        <button onClick={() => setMyBidPrice(prev => prev - 1000)} style={{width: "100px", height: "20px"}}> DOWN </button>
       </CenterBox>
       <BottomBox>
-        <BidButton>BID</BidButton>
+        <BidButton onClick={async () => {
+          const token = await createToken();
+          if(token !== undefined){
+            setMyBidPrice(999);
+          } else {
+            setMyBidPrice(123);
+          }
+        }}>BID</BidButton>
       </BottomBox>
     </BiddingPageBox>
   );
