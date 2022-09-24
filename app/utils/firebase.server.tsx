@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
+import { getFunctions, httpsCallable } from "firebase/functions";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,10 +19,13 @@ const firebaseConfig = {
 // Initialize Firebase
 let firebaseApp: any;
 let firestore: any;
+let firebaseFunctions: any;
 
 if (!firebaseApp?.apps.length || !firestore.apps.length) {
   firebaseApp = initializeApp(firebaseConfig);
   firestore = getFirestore(firebaseApp);
+  firebaseFunctions = getFunctions(firebaseApp, "asia-northeast1");
+  
 }
 
 export async function createDatabase() {
@@ -57,4 +61,15 @@ export async function getCurrentPrice({itemIndex} : {itemIndex: number}){
 export async function getBidderCount({itemIndex} : {itemIndex: number}){
   const querySnapshot = await getDocs(collection(firestore, `items/item-${itemIndex}/bidLog`));
   return querySnapshot.docs.length - 1;
+}
+
+export async function test(){
+  const checkIp = httpsCallable(firebaseFunctions, 'checkIp');
+  try {
+    const checkIpResult = await checkIp();
+    console.log(checkIpResult);
+    return checkIpResult.data;
+  } catch(e) {
+    console.log(e);
+  }
 }

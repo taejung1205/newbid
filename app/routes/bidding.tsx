@@ -3,9 +3,7 @@ import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useSubmit } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Marquee } from "~/components/Animated";
-import { Space } from "~/components/Space";
-import { getCurrentPrice } from "~/utils/firebase.server";
+import { getCurrentPrice, test } from "~/utils/firebase.server";
 
 const BiddingPageBox = styled.div`
   overflow: hidden;
@@ -92,7 +90,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   const index = Number(indexStr);
   console.log(index);
   const price = await getCurrentPrice({ itemIndex: index });
-  return json({ index: index, currentPrice: price });
+  const testIp = await test();
+  return json({ index: index, currentPrice: price, ip: testIp });
 };
 
 export default function Index() {
@@ -100,6 +99,7 @@ export default function Index() {
   const data = useLoaderData();
   const [myBidPrice, setMyBidPrice] = useState<number>(data.currentPrice);
   const [noticeText, setNoticeText] = useState<string>("");
+
   return (
     <BiddingPageBox onScroll={() => console.log("scroll")}>
       <TopBox>
@@ -112,7 +112,10 @@ export default function Index() {
         <MyBidPrice>{myBidPrice}</MyBidPrice>
         <button onClick={() => setMyBidPrice(prev => prev - 1000)} style={{width: "100px", height: "20px"}}> DOWN </button>
       </CenterBox>
-      <BottomBox>
+      <BottomBox onClick={() => {
+        setNoticeText(data.ip.ip);
+      }}>
+        <h4>{noticeText}</h4>
         <BidButton>BID</BidButton>
       </BottomBox>
     </BiddingPageBox>
