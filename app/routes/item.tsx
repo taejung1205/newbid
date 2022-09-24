@@ -87,6 +87,7 @@ const BidButton = styled.div`
   margin: 18px;
   color: white;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 const BidLogText = styled.text`

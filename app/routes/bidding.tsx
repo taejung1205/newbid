@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { Marquee } from "~/components/Animated";
 import { Space } from "~/components/Space";
 import { getCurrentPrice } from "~/utils/firebase.server";
-import {createToken, sendMessage} from "~/utils/aligo";
 
 const BiddingPageBox = styled.div`
   overflow: hidden;
@@ -114,14 +113,7 @@ export default function Index() {
         <button onClick={() => setMyBidPrice(prev => prev - 1000)} style={{width: "100px", height: "20px"}}> DOWN </button>
       </CenterBox>
       <BottomBox>
-        <BidButton onClick={async () => {
-          const token = await createToken();
-          if(token !== undefined){
-            setMyBidPrice(999);
-          } else {
-            setMyBidPrice(123);
-          }
-        }}>BID</BidButton>
+        <BidButton>BID</BidButton>
       </BottomBox>
     </BiddingPageBox>
   );
