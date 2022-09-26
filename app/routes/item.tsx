@@ -180,9 +180,9 @@ export default function Index() {
       <BidBox>
         <CurrentlyText>CURRENTLY</CurrentlyText>
         <CurrentPrice>{data.currentPrice}</CurrentPrice>
-        <BidButton>
-          <Link to={`/bidding?index=${data.index}`}>BID</Link>
-        </BidButton>
+        <Link to={`/bidding?index=${data.index}`} style={{ textDecoration: 'none' }}>
+          <BidButton>BID</BidButton>
+        </Link>
         <BidLogText>
           지금까지 총 {data.bidderCount}명이 비딩에 참여하셨습니다.
         </BidLogText>
