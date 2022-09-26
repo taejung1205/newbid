@@ -3,7 +3,7 @@ import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useSubmit } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { getCurrentPrice, test } from "~/utils/firebase.server";
+import { getCurrentPrice, sendAligoMessage } from "~/utils/firebase.server";
 
 const BiddingPageBox = styled.div`
   overflow: hidden;
@@ -81,6 +81,8 @@ const BidButton = styled.div`
 `;
 
 export const action: ActionFunction = async ({ request }) => {
+  const result = await sendAligoMessage();
+  console.log(result);
   return null;
 };
 
@@ -90,8 +92,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const index = Number(indexStr);
   console.log(index);
   const price = await getCurrentPrice({ itemIndex: index });
-  const testIp = await test();
-  return json({ index: index, currentPrice: price, ip: testIp });
+  return json({ index: index, currentPrice: price });
 };
 
 export default function Index() {
@@ -113,7 +114,7 @@ export default function Index() {
         <button onClick={() => setMyBidPrice(prev => prev - 1000)} style={{width: "100px", height: "20px"}}> DOWN </button>
       </CenterBox>
       <BottomBox onClick={() => {
-        setNoticeText(data.ip.ip);
+        submit(null, {method: "post"});
       }}>
         <h4>{noticeText}</h4>
         <BidButton>BID</BidButton>
