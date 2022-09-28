@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
-import { requestUnlink, requestUser } from "~/utils/kakao";
+import { checkLoggedIn, requestUnlink, requestUser } from "~/utils/kakao";
 
 const MyBidPageBox = styled.div`
   overflow: hidden;
@@ -29,6 +29,17 @@ export default function Index() {
   const submit = useSubmit();
 
   useEffect(() => {
+
+    checkLoggedIn({
+      trueCallback: () => {},
+      falseCallback: () => {
+        submit(null, {
+          method: "post",
+          action: `/login?path=mybid`,
+        });
+      },
+    });
+
     requestUser({
       successCallback: (res: any) => {
         console.log("User: ");
