@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { getCurrentPrice, sendAligoMessage } from "~/utils/firebase.server";
 import itemsJson from "~/data/items.json";
 import { Space } from "~/components/Space";
-import { TERMS_TEXT } from "~/data/text";
 import { Terms } from "~/data/terms";
 
 const BiddingPageBox = styled.div`
