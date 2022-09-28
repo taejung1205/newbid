@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc, getDocs, collection, updateDoc, addDoc } from "firebase/firestore";
 import { getFunctions, httpsCallable } from "firebase/functions";
+import itemsJson from "~/data/items.json";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -41,7 +42,8 @@ export async function createDatabase() {
       //   born: 1815,
       // });
       const docRef = await setDoc(doc(firestore, "items", `item-${i}`), {
-        currentPrice: 50000,
+        currentPrice: 30000,
+        itemName: itemsJson.items[i].title
       });
       console.log("Document written: ", i);
     } catch (e) {
@@ -67,47 +69,63 @@ export async function getBidderCount({itemIndex} : {itemIndex: number}){
   return querySnapshot.docs.length - 1;
 }
 
-//For static IP test
-export async function getFunctionIp(){
-  const checkIp = httpsCallable(firebaseFunctions, 'checkIp');
-  try {
-    const checkIpResult = await checkIp();
-    console.log(checkIpResult);
-    return checkIpResult.data;
-  } catch(e) {
-    console.log(e);
-  }
-}
+export async function requestBidding({itemIndex, name, phone, email, biddingPrice} : {
+  itemIndex: number;
+  name: string;
+  phone: string;
+  email: string;
+  biddingPrice: number;
+}){
+  const itemDocRef = doc(firestore, `items/item-${itemIndex}`);
+  const docSnap = await getDoc(itemDocRef);
+  if(docSnap.exists()) {
+    const prevBidderPhone = docSnap.data().bidderPhone;
+    //같은 경매자가 연속으로 시도하는 것일 경우 오류
+    if(prevBidderPhone === phone){
+      return { result: "fail", detail: "duplicate" };
+    }
+    const prevBiddingPrice = docSnap.data().currentPrice;
+    //이전 경매값이 제출한 경매값 이상일 경우 오류
+    if(prevBiddingPrice >= biddingPrice){
+      return { result: "fail", detail: "bidding price" };
+    }
 
-export async function getAligoToken(){
-  const aligoTokenFunction = httpsCallable(firebaseFunctions, "getAligoToken");
-  try {
-    console.log("calling getAligoToken");
-    const response = await aligoTokenFunction({apikey: process.env.ALIGO_API_KEY, userid: process.env.ALIGO_USER_ID});
-    console.log(response);
-    return response.data;
-  } catch(e) {
-    console.log(e);
-  }
-}
-
-export async function sendAligoMessage(){
-  const sendMessageFunction = httpsCallable(firebaseFunctions, "sendAligoMessage");
-  try {
-    console.log("calling sendAligoMessage");
-    const response = await sendMessageFunction({
-      apikey: process.env.ALIGO_API_KEY, 
-      userid: process.env.ALIGO_USER_ID,
-      senderkey: process.env.ALIGO_SENDER_KEY,
-      tpl_code: higherBidMessageTemplate,
-      sender: process.env.ALIGO_SENDER,
-      receiver: "01023540973",
-      recvname: "김태정",
-      subject: "제목 테스트",
-      message: "김태정님이 응찰해주신 작품에 대하여 더 높은 금액이 비딩되었습니다.\n\n더 높은 금액을 비딩 하시려면, 아래 버튼을 클릭하여 응찰하실 수 있습니다.",
+    //경매 갱신 실행
+    await updateDoc(itemDocRef, {
+      currentPrice: biddingPrice,
+      bidderPhone: phone,
+      bidderName: name
     });
-    return response.data;
-  } catch(e) {
-    console.log(e);
+
+    //경매자 정보 추가
+    await setDoc(doc(firestore, `bidders/bidder-${phone}`), {
+      name: name,
+      email: email
+    });
+
+    //경매자 정보에 해당 경매 이력 추가
+    await setDoc(doc(firestore, `bidders/bidder-${phone}/biddingList/item-${itemIndex}`), {
+      biddingPrice: biddingPrice,
+      isHighest: true
+    })
+
+    //이전 경매자의 경매 이력에 최고가 여부 수정
+    if(prevBidderPhone !== undefined){
+      await updateDoc(doc(firestore, `bidders/bidder-${prevBidderPhone}/biddingList/item-${itemIndex}`), {
+        isHighest: false
+      })
+    }
+
+    //제품에 경매 로그 추가
+    await addDoc(collection(firestore, `items/item-${itemIndex}/bidLog`), {
+      bidderPhone: phone,
+      biddingPrice: biddingPrice
+    })
+
+    return { result : "success" }
+
+
+  } else {
+    return { result: "fail", detail: "cannot find item" };
   }
 }

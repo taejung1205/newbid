@@ -1,13 +1,14 @@
 import { Modal } from "@mantine/core";
 import { useScrollIntoView } from "@mantine/hooks";
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
-import { useLoaderData, useSubmit } from "@remix-run/react";
+import { useActionData, useLoaderData, useSubmit } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { getCurrentPrice, sendAligoMessage } from "~/utils/firebase.server";
+import { getCurrentPrice, requestBidding } from "~/utils/firebase.server";
 import itemsJson from "~/data/items.json";
 import { Space } from "~/components/Space";
 import { Terms } from "~/data/terms";
+import { requestUser } from "~/utils/kakao";
 
 const BiddingPageBox = styled.div`
   overflow: hidden;
@@ -99,9 +100,21 @@ const TermsBox = styled.div`
   overflow-y: scroll;
 `;
 export const action: ActionFunction = async ({ request }) => {
-  const result = await sendAligoMessage();
+  const formData = await request.formData();
+  const itemIndex = Number(formData.get("itemIndex") ?? -1);
+  const name = formData.get("name")?.toString() ?? "undefined";
+  const phone = formData.get("phone")?.toString() ?? "undefined";
+  const email = formData.get("email")?.toString() ?? "undefined";
+  const biddingPrice = Number(formData.get("biddingPrice") ?? -1);
+  const result = await requestBidding({
+    itemIndex: itemIndex,
+    name: name,
+    phone: phone,
+    biddingPrice: biddingPrice,
+    email: email
+  });
   console.log(result);
-  return null;
+  return result;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -112,6 +125,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const price = await getCurrentPrice({ itemIndex: index });
   return json({ index: index, currentPrice: price });
 };
+
 
 function PriceModalContent({
   itemTitle,
@@ -188,11 +202,21 @@ function CompleteModalContent({
 export default function Index() {
   const submit = useSubmit();
   const data = useLoaderData();
+  const result = useActionData();
   const [myBidPrice, setMyBidPrice] = useState<number>(data.currentPrice + 1000);
   const [noticeText, setNoticeText] = useState<string>("");
   const [isPriceModalOpen, setIsPriceModalOpen] = useState<boolean>(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState<boolean>(false);
   const [isCompleteModalOpen, setIsCompleteModalOpen] = useState<boolean>(false);
+  const [name, setName] = useState<string>("Name undefined");
+  const [phoneNumber, setPhoneNumber] = useState<string>(
+    "Phone number undefined"
+  );
+  const [email, setEmail] = useState<string>(
+    "Email undefined"
+  );
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   function onUpClick() {
     if (myBidPrice + 1000 >= data.currentPrice * 1.2) {
@@ -214,6 +238,31 @@ export default function Index() {
     }
   }
 
+  function createBiddingFormData(){
+    const formData = new FormData(formRef.current ?? undefined);
+    formData.set("itemIndex", data.index);
+    formData.set("name", name);
+    formData.set("phone", phoneNumber);
+    formData.set("email", email);
+    formData.set("biddingPrice", myBidPrice.toString());
+    return formData;
+  }
+
+  useEffect(() => {
+    requestUser({
+      successCallback: (res: any) => {
+        console.log("User: ");
+        console.log(res);
+        const kakaoAccount = res.kakao_account;
+        if (kakaoAccount !== undefined) {
+          setName(kakaoAccount.name);
+          setPhoneNumber(kakaoAccount.phone_number);
+          setEmail(kakaoAccount.email);
+        }
+      },
+    });
+  }, []);
+  
   return (
     <>
       <Modal
@@ -253,7 +302,10 @@ export default function Index() {
         }}
       >
         <TermsModalContent
-          onNext={() => { setIsTermsModalOpen(false); setIsCompleteModalOpen(true); }}
+          onNext={() => { setIsTermsModalOpen(false);
+            const formData = createBiddingFormData(); 
+            submit(formData, {method: "post"});
+          }}
           onClose={() => setIsTermsModalOpen(false)}
         />
       </Modal>
