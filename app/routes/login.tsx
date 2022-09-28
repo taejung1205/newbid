@@ -1,5 +1,10 @@
-import { ActionFunction, redirect } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import {
+  ActionFunction,
+  json,
+  LoaderFunction,
+  redirect,
+} from "@remix-run/node";
+import { Link, useLoaderData } from "@remix-run/react";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
 import { doKakaoLogin } from "~/utils/kakao";
@@ -47,11 +52,26 @@ function WithoutLoginLink() {
 }
 
 export const action: ActionFunction = async () => {
-  console.log("redirect");
   return null;
 };
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const pathStr = url.searchParams.get("path");
+  if (pathStr !== null) {
+    if (pathStr === "bidding") {
+      const indexStr = url.searchParams.get("index");
+      return json({ path: `/bidding?index=${indexStr}` });
+    } else {
+      return json({ path: `/${pathStr}` });
+    }
+  } else {
+    return json({ path: `/list` });
+  }
+};
 export default function Index() {
+  const data = useLoaderData();
+
   return (
     <LoginPageBox>
       <RequireLoginText>
@@ -63,7 +83,7 @@ export default function Index() {
       <KakaoLoginButton
         src={"/image/kakao_login_button.png"}
         onClick={() => {
-          doKakaoLogin();
+          doKakaoLogin({ path: data.path });
         }}
       />
       <WithoutLoginLink />

@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import { requestTokens } from "~/utils/kakao";
 
 export const action: ActionFunction = async () => {
-  console.log("redirect");
-  return redirect("/list");
+  return null;
 };
 
 export default function Index() {
@@ -15,13 +14,14 @@ export default function Index() {
     const params = new URL(window.location.href).searchParams;
     const code = params.get("code");
     const error = params.get("error");
+    const redirectPath = params.get("state") ?? "";
     if (code !== null && error === null) {
       console.log(`code: ${code}`);
       requestTokens({ code: code });
     } else {
       console.log(`error: ${error}`);
     }
-    submit(null, { method: "post" });
+    submit(null, { method: "post", action: redirectPath });
   }, []);
 
   return <></>;

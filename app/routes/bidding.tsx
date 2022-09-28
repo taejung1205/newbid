@@ -8,7 +8,7 @@ import { getCurrentPrice, requestBidding } from "~/utils/firebase.server";
 import itemsJson from "~/data/items.json";
 import { Space } from "~/components/Space";
 import { Terms } from "~/data/terms";
-import { requestUser } from "~/utils/kakao";
+import { checkLoggedIn, requestUser } from "~/utils/kakao";
 
 const BiddingPageBox = styled.div`
   overflow: hidden;
@@ -92,7 +92,7 @@ const NoticeText = styled.text`
   size: 16px;
   line-height: 23px;
   white-space: pre-line;
-`
+`;
 
 const TermsBox = styled.div`
   width: 300px;
@@ -111,7 +111,7 @@ export const action: ActionFunction = async ({ request }) => {
     name: name,
     phone: phone,
     biddingPrice: biddingPrice,
-    email: email
+    email: email,
   });
   console.log(result);
   return result;
@@ -125,7 +125,6 @@ export const loader: LoaderFunction = async ({ request }) => {
   const price = await getCurrentPrice({ itemIndex: index });
   return json({ index: index, currentPrice: price });
 };
-
 
 function PriceModalContent({
   itemTitle,
@@ -166,7 +165,7 @@ function TermsModalContent({
         완료됩니다.
       </h5>
       <Space height={20} />
-      <Terms/>
+      <Terms />
       <Space height={15} />
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <button onClick={onNext}>동의합니다.</button>
@@ -176,19 +175,13 @@ function TermsModalContent({
   );
 }
 
-function CompleteModalContent({
-  onClose,
-}: {
-  onClose: () => void;
-}) {
+function CompleteModalContent({ onClose }: { onClose: () => void }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <h4>
-        완료되었습니다.
-      </h4>
+      <h4>완료되었습니다.</h4>
       <Space height={20} />
       <h4>
-      더 높은 금액에 비딩이 이루어질 경우 카카오톡을 통해 노티스 됩니다.
+        더 높은 금액에 비딩이 이루어질 경우 카카오톡을 통해 노티스 됩니다.
       </h4>
       <Space height={30} />
       <div style={{ display: "flex", justifyContent: "end" }}>
@@ -198,23 +191,23 @@ function CompleteModalContent({
   );
 }
 
-
 export default function Index() {
   const submit = useSubmit();
   const data = useLoaderData();
   const result = useActionData();
-  const [myBidPrice, setMyBidPrice] = useState<number>(data.currentPrice + 1000);
+  const [myBidPrice, setMyBidPrice] = useState<number>(
+    data.currentPrice + 1000
+  );
   const [noticeText, setNoticeText] = useState<string>("");
   const [isPriceModalOpen, setIsPriceModalOpen] = useState<boolean>(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState<boolean>(false);
-  const [isCompleteModalOpen, setIsCompleteModalOpen] = useState<boolean>(false);
+  const [isCompleteModalOpen, setIsCompleteModalOpen] =
+    useState<boolean>(false);
   const [name, setName] = useState<string>("Name undefined");
   const [phoneNumber, setPhoneNumber] = useState<string>(
     "Phone number undefined"
   );
-  const [email, setEmail] = useState<string>(
-    "Email undefined"
-  );
+  const [email, setEmail] = useState<string>("Email undefined");
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -230,15 +223,13 @@ export default function Index() {
 
   function onDownClick() {
     if (myBidPrice - 1000 <= data.currentPrice) {
-      setNoticeText(
-        "현재 비딩가보다\n낮은 금액을 비딩할 수 없습니다"
-      );
+      setNoticeText("현재 비딩가보다\n낮은 금액을 비딩할 수 없습니다");
     } else {
       setMyBidPrice((prev) => prev - 1000);
     }
   }
 
-  function createBiddingFormData(){
+  function createBiddingFormData() {
     const formData = new FormData(formRef.current ?? undefined);
     formData.set("itemIndex", data.index);
     formData.set("name", name);
@@ -249,6 +240,16 @@ export default function Index() {
   }
 
   useEffect(() => {
+    checkLoggedIn({
+      trueCallback: () => {},
+      falseCallback: () => {
+        submit(null, {
+          method: "post",
+          action: `/login?path=bidding&index=${data.index}`,
+        });
+      },
+    });
+
     requestUser({
       successCallback: (res: any) => {
         console.log("User: ");
@@ -262,7 +263,7 @@ export default function Index() {
       },
     });
   }, []);
-  
+
   return (
     <>
       <Modal
@@ -302,16 +303,20 @@ export default function Index() {
         }}
       >
         <TermsModalContent
-          onNext={() => { setIsTermsModalOpen(false);
-            const formData = createBiddingFormData(); 
-            submit(formData, {method: "post"});
+          onNext={() => {
+            setIsTermsModalOpen(false);
+            const formData = createBiddingFormData();
+            submit(formData, { method: "post" });
           }}
           onClose={() => setIsTermsModalOpen(false)}
         />
       </Modal>
       <Modal
         opened={isCompleteModalOpen}
-        onClose={() => { setIsCompleteModalOpen(false); submit(null, {method: "post", action: `/list`})}}
+        onClose={() => {
+          setIsCompleteModalOpen(false);
+          submit(null, { method: "post", action: `/list` });
+        }}
         centered
         withCloseButton={false}
         size={330}
@@ -323,7 +328,10 @@ export default function Index() {
         }}
       >
         <CompleteModalContent
-          onClose={() => { setIsCompleteModalOpen(false); submit(null, {method: "post", action: `/list`})}}
+          onClose={() => {
+            setIsCompleteModalOpen(false);
+            submit(null, { method: "post", action: `/list` });
+          }}
         />
       </Modal>
       <BiddingPageBox onScroll={() => console.log("scroll")}>

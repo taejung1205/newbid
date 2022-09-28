@@ -1,4 +1,3 @@
-
 const REDIRECT_URI = `${ENV.URL}/auth/`;
 // const REDIRECT_URI =  "https://newbid.netlify.app/auth/";
 
@@ -15,9 +14,9 @@ export function isKakaoInitialized(): boolean {
   return kakao.isInitialized();
 }
 
-export function doKakaoLogin() {
+export function doKakaoLogin({ path }: { path: string }) {
   const kakao = kakaoInit();
-  kakao.Auth.authorize({ redirectUri: REDIRECT_URI });
+  kakao.Auth.authorize({ redirectUri: REDIRECT_URI, state: path });
 }
 
 export function checkLoggedIn({
