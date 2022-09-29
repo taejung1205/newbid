@@ -124,7 +124,9 @@ export default function Header({}: {}) {
           }
         }}
         isMenuOpen={isMenuOpen}
-        isPageBlue={pathname === "/" || pathname === "/about" || pathname === "/bidding"}
+        isPageBlue={
+          pathname === "/" || pathname === "/about" || pathname === "/bidding"
+        }
       />
       <div
         style={{
@@ -148,7 +150,7 @@ export default function Header({}: {}) {
             <LinkText>VIEW ALL</LinkText>
           </Link>
         )}
-        <Link to="/mybid">
+        <Link to="/mybid" reloadDocument={pathname === "/mybid"}>
           <LinkText>MY BID</LinkText>
         </Link>
         <Link to="/about">

@@ -1,35 +1,46 @@
-import { ActionFunction, redirect } from "@remix-run/node";
-import { useSubmit } from "@remix-run/react";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {
+  ActionFunction,
+  json,
+  LoaderFunction,
+  redirect,
+} from "@remix-run/node";
+import { useActionData, useSubmit } from "@remix-run/react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
 import { checkLoggedIn, requestUnlink, requestUser } from "~/utils/kakao";
+import itemsJson from "~/data/items.json";
+import { getBiddingList } from "~/utils/firebase.server";
+import Item from "~/components/Item";
 
 const MyBidPageBox = styled.div`
-  overflow: hidden;
   width: inherit;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: inherit;
 `;
 
-export const action: ActionFunction = async () => {
-  console.log("redirect");
-  return redirect("/");
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  const phone = formData.get("phone")?.toString() ?? "";
+  const biddingList = await getBiddingList({ phone: phone });
+  console.log(biddingList);
+  return json({ list: biddingList });
+};
+
+export const loader: LoaderFunction = async () => {
+  return null;
 };
 
 export default function Index() {
-  const [name, setName] = useState<string>("Name undefined");
   const [phoneNumber, setPhoneNumber] = useState<string>(
     "Phone number undefined"
   );
-  const [email, setEmail] = useState<string>("Email undefined");
   const submit = useSubmit();
+  const formRef = useRef<HTMLFormElement>(null);
+  const result = useActionData();
 
   useEffect(() => {
-
+    //로그인이 되어있지 않을 경우 로그인 화면으로 이동 + 돌아올때 여기로
+    console.log("useeffect");
     checkLoggedIn({
       trueCallback: () => {},
       falseCallback: () => {
@@ -42,47 +53,46 @@ export default function Index() {
 
     requestUser({
       successCallback: (res: any) => {
-        console.log("User: ");
-        console.log(res);
         const kakaoAccount = res.kakao_account;
         if (kakaoAccount !== undefined) {
-          setName(kakaoAccount.name);
           setPhoneNumber(kakaoAccount.phone_number);
-          setEmail(kakaoAccount.email);
         }
       },
     });
   }, []);
+
+  useEffect(() => {
+    const formData = new FormData(formRef.current ?? undefined);
+    formData.set("phone", phoneNumber);
+    submit(formData, { method: "post" });
+  }, [phoneNumber]);
+
   return (
     <MyBidPageBox>
-      <h1>내 비딩 페이지</h1>
-      <h4>{name}</h4>
-      <h4>{phoneNumber}</h4>
-      <h4>{email}</h4>
-      <h4
-        onClick={() =>
-          requestUnlink({
-            successCallback: (res: any) => {
-              console.log("로그아웃 성공");
-              submit(null, { method: "post" });
-            },
-          })
-        }
-      >
-        로그아웃
-      </h4>
-      <h4
-        onClick={() =>
-          requestUnlink({
-            successCallback: (res: any) => {
-              console.log("탈퇴 성공");
-              submit(null, { method: "post" });
-            },
-          })
-        }
-      >
-        탈퇴
-      </h4>
+      <Space height={160} />
+      {result ? (
+        result.list.map((bidItem: any, index: number) => {
+          const thisItem = itemsJson.items[bidItem.index];
+          return (
+            <Item
+              key={`MyBidItem-${index}`}
+              imgSrc={thisItem.src}
+              title={thisItem.title}
+              body={thisItem.body}
+              currentPrice={bidItem.biddingPrice}
+              startPrice={thisItem.startPrice}
+              onClick={() =>
+                submit(null, { method: "post", action: `/item?index=${index}` })
+              }
+              isHighest={bidItem.isHighest}
+            />
+          );
+        })
+      ) : (
+        <h4>로딩 중...</h4>
+      )}
+
+      <Space height={120} />
     </MyBidPageBox>
   );
 }
