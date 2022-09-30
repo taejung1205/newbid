@@ -74,15 +74,17 @@ function HeaderLogo({
       style={{
         position: "relative",
         maxHeight: isPageBlue ? "125px" : "150px",
+        display: "flex",
+        margin: "15px"
       }}
     >
       <LogoImage
         isVisible={!(isMenuOpen || isPageBlue)}
-        src={"/image/logo_newbid_black.png"}
+        src={"/image/logo_star_black.svg"}
       />
       <LogoImageGrey
         isVisible={isMenuOpen || isPageBlue}
-        src={"/image/logo_newbid_grey.png"}
+        src={"/image/logo_star_green.svg"}
       />
     </div>
   );

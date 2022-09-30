@@ -69,7 +69,7 @@ export default function Index() {
 
   return (
     <MyBidPageBox>
-      <Space height={160} />
+      <Space height={70} />
       {result ? (
         result.list.map((bidItem: any, index: number) => {
           const thisItem = itemsJson.items[bidItem.index];

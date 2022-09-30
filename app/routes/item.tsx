@@ -171,7 +171,7 @@ export default function Index() {
   }
   return (
     <ItemPageBox>
-      <Space height={160} />
+      <Space height={70} />
       <ItemImage src={item.src} />
       <Space height={15} />
       <TitleText isLeft={false}>{item.title}</TitleText>

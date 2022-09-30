@@ -28,7 +28,7 @@ export default function Index() {
   const submit = useSubmit();
   return (
     <TilePageBox>
-      <Space height={160} />
+      <Space height={70} />
       <ItemsGrid>
         {itemsJson.items.map((item, index) => {
           return <ItemImage src={item.src} key={`TileItem-${index}`} 

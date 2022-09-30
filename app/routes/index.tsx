@@ -58,7 +58,7 @@ export default function Index() {
   const submit = useSubmit();
   return (
     <StartPageBox>
-      <Space height={160} />
+      <Space height={70} />
       <TopText>COEX D HALL</TopText>
       <TopText>10.12-10.16</TopText>
       <LoginImage

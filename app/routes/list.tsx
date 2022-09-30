@@ -28,7 +28,7 @@ export default function Index() {
   const data = useLoaderData();
   return (
     <ListPageBox>
-      <Space height={160} />
+      <Space height={70} />
       {itemsJson.items.map((item, index) => {
         return (
           <Item

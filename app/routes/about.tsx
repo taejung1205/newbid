@@ -98,7 +98,7 @@ export default function Index() {
   return (
     <AboutPageBox>
       <div ref={topScrollY.targetRef} />
-      <Space height={140} />
+      <Space height={70} />
       <MarqueeBox isScrolledDown={isScrolledDown}>
         <Divider />
         <Marquee duration={10}>
