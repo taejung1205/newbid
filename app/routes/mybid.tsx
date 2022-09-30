@@ -12,6 +12,7 @@ import { checkLoggedIn, requestUnlink, requestUser } from "~/utils/kakao";
 import itemsJson from "~/data/items.json";
 import { getBiddingList } from "~/utils/firebase.server";
 import Item from "~/components/Item";
+import { Loader } from "@mantine/core";
 
 const MyBidPageBox = styled.div`
   width: inherit;
@@ -89,7 +90,10 @@ export default function Index() {
           );
         })
       ) : (
-        <h4>로딩 중...</h4>
+        <>
+          <Space height={70} />
+          <Loader />
+        </>
       )}
 
       <Space height={120} />
