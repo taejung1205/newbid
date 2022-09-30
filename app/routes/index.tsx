@@ -1,90 +1,207 @@
-import { ActionFunction, redirect } from "@remix-run/node";
-import { useSubmit } from "@remix-run/react";
+import { useScrollIntoView } from "@mantine/hooks";
+import { ActionFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { Marquee } from "~/components/Animated";
 import { Space } from "~/components/Space";
-import { checkLoggedIn, doKakaoLogin } from "~/utils/kakao";
+import { doKakaoLogin } from "~/utils/kakao";
 
-const StartPageBox = styled.div`
+const MainPageBox = styled.div`
   overflow: hidden;
   width: inherit;
-  height: 100vh;
-  background-color: #152dff;
+  background-color: #451BC8;
+  position: relative;
 `;
 
-const TopText = styled.text`
-  display: block;
-  font-size: 24px;
-  text-decoration: underline;
-  font-family: rubik;
-  font-weight: 700;
+const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+  border-bottom: 2px solid #dddddd;
+`;
+
+const MarqueeText = styled.div`
   font-size: 37px;
-  line-height: 44px;
+  line-height: 54px;
+  font-family: Noto Sans KR;
+  font-weight: 700;
+  white-space: nowrap;
   color: #cccccc;
 `;
 
-const LoginImage = styled.img`
-  margin-top: 40px;
-  max-height: 290px;
-  @media (max-height: 800px) {
-    margin-top: 10px;
-    max-height: 180px;
-  }
+interface BoxProps {
+  isScrolledDown: boolean;
+}
+
+const MarqueeBox = styled.div<BoxProps>`
+  transition: all ease-out 1s;
+`;
+
+const BottomBox = styled.div<BoxProps>`
+  transition: all ease-out 1s;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 35px;
+`;
+
+const BottomText = styled.text`
+  font-weight: 400;
+  color: white;
+  font-size: 32px;
+  line-height: 40px;
+  display: block;
+  text-align: left;
+`;
+
+const EnterBox = styled.div`
+  position: absolute;
+  bottom: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0;
+  right: 0;
+`;
+const KakaoLoginButton = styled.img`
+  width: 175px;
+  height: 43px;
   cursor: pointer;
 `;
-
-const ByText = styled.text`
-  display: block;
-  font-size: 16px;
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 27px;
-  color: white;
+const WithoutLoginLinkText = styled(BottomText)`
+  font-size: 25px;
+  line-height: 16px;
+  text-decoration: underline;
 `;
 
-const ExplanationText = styled.text`
-  display: block;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 18px;
-  color: white;
-`;
+function WithoutLoginLink() {
+  return (
+    <Link to={"/list"}>
+      <WithoutLoginLinkText>둘러만 볼게요</WithoutLoginLinkText>
+    </Link>
+  );
+}
 
 export const action: ActionFunction = async ({ request }) => {
   return null;
-  //return redirect("/list");
 };
 
 export default function Index() {
-  const submit = useSubmit();
+  let prevScrollY = useRef(0);
+  const topScrollY = useScrollIntoView<HTMLDivElement>({
+    duration: 3000,
+    onScrollFinish: () => {
+      setIsScrolledDown(false);
+    },
+  });
+  const bottomScrollY = useScrollIntoView<HTMLDivElement>({
+    duration: 3000,
+    onScrollFinish: () => {
+      setIsScrolledDown(true);
+    },
+  });
+  const [isScrolledDown, setIsScrolledDown] = useState<boolean>(false);
+
+  useEffect(() => {
+    function handleScroll(event: any) {
+      const currentScrollY = window.scrollY;
+      if (
+        prevScrollY.current > currentScrollY &&
+        isScrolledDown &&
+        currentScrollY < 500
+      ) {
+        topScrollY.scrollIntoView();
+      }
+      if (
+        prevScrollY.current < currentScrollY &&
+        !isScrolledDown &&
+        currentScrollY > 150
+      ) {
+        bottomScrollY.scrollIntoView();
+      }
+      prevScrollY.current = currentScrollY;
+      console.log(isScrolledDown, currentScrollY);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isScrolledDown]);
+
   return (
-    <StartPageBox>
+    <MainPageBox>
+      <div ref={topScrollY.targetRef} />
       <Space height={70} />
-      <TopText>COEX D HALL</TopText>
-      <TopText>10.12-10.16</TopText>
-      <LoginImage
-        src={"image/start_center.png"}
-        onClick={() => {
-          checkLoggedIn({
-            trueCallback: () => {
-              submit(null, { method: "post", action: "/list" });
-            },
-            falseCallback: () => {
-              submit(null, { method: "post", action: "/login" });
-            },
-          });
-          // doKakaoLogin();
-        }}
-      />
-      <Space height={11} />
-      <ByText>
-        NEW BID BY <br /> LOFA SEOUL
-      </ByText>
-      <Space height={11} />
-      <ExplanationText>
-        아티스트의 제품을 구매하는
-        <br />
-        가장 오래된 방식의 새로운 해석
-      </ExplanationText>
-    </StartPageBox>
+      <MarqueeBox isScrolledDown={isScrolledDown}>
+        <Divider />
+        <Marquee duration={10}>
+          <MarqueeText>예술 시장은 성행하고 있지만 왜</MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={20} isReverse>
+          <MarqueeText>
+            아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
+          </MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={10}>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={10} isReverse>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={10}>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={10} isReverse>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={10} isReverse>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={10} isReverse>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={10} isReverse>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
+      </MarqueeBox>
+      <BottomBox isScrolledDown={isScrolledDown}>
+        <div ref={bottomScrollY.targetRef} />
+        <Space height={140} />
+        <BottomText>
+          뉴비드는 <br />
+          새로운 세대를 위한 <br />
+          아트 트레이딩 플랫폼 <br />
+          입니다.
+        </BottomText>
+        <Space height={30} />
+        <BottomText>
+          뉴비드와 함께할 <br />
+          준비가 되셨나요?
+        </BottomText>
+        <EnterBox>
+          <KakaoLoginButton
+            src={"/image/kakao_login_button.png"}
+            onClick={() => {
+              doKakaoLogin({ path: `/list` });
+            }}
+          />
+          <Space height={30}/>
+          <WithoutLoginLink />
+        </EnterBox>
+      </BottomBox>
+    </MainPageBox>
   );
 }

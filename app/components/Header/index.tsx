@@ -62,10 +62,12 @@ const LogoImageGrey = styled(LogoImage)`
 function HeaderLogo({
   isMenuOpen,
   isPageBlue,
+  isPageWithoutHeader,
   onClick,
 }: {
   isMenuOpen: boolean;
   isPageBlue: boolean;
+  isPageWithoutHeader: boolean;
   onClick: () => void;
 }) {
   return (
@@ -73,17 +75,17 @@ function HeaderLogo({
       onClick={onClick}
       style={{
         position: "relative",
-        maxHeight: isPageBlue ? "125px" : "150px",
+        maxHeight: "70px",
         display: "flex",
-        margin: "15px"
+        margin: "15px",
       }}
     >
       <LogoImage
-        isVisible={!(isMenuOpen || isPageBlue)}
+        isVisible={!(isMenuOpen || isPageBlue) && !isPageWithoutHeader}
         src={"/image/logo_star_black.svg"}
       />
       <LogoImageGrey
-        isVisible={isMenuOpen || isPageBlue}
+        isVisible={(isMenuOpen || isPageBlue) && isPageWithoutHeader}
         src={"/image/logo_star_green.svg"}
       />
     </div>
@@ -126,9 +128,8 @@ export default function Header({}: {}) {
           }
         }}
         isMenuOpen={isMenuOpen}
-        isPageBlue={
-          pathname === "/" || pathname === "/about" || pathname === "/bidding"
-        }
+        isPageBlue={pathname === "/about" || pathname === "/bidding"}
+        isPageWithoutHeader={pathname === "/"}
       />
       <div
         style={{
