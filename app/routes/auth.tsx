@@ -1,6 +1,8 @@
+import { Loader } from "@mantine/core";
 import { ActionFunction, redirect } from "@remix-run/node";
 import { useSubmit } from "@remix-run/react";
 import { useEffect } from "react";
+import { Space } from "~/components/Space";
 import { requestTokens } from "~/utils/kakao";
 
 export const action: ActionFunction = async () => {
@@ -24,5 +26,8 @@ export default function Index() {
     submit(null, { method: "post", action: redirectPath });
   }, []);
 
-  return <></>;
+  return <>
+    <Space height={120} />
+    <Loader />
+  </>;
 }

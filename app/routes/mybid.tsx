@@ -101,7 +101,7 @@ export default function Index() {
         })
       ) : (
         <>
-          <Space height={70} />
+          <Space height={120} />
           <Loader />
         </>
       )}

@@ -145,7 +145,7 @@ export default function Header({}: {}) {
         <Link to="/mybid" reloadDocument={pathname === "/mybid"}>
           <LinkText>나의 비딩내역</LinkText>
         </Link>
-        <Link to="/list">
+        <Link to="/list" reloadDocument={pathname === "/list"}>
           <LinkText>리스트 보기</LinkText>
         </Link>
       </div>

@@ -1,3 +1,4 @@
+import { LoadingOverlay } from "@mantine/core";
 import { useScrollIntoView } from "@mantine/hooks";
 import { ActionFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
@@ -103,6 +104,7 @@ export default function Index() {
     },
   });
   const [isScrolledDown, setIsScrolledDown] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     function handleScroll(event: any) {
@@ -133,87 +135,89 @@ export default function Index() {
   }, [isScrolledDown]);
 
   return (
-    <MainPageBox>
-      <div ref={topScrollY.targetRef} />
-      <Space height={70} />
-      <MarqueeBox isScrolledDown={isScrolledDown}>
-        <Divider />
-        <Marquee duration={10}>
-          <MarqueeText>
-            예술 시장은 성행하고 있지만 왜
-          </MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={20} isReverse>
-          <MarqueeText>
-            <strong>
-              아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
-            </strong>
-          </MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10}>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10} isReverse>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10}>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10} isReverse>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10}>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10} isReverse>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10}>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10} isReverse>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-        <Marquee duration={10}>
-          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
-        </Marquee>
-        <Divider />
-      </MarqueeBox>
-      <BottomBox isScrolledDown={isScrolledDown}>
-        <div ref={bottomScrollY.targetRef} />
-        <Space height={100} />
-        <BottomText>
-          뉴비드는 <br />
-          새로운 세대를 위한 <br />
-          아트 트레이딩 플랫폼 <br />
-          입니다.
-        </BottomText>
-        <Space height={30} />
-        <BottomText>
-          뉴비드와 함께할 <br />
-          준비가 되셨나요?
-        </BottomText>
-        <EnterBox>
-          <KakaoLoginButton
-            src={"/image/kakao_login_button.png"}
-            onClick={() => {
-              doKakaoLogin({ path: `/list` });
-            }}
-          />
+    <>
+      <LoadingOverlay visible={isLoading} overlayBlur={2} />
+      <MainPageBox>
+        <div ref={topScrollY.targetRef} />
+        <Space height={70} />
+        <MarqueeBox isScrolledDown={isScrolledDown}>
+          <Divider />
+          <Marquee duration={10}>
+            <MarqueeText>예술 시장은 성행하고 있지만 왜</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={20} isReverse>
+            <MarqueeText>
+              <strong>
+                아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
+              </strong>
+            </MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10}>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10} isReverse>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10}>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10} isReverse>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10}>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10} isReverse>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10}>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10} isReverse>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+          <Marquee duration={10}>
+            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+          </Marquee>
+          <Divider />
+        </MarqueeBox>
+        <BottomBox isScrolledDown={isScrolledDown}>
+          <div ref={bottomScrollY.targetRef} />
+          <Space height={100} />
+          <BottomText>
+            뉴비드는 <br />
+            새로운 세대를 위한 <br />
+            아트 트레이딩 플랫폼 <br />
+            입니다.
+          </BottomText>
           <Space height={30} />
-          <WithoutLoginLink />
-        </EnterBox>
-      </BottomBox>
-    </MainPageBox>
+          <BottomText>
+            뉴비드와 함께할 <br />
+            준비가 되셨나요?
+          </BottomText>
+          <EnterBox>
+            <KakaoLoginButton
+              src={"/image/kakao_login_button.png"}
+              onClick={() => {
+                setIsLoading(true);
+                doKakaoLogin({ path: `/list` });
+              }}
+            />
+            <Space height={30} />
+            <WithoutLoginLink />
+          </EnterBox>
+        </BottomBox>
+      </MainPageBox>
+    </>
   );
 }

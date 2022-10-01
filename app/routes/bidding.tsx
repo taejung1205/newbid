@@ -237,6 +237,7 @@ export default function Index() {
     "Phone number undefined"
   );
   const [email, setEmail] = useState<string>("Email undefined");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -294,6 +295,7 @@ export default function Index() {
   }, []);
 
   useEffect(() => {
+    setIsLoading(false);
     if (result !== undefined) {
       if(result.result !== undefined){
         if (result.result === "success") {
@@ -354,6 +356,7 @@ export default function Index() {
         <TermsModalContent
           onNext={() => {
             setIsTermsModalOpen(false);
+            setIsLoading(true);
             const formData = createBiddingFormData();
             submit(formData, { method: "post" });
           }}
