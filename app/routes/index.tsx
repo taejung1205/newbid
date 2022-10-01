@@ -23,7 +23,6 @@ const Divider = styled.div`
 const MarqueeText = styled.div`
   font-size: 5vh;
   line-height: 6vh;
-  font-weight: 800;
   white-space: nowrap;
   color: #cccccc;
 `;
@@ -140,13 +139,13 @@ export default function Index() {
       <MarqueeBox isScrolledDown={isScrolledDown}>
         <Divider />
         <Marquee duration={10}>
-          <MarqueeText className="font_gretasans">
+          <MarqueeText>
             예술 시장은 성행하고 있지만 왜
           </MarqueeText>
         </Marquee>
         <Divider />
         <Marquee duration={20} isReverse>
-          <MarqueeText className="font_gretasans">
+          <MarqueeText>
             <strong>
               아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
             </strong>
@@ -192,7 +191,7 @@ export default function Index() {
       </MarqueeBox>
       <BottomBox isScrolledDown={isScrolledDown}>
         <div ref={bottomScrollY.targetRef} />
-        <Space height={140} />
+        <Space height={100} />
         <BottomText>
           뉴비드는 <br />
           새로운 세대를 위한 <br />

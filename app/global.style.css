@@ -1,6 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans:wght@400;900&family=Rubik:wght@600;700&family=Revalia&family=Raleway:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans:wght@400;900&family=Rubik:wght@600;700&family=Revalia&family=Raleway:wght@500&display=swap");
+@import url("https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjNoKB7aPtIJAn5jRMcYaz_Y-KZ4K-EOCGwhpW61tp_3yG3hoZRHqphAYyOzHi66fHUcsFs3gmIKAs3PK5K9MRVur0OOZR1VNcmmUbFmkTom1C9u3WDjsk7A6-ZSpEGb_AdG6c_ksWhWQSzEFQrOS31--tX8_rDlpOm6sxviCz_ZE7i5XDWuDSAbLocnrxVOACMAMVnNpmKqp79fYvMTixVBI2YqQWISV5ZO5u_wcqIlp_bSTMVr2u9-WNJutLtaBst");
 
 * {
+  font-family: Black Han Sans;
   text-align: center;
   box-sizing: border-box;
 }

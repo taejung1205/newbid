@@ -26,10 +26,10 @@ const ItemImage = styled.img`
   width: 100%;
   height: 350px;
   object-fit: contain;
-  border-bottom: 1px solid #152dff;
+  border-bottom: 2px solid #451bc8;
   background-color: white;
   position: sticky;
-  top: -200px;
+  top: -280px;
   left: 0px;
   right: 0px;
   padding-bottom: 5px;
@@ -37,64 +37,63 @@ const ItemImage = styled.img`
 
 const BidBox = styled.div`
   position: sticky;
-  top: 150px;
+  top: 70px;
   width: inherit;
   padding-top: 12px;
   padding-bottom: 22px;
-  border-bottom: 1px solid #152dff;
+  border-bottom: 2px solid #451bc8;
   background-color: white;
 `;
+
+const BodyText = styled.text`
+  font-size: 20px;
+  color: #451bc8;
+  line-height: 28px;
+  white-space: pre-wrap;
+  text-align: left;
+`;
+
+const BodyTitleText = styled(BodyText)`
+  word-break: keep-all;
+  font-size: 23px;
+`
 
 interface TextAlignProp {
   isLeft: boolean;
 }
 const TitleText = styled.text<TextAlignProp>`
-  font-weight: 900;
-  font-size: 17px;
-  line-height: 23px;
-  display: block;
+  font-size: 20px;
+  line-height: 25px;
   text-align: ${(props) => (props.isLeft ? "left" : "inherit")};
-`;
-
-const ArtistText = styled.text<TextAlignProp>`
-  font-weight: 900;
-  font-size: 13px;
-  line-height: 17px;
-  color: #888888;
-  display: block;
-  text-align: ${(props) => (props.isLeft ? "left" : "inherit")};
+  color: #451bc8;
 `;
 
 const CurrentlyText = styled.text`
-  font-family: "Rubik";
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #451bc8;
 `;
 
 const CurrentPrice = styled.text`
-  font-family: "Rubik";
-  font-weight: 700;
   font-size: 37px;
   line-height: 44px;
-  display: block;
+  color: #451bc8;
 `;
 
 const BidButton = styled.div`
-  font-size: 20px;
-  line-height: 36px;
-  background-color: #152dff;
-  margin: 18px;
-  color: white;
+  font-size: 26px;
+  line-height: 30px;
+  background-color: #d9d9d9;
+  width: 160px;
+  height: 30px;
+  color: #451bc8;
   cursor: pointer;
   text-decoration: none;
-`;
-
-const BidLogText = styled.text`
-  color: #24ff00;
-  font-size: 16px;
-  line-height: 18px;
-  padding: 10px;
+  border: 2px solid #451bc8;
+  border-radius: 110px;
+  vertical-align: bottom;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 interface BorderBottomProp {
@@ -102,10 +101,11 @@ interface BorderBottomProp {
 }
 const DetailBox = styled.div<BorderBottomProp>`
   display: flex;
+  justify-content: left;
   padding: 8px;
   border-bottom: ${(props) =>
-    props.isBorderBottom ? "1px solid #152dff" : "none"};
-  text-align: left;
+    props.isBorderBottom ? "2px solid #451bc8" : "none"};
+  text-align: left!important;;
   min-height: 110px;
 `;
 
@@ -137,8 +137,9 @@ function ItemDetail({
 }) {
   return (
     <DetailBox isBorderBottom={!noBottomBorder}>
-      <div style={{ flex: 1 }}>{leftElement}</div>
-      <div style={{ flex: 2 }}>{rightElement}</div>
+      <div style={{ flex: 2, textAlign: "left" }}>{leftElement}</div>
+      <div style={{ flex: 1}}></div>
+      <div style={{ flex: 6, textAlign: "left"}}>{rightElement}</div>
     </DetailBox>
   );
 }
@@ -175,34 +176,76 @@ export default function Index() {
       <ItemImage src={item.src} />
       <Space height={15} />
       <TitleText isLeft={false}>{item.title}</TitleText>
-      <ArtistText isLeft={false}>{item.artist}</ArtistText>
+      <Space height={5} />
+      <TitleText isLeft={false}>{item.artist}</TitleText>
       <Space height={10} />
       <BidBox>
         <CurrentlyText>CURRENTLY</CurrentlyText>
-        <CurrentPrice>{data.currentPrice}</CurrentPrice>
-        <Link to={`/bidding?index=${data.index}`} style={{ textDecoration: 'none' }}>
-          <BidButton>BID</BidButton>
+        <Space height={5} />
+        <CurrentPrice>{data.currentPrice} KRW</CurrentPrice>
+        <Space height={30} />
+        <Link
+          to={`/bidding?index=${data.index}`}
+          style={{ textDecoration: "none" }}
+        >
+          <BidButton>비딩하기</BidButton>
         </Link>
-        <BidLogText>
-          지금까지 총 {data.bidderCount}명이 비딩에 참여하셨습니다.
-        </BidLogText>
       </BidBox>
       <ItemDetail
         leftElement={
+            <BodyTitleText>정보</BodyTitleText>
+        }
+        rightElement={
           <>
-            <TitleText isLeft={true}>{item.title}</TitleText>
-            <ArtistText isLeft={true}>{item.artist}</ArtistText>
+            <BodyText>{item.title}</BodyText>
+            <Space height={10} />
+            <BodyText>{item.itemDetail}</BodyText>
+            <Space height={40} />
           </>
         }
-        rightElement={<DetailText>{item.itemDetail}</DetailText>}
       />
       <ItemDetail
-        leftElement={<TitleText isLeft={true}>뉴비드 코멘트</TitleText>}
-        rightElement={<DetailText>{item.comment}</DetailText>}
+        leftElement={
+            <BodyTitleText>작품 소개</BodyTitleText>
+        }
+        rightElement={
+          <>
+            <BodyText>{item.body}</BodyText>
+            <Space height={40} />
+          </>
+        }
       />
       <ItemDetail
-        leftElement={<TitleText isLeft={true}>작가 소개</TitleText>}
-        rightElement={<DetailText>{item.artistDetail}</DetailText>}
+        leftElement={
+            <BodyTitleText>작가 이력</BodyTitleText>
+        }
+        rightElement={
+          <>
+            <BodyText>{item.artistDetail}</BodyText>
+            <Space height={40} />
+          </>
+        }
+      />
+      <ItemDetail
+        leftElement={
+            <BodyTitleText>코멘 터리</BodyTitleText>
+        }
+        rightElement={
+          <>
+            <BodyText>{item.comment}</BodyText>
+            <Space height={40} />
+          </>
+        }
+      />
+      <ItemDetail
+        leftElement={
+            <BodyTitleText>작가 계정</BodyTitleText>
+        }
+        rightElement={
+          <>
+            <BodyText>{item.artistAccount}</BodyText>
+          </>
+        }
         noBottomBorder
       />
       <Space height={240} />

@@ -2,13 +2,14 @@
   "items": [
     {
       "src": "image/item_image_example.png",
-      "title": "로아키 화병",
-      "body": "나베나베페누아의 드로잉이 더해진 화병입니다.\n기존 로이키 시리즈와 다르게\n뉴비드 웹사이트에서만\n선보이는 리미티드 컬러만 제공합니다.",
+      "title": "Interlace-Romance Fantasy",
+      "body": "이수민 작가는 그래픽 디자인이나 일러스트레이션, 그리고 만화에 이르기까지,\n대체로 ‘평면 작업’이라 불리는 여러 시각 매체나 장르의 문법을 탐구하며 회화에 적응시켜 보는 작업을 진행하고 있습니다.\n작가는 만화의 패널과 패널(컷과 컷) 사이에 위치한 여백에 집중하며 복수의 캔버스를 나열하는 형태로 주로 작업하고 있습니다.\n\n특히 이번 신작 <Interlace>시리즈는 중세 북유럽 필사본에 장식적 요소로 등장하는 인터레이스 패턴에서 착안해 제작되었습니다. 본래 인터레이스는 엮이고 꼬인 복잡한 기하학적 패턴인데, 작가는 한국의 여성향 웹툰 장르인 “로맨스 판타지”의 클리셰적인 특징 (땋아내린 빨간 머리에 초록 눈의 캐릭터)을 추상 회화의 구성 속에 위치 시켜 구성하였습니다.\n\n추상과 기호, 이미지가 가진 분류들에 질문하며 만화의 구조가 회화의 구조로 바뀌는 과정을 유희적으로 표현하는데 집중하였습니다.",
       "startPrice": 50000,
-      "artist": "작가 이름",
-      "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
-      "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artist": "이수민",
+      "itemDetail": "2020, Acrylic on Canvas\n\n53.5x45cm",
+      "comment": "뉴비드팀이 작가의 작업을 처음 접한 것은 2019년도에 이루어진 작가의 개인전을 통해서였습니다.  과감한 색의 구성들은 흡사 그래픽 일러스트레이션을 보는 듯 했고, 복수의 캔버스를 나열한 작업들이 공간 속에서 연계되는 것은 마치 만화의 장면이 전환되는 것을 보는 듯 했습니다.\n작가는 실제 국내 대형 플랫폼의 웹툰 작화 작가로도 활동하고 있는데, 이러한 독특한 이력은 작업을 보는 재미를 더합니다. 작가는 웹툰 작가로서  특히 많이 작업하는 장르인 <로맨스 판타지>의 클리셰적인 요소를 차용합니다.  컷처럼 사용된 캔버스의 분활된 화면에 들어간 캐릭터를 통해 관람객은 회화와 만화의 장르적인 이질감을 느낌과 동시에 컷으로 인식된 캔버스의 분할을 통해 작품 뒤의 이야기에 집중하게 됩니다.",
+      "artistDetail": "2020 PIGEON, WHITE NOISE, Seoul\n\n2020 Support SARUBIA, Project Space SARUBIA, Seoul\n\n2019 <Blood in Gutter> 이수민 작가 개인전, 공간 사일삼, 서울",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/item_image_example.png",
@@ -18,7 +19,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/autoscroll_dummy.jpg",
@@ -28,7 +30,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/item_image_example.png",
@@ -38,7 +41,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/item_image_example.png",
@@ -48,7 +52,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/autoscroll_dummy.jpg",
@@ -58,7 +63,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/item_image_example.png",
@@ -68,7 +74,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/item_image_example.png",
@@ -78,7 +85,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/autoscroll_dummy.jpg",
@@ -88,7 +96,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/item_image_example.png",
@@ -98,7 +107,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/item_image_example.png",
@@ -108,7 +118,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
       "src": "image/autoscroll_dummy.jpg",
@@ -118,7 +129,8 @@
       "artist": "작가 이름",
       "itemDetail": "대한민국, 2022\n도자기\n24.1x48x30cm",
       "comment": "이 작품은 이런 점이 진짜 장점이고 이런 것은 아쉬운 작품이다. 그러니 이런 것은 꼭 사야 된다고 나는 생각하는데 당신은 어떻게 생각하나?",
-      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시"
+      "artistDetail": "소개소개\n\n전시 \n전시\n전시\n전시\n전시",
+      "artistAccount": "@maybesumin\n@moon_to_munto"
     }
   ]
 }

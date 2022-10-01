@@ -20,7 +20,7 @@ const HeaderBox = styled.div<HeaderBoxProps>`
   padding-left: 25px;
   padding-right: 25px;
   justify-content: start;
-  height: ${(props) => (props.isMenuOpen ? "550px" : "150px")};
+  height: ${(props) => (props.isMenuOpen ? "310px" : "70px")};
   transition: height 1s ease;
   align-items: center;
   z-index: 99;
@@ -37,7 +37,7 @@ const HeaderBox = styled.div<HeaderBoxProps>`
     background-image: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0) 3.65%,
-      #152dff 43.75%
+      #451bc8 35.9%
     );
   }
 `;
@@ -85,7 +85,7 @@ function HeaderLogo({
         src={"/image/logo_star_black.svg"}
       />
       <LogoImageGrey
-        isVisible={(isMenuOpen || isPageBlue) && isPageWithoutHeader}
+        isVisible={(isMenuOpen || isPageBlue) && !isPageWithoutHeader}
         src={"/image/logo_star_green.svg"}
       />
     </div>
@@ -93,14 +93,10 @@ function HeaderLogo({
 }
 
 const LinkText = styled.text`
-  font-family: "Raleway";
-  font-weight: 500;
-  font-style: normal;
-  text-decoration: underline;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 26px;
   position: relative;
-  line-height: 45px;
+  line-height: 40px;
 `;
 
 const ButtonIcon = styled.img`
@@ -137,27 +133,20 @@ export default function Header({}: {}) {
           flexDirection: "column",
           position: "absolute",
           opacity: isMenuOpen ? 1 : 0,
-          bottom: "255px",
+          bottom: "120px",
           transition: "top 1s ease, opacity 1s ease-in",
           justifyContent: "center",
         }}
       >
         <Space height={10} />
-        {pathname !== "/list" && (
-          <Link to="/list">
-            <LinkText>LIST VIEW</LinkText>
-          </Link>
-        )}
-        {pathname === "/list" && (
-          <Link to="/tile">
-            <LinkText>VIEW ALL</LinkText>
-          </Link>
-        )}
-        <Link to="/mybid" reloadDocument={pathname === "/mybid"}>
-          <LinkText>MY BID</LinkText>
+        <Link to="/">
+          <LinkText>관람 안내</LinkText>
         </Link>
-        <Link to="/about">
-          <LinkText>ABOUT</LinkText>
+        <Link to="/mybid" reloadDocument={pathname === "/mybid"}>
+          <LinkText>나의 비딩내역</LinkText>
+        </Link>
+        <Link to="/list">
+          <LinkText>리스트 보기</LinkText>
         </Link>
       </div>
     </HeaderBox>

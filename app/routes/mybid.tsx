@@ -79,7 +79,7 @@ export default function Index() {
               key={`MyBidItem-${index}`}
               imgSrc={thisItem.src}
               title={thisItem.title}
-              body={thisItem.body}
+              artist={thisItem.artist}
               currentPrice={bidItem.biddingPrice}
               startPrice={thisItem.startPrice}
               onClick={() =>

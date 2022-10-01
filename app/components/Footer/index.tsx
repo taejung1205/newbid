@@ -24,35 +24,34 @@ const FooterBox = styled.div<FooterBoxProps>`
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 9.38%,
-    #152dff 34%
+    #343ee4 34%
   );
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
 const TimerText = styled.text<TimerTextProps>`
-  font-family: "Revalia", cursive;
-  font-size: 16vw;
+  font-size: 18vw;
   cursor: pointer;
   @media (min-width: 750px) {
     font-size: 100px;
   }
-  color: #24ff00;
+  color: #e5e5e5;
 `;
 
 const ExplanationText = styled.text`
   font-size: 16px;
   line-height: 18px;
-  color: #24ff00;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: Noto Sans KR, sans-serif;
+  color: white
 `;
 
 const LinkText = styled.text`
   font-size: 17px;
   line-height: 18px;
   font-weight: 500;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: Noto Sans KR, sans-serif;
   text-decoration: underline;
-  color: #24ff00;
+  color: white;
   line-height: 18px;
 `;
 

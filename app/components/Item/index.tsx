@@ -21,64 +21,42 @@ const HighestBidStar = styled.img`
   top: 17px;
 `;
 
-const ItemTitle = styled.text`
-  font-weight: 900;
-  font-size: 20px;
+const ItemTitleText = styled.text`
+  font-size: 21px;
   line-height: 27px;
+  color: #451BC8;
 `;
 
-const ItemBody = styled.text`
-  font-family: "Noto Sans KR";
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  white-space: pre-wrap;
+const ArtistText = styled.text`
+  font-size: 20px;
+  line-height: 25px;
+  color: #451BC8;
 `;
+
 
 const CurrentlyText = styled.text`
-  font-family: SDGretaSans;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #451BC8;
 `;
 
 const CurrentPrice = styled.text`
-  font-family: SDGretaSans;
-  font-weight: 700;
-  font-size: 37px;
-  line-height: 44px;
-  display: block;
-`;
-
-const StartFromText = styled.text`
-  font-family: "Rubik";
-  font-weight: 700;
-  font-size: 17px;
-  line-height: 20px;
-  opacity: 0.4;
-`;
-
-const StartPrice = styled.text`
-  font-family: "Rubik";
-  font-weight: 700;
-  font-size: 37px;
-  line-height: 44px;
-  opacity: 0.4;
-  display: block;
+  font-size: 31px;
+  line-height: 38px;
+  color: #451BC8;
 `;
 
 export default function Item({
   imgSrc,
   title,
-  body,
+  artist,
   currentPrice,
-  startPrice,
   onClick,
   isHighest = false,
 }: {
   imgSrc: string;
   title: string;
-  body: string;
+  artist: string;
   currentPrice: number;
   startPrice: number;
   onClick: () => void;
@@ -98,12 +76,13 @@ export default function Item({
         )}
       </div>
       <Space height={30} />
-      <ItemTitle>{title}</ItemTitle>
-      <Space height={10} />
-      <ItemBody>{body}</ItemBody>
-      <Space height={30} />
+      <ItemTitleText>{title}</ItemTitleText>
+      <Space height={5} />
+      <ArtistText>{artist}</ArtistText>
+      <Space height={23} />
       <CurrentlyText>CURRENTLY</CurrentlyText>
-      <CurrentPrice>{currentPrice}</CurrentPrice>
+      <Space height={5} />
+      <CurrentPrice>{currentPrice} KRW</CurrentPrice>
       <Space height={30} />
       <Space height={15} />
     </div>

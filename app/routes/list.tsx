@@ -35,7 +35,7 @@ export default function Index() {
             key={`ListItem-${index}`}
             imgSrc={item.src}
             title={item.title}
-            body={item.body}
+            artist={item.artist}
             currentPrice={data.currentPriceList[index]}
             startPrice={item.startPrice}
             onClick={() =>
