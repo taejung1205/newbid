@@ -1,5 +1,4 @@
 import { Modal } from "@mantine/core";
-import { useScrollIntoView } from "@mantine/hooks";
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
 import { useActionData, useLoaderData, useSubmit } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
@@ -14,7 +13,7 @@ const BiddingPageBox = styled.div`
   overflow: hidden;
   width: inherit;
   height: 100vh;
-  background-color: #152dff;
+  background-color: #451bc8;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,11 +26,13 @@ const TopBox = styled.div`
   flex-direction: column;
   left: 0;
   right: 0;
-  top: 160px;
+  top: 70px;
+  color: white;
 `;
 
 const CenterBox = styled.div`
   display: flex;
+  color: white;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -41,64 +42,88 @@ const CenterBox = styled.div`
 
 const BottomBox = styled.div`
   position: absolute;
-  bottom: 20vw;
+  bottom: 25vw;
   left: 0;
   right: 0;
   @media only screen and (min-width: 750px) {
     bottom: 140px;
   }
 `;
+const TitleText = styled.text`
+  font-size: 20px;
+  line-height: 25px;
+`;
 
 const CurrentlyText = styled.text`
-  font-family: "Rubik";
-  font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  color: #9c9c9c;
 `;
 
 const CurrentPrice = styled.text`
-  font-family: "Rubik";
-  font-weight: 700;
   font-size: 37px;
-  line-height: 44px;
-  display: block;
-  color: #9c9c9c;
+  line-height: 46px;
 `;
 
-const MyBidText = styled(CurrentlyText)`
-  color: #000000;
+const KRWText = styled.text`
+  font-size: 31px;
+  line-height: 38px;
 `;
 
-const MyBidPrice = styled(CurrentPrice)`
-  color: #000000;
+const MyBidPrice = styled.text`
   font-size: 63px;
   line-height: 75px;
 `;
 
+const MyBidKRWText = styled.text`
+  font-size: 38px;
+  line-height: 49px;
+`;
+
+const BidPriceButton = styled.text`
+  font-size: 70px;
+`;
+
 const BidButton = styled.div`
-  font-size: 20px;
-  line-height: 36px;
-  background-color: #ff1515;
-  margin: 18px;
-  color: white;
+  font-size: 26px;
+  line-height: 30px;
+  background-color: #d9d9d9;
+  width: 160px;
+  height: 30px;
+  color: #451bc8;
   cursor: pointer;
+  text-decoration: none;
+  border-radius: 110px;
+  vertical-align: bottom;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const NoticeText = styled.text`
   color: white;
-  font-family: Noto Sans KR;
-  font-weight: 700;
-  size: 16px;
-  line-height: 23px;
+  size: 23px;
+  line-height: 28px;
   white-space: pre-line;
 `;
 
-const TermsBox = styled.div`
-  width: 300px;
-  height: 300px;
-  overflow-y: scroll;
+const ModalText = styled.text`
+  color: #451bc8;
+  font-size: 20px;
 `;
+
+const ModalOkButton = styled(BidButton)`
+  border: 1px solid #451bc8;
+  font-size: 20px;
+`;
+
+const TermsModalText = styled(ModalText)`
+  font-size: 16px;
+`;
+const TermsModalOkButton = styled(ModalOkButton)`
+  width: 80px;
+  font-size: 16px;
+  margin-right: 0;
+`;
+
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const itemIndex = Number(formData.get("itemIndex") ?? -1);
@@ -139,13 +164,13 @@ function PriceModalContent({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <h4>
+      <ModalText>
         {itemTitle}에 대해 {bidPrice}원을 비딩하는 것이 맞으실까요?
-      </h4>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button onClick={onNext}>네, 맞아요</button>
-        <button onClick={onClose}>다시 생각해볼게요</button>
-      </div>
+      </ModalText>
+      <Space height={40} />
+      <ModalOkButton onClick={onNext}>네, 맞아요</ModalOkButton>
+      <Space height={10} />
+      <ModalText onClick={onClose}>다시 생각해볼게요</ModalText>
     </div>
   );
 }
@@ -159,17 +184,23 @@ function TermsModalContent({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <h5>
+      <TermsModalText>
         뉴비드는 모두가 만족하는 안전하고 행복한 공예 문화를 만들기 위해 아래와
         같은 규정을 가지고 있습니다. 꼼꼼히 확인해보시고 동의해주셔야만 비딩이
         완료됩니다.
-      </h5>
+      </TermsModalText>
       <Space height={20} />
       <Terms />
       <Space height={15} />
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button onClick={onNext}>동의합니다.</button>
-        <button onClick={onClose}>다시 생각해볼게요</button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "end",
+        }}
+      >
+        <TermsModalText onClick={onClose}>다시 생각할게요</TermsModalText>
+        <TermsModalOkButton onClick={onNext}>동의합니다</TermsModalOkButton>
       </div>
     </div>
   );
@@ -178,15 +209,13 @@ function TermsModalContent({
 function CompleteModalContent({ onClose }: { onClose: () => void }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <h4>완료되었습니다.</h4>
+      <ModalText>완료되었습니다.</ModalText>
       <Space height={20} />
-      <h4>
+      <ModalText>
         더 높은 금액에 비딩이 이루어질 경우 카카오톡을 통해 노티스 됩니다.
-      </h4>
+      </ModalText>
       <Space height={30} />
-      <div style={{ display: "flex", justifyContent: "end" }}>
-        <button onClick={onClose}>확인</button>
-      </div>
+      <ModalOkButton onClick={onClose}>확인</ModalOkButton>
     </div>
   );
 }
@@ -264,6 +293,26 @@ export default function Index() {
     });
   }, []);
 
+  useEffect(() => {
+    if (result !== undefined) {
+      if(result.result !== undefined){
+        if (result.result === "success") {
+          setIsCompleteModalOpen(true);
+        } else {
+          if(result.detail === "duplicate"){
+            setNoticeText("이미 최고가로 비딩하셨습니다.\n같은 인원이 연속으로 비딩할 수 없습니다.");
+          } else if(result.detail === "cannot find item"){
+            setNoticeText("작품을 찾을 수 없습니다.\n페이지를 다시 확인해주세요.");
+          } else if(result.detail === "cannot find item"){
+            setNoticeText("다른 이용자가 더 높은 가격에 비딩하였습니다.\n비딩 가격을 올린 후 다시 시도해주세요.");
+          }
+        }
+      } else {
+        setNoticeText("경매 중 오류가 발생했습니다.\n다시 시도해주세요.");
+      }
+    }
+  }, [result]);
+
   return (
     <>
       <Modal
@@ -336,35 +385,39 @@ export default function Index() {
       </Modal>
       <BiddingPageBox onScroll={() => console.log("scroll")}>
         <TopBox>
+          <TitleText>{itemsJson.items[data.index].title}</TitleText>
+          <Space height={2} />
+          <TitleText>{itemsJson.items[data.index].artist}</TitleText>
+          <Space height={20} />
           <CurrentlyText>CURRENTLY</CurrentlyText>
-          <CurrentPrice>{data.currentPrice}</CurrentPrice>
+          <span>
+            <CurrentPrice>{data.currentPrice}</CurrentPrice>
+            <KRWText> KRW</KRWText>
+          </span>
         </TopBox>
         <CenterBox>
-          <button
-            onClick={onUpClick}
-            style={{ width: "100px", height: "20px" }}
-          >
-            {" "}
-            UP{" "}
-          </button>
-          <MyBidText>MY BID</MyBidText>
           <MyBidPrice>{myBidPrice}</MyBidPrice>
-          <button
-            onClick={onDownClick}
-            style={{ width: "100px", height: "20px" }}
+          <MyBidKRWText>KRW</MyBidKRWText>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "200px",
+            }}
           >
-            {" "}
-            DOWN{" "}
-          </button>
+            <BidPriceButton onClick={onDownClick}>-</BidPriceButton>
+            <BidPriceButton onClick={onUpClick}>+</BidPriceButton>
+          </div>
+          <BidButton
+            onClick={() => {
+              setIsPriceModalOpen(true);
+            }}
+          >
+            비딩하기
+          </BidButton>
         </CenterBox>
-        <BottomBox
-          onClick={() => {
-            // submit(null, {method: "post"});
-            setIsPriceModalOpen(true);
-          }}
-        >
+        <BottomBox>
           <NoticeText>{noticeText}</NoticeText>
-          <BidButton>BID</BidButton>
         </BottomBox>
       </BiddingPageBox>
     </>

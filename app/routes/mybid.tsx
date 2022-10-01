@@ -4,14 +4,14 @@ import {
   LoaderFunction,
   redirect,
 } from "@remix-run/node";
-import { useActionData, useSubmit } from "@remix-run/react";
+import { useActionData, useLoaderData, useSubmit } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
 import { checkLoggedIn, requestUnlink, requestUser } from "~/utils/kakao";
 import itemsJson from "~/data/items.json";
-import { getBiddingList } from "~/utils/firebase.server";
-import Item from "~/components/Item";
+import { getBiddingList, getCurrentPrice } from "~/utils/firebase.server";
+import { MyItem } from "~/components/Item";
 import { Loader } from "@mantine/core";
 
 const MyBidPageBox = styled.div`
@@ -23,12 +23,16 @@ export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const phone = formData.get("phone")?.toString() ?? "";
   const biddingList = await getBiddingList({ phone: phone });
-  console.log(biddingList);
   return json({ list: biddingList });
 };
 
 export const loader: LoaderFunction = async () => {
-  return null;
+  const itemJsonLength = itemsJson.items.length;
+  const currentPriceList = new Array(itemJsonLength);
+  for(let i = 0 ; i < itemJsonLength; i++){
+    currentPriceList[i] = await getCurrentPrice({ itemIndex: i });
+  }
+  return json({currentPriceList: currentPriceList});;
 };
 
 export default function Index() {
@@ -38,6 +42,7 @@ export default function Index() {
   const submit = useSubmit();
   const formRef = useRef<HTMLFormElement>(null);
   const result = useActionData();
+  const data = useLoaderData();
 
   useEffect(() => {
     //로그인이 되어있지 않을 경우 로그인 화면으로 이동 + 돌아올때 여기로
@@ -75,13 +80,14 @@ export default function Index() {
         result.list.map((bidItem: any, index: number) => {
           const thisItem = itemsJson.items[bidItem.index];
           return (
-            <Item
+            <MyItem
+              index={bidItem.index}
               key={`MyBidItem-${index}`}
               imgSrc={thisItem.src}
               title={thisItem.title}
               artist={thisItem.artist}
-              currentPrice={bidItem.biddingPrice}
-              startPrice={thisItem.startPrice}
+              currentPrice={data.currentPriceList[bidItem.index]}
+              myBidPrice={bidItem.biddingPrice}
               onClick={() =>
                 submit(null, { method: "post", action: `/item?index=${index}` })
               }

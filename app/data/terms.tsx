@@ -6,6 +6,9 @@ const TermsBox = styled.div`
   border: 1px solid black;
   padding: 5px;
   overflow-y: scroll;
+  * {
+    font-family: Noto Sans KR;
+  }
   table,
   th,
   td {

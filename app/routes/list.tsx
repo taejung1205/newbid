@@ -1,7 +1,7 @@
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useSubmit } from "@remix-run/react";
 import styled from "styled-components";
-import Item from "~/components/Item";
+import {Item} from "~/components/Item";
 import { Space } from "~/components/Space";
 import itemsJson from "~/data/items.json";
 import { getCurrentPrice } from "~/utils/firebase.server";
@@ -37,10 +37,7 @@ export default function Index() {
             title={item.title}
             artist={item.artist}
             currentPrice={data.currentPriceList[index]}
-            startPrice={item.startPrice}
-            onClick={() =>
-              submit(null, { method: "post", action: `/item?index=${index}` })
-            }
+            onClick={() => submit(null, { method: "post", action: `/item?index=${index}` })}
           />
         );
       })}
