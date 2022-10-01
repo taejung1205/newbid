@@ -21,10 +21,10 @@ const Divider = styled.div`
 `;
 
 const MarqueeText = styled.div`
-  font-size: 37px;
-  line-height: 54px;
-  font-family: Noto Sans KR;
-  font-weight: 700;
+  font-size: 5vh;
+  line-height: 6vh;
+  font-family: SDGretaSans;
+  font-weight: 400;
   white-space: nowrap;
   color: #cccccc;
 `;
@@ -35,6 +35,7 @@ interface BoxProps {
 
 const MarqueeBox = styled.div<BoxProps>`
   transition: all ease-out 1s;
+  height: 100vh;
 `;
 
 const BottomBox = styled.div<BoxProps>`
@@ -54,6 +55,7 @@ const BottomText = styled.text`
   line-height: 40px;
   display: block;
   text-align: left;
+  font-family: SDGretaSans;
 `;
 
 const EnterBox = styled.div`
@@ -65,6 +67,7 @@ const EnterBox = styled.div`
   left: 0;
   right: 0;
 `;
+
 const KakaoLoginButton = styled.img`
   width: 175px;
   height: 43px;
@@ -164,7 +167,7 @@ export default function Index() {
           <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
         </Marquee>
         <Divider />
-        <Marquee duration={10} isReverse>
+        <Marquee duration={10}>
           <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
         </Marquee>
         <Divider />
@@ -172,7 +175,15 @@ export default function Index() {
           <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
         </Marquee>
         <Divider />
+        <Marquee duration={10}>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
         <Marquee duration={10} isReverse>
+          <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+        </Marquee>
+        <Divider />
+        <Marquee duration={10}>
           <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
         </Marquee>
         <Divider />

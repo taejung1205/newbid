@@ -36,14 +36,14 @@ const ItemBody = styled.text`
 `;
 
 const CurrentlyText = styled.text`
-  font-family: "Rubik";
+  font-family: SDGretaSans;
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
 `;
 
 const CurrentPrice = styled.text`
-  font-family: "Rubik";
+  font-family: SDGretaSans;
   font-weight: 700;
   font-size: 37px;
   line-height: 44px;
@@ -105,8 +105,6 @@ export default function Item({
       <CurrentlyText>CURRENTLY</CurrentlyText>
       <CurrentPrice>{currentPrice}</CurrentPrice>
       <Space height={30} />
-      <StartFromText>STARTED FROM</StartFromText>
-      <StartPrice>{startPrice}</StartPrice>
       <Space height={15} />
     </div>
   );
