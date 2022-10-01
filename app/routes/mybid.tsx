@@ -4,8 +4,13 @@ import {
   LoaderFunction,
   redirect,
 } from "@remix-run/node";
-import { useActionData, useLoaderData, useSubmit } from "@remix-run/react";
-import { useEffect, useRef, useState } from "react";
+import {
+  useActionData,
+  useLoaderData,
+  useNavigate,
+  useSubmit,
+} from "@remix-run/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Space } from "~/components/Space";
 import { checkLoggedIn, requestUnlink, requestUser } from "~/utils/kakao";
@@ -29,31 +34,27 @@ export const action: ActionFunction = async ({ request }) => {
 export const loader: LoaderFunction = async () => {
   const itemJsonLength = itemsJson.items.length;
   const currentPriceList = new Array(itemJsonLength);
-  for(let i = 0 ; i < itemJsonLength; i++){
+  for (let i = 0; i < itemJsonLength; i++) {
     currentPriceList[i] = await getCurrentPrice({ itemIndex: i });
   }
-  return json({currentPriceList: currentPriceList});;
+  return json({ currentPriceList: currentPriceList });
 };
 
 export default function Index() {
-  const [phoneNumber, setPhoneNumber] = useState<string>(
-    "Phone number undefined"
-  );
+  const [phoneNumber, setPhoneNumber] = useState<string>("undefined");
   const submit = useSubmit();
   const formRef = useRef<HTMLFormElement>(null);
   const result = useActionData();
   const data = useLoaderData();
+  const navigate = useNavigate();
 
   useEffect(() => {
     //로그인이 되어있지 않을 경우 로그인 화면으로 이동 + 돌아올때 여기로
-    console.log("useeffect");
     checkLoggedIn({
-      trueCallback: () => {},
+      trueCallback: () => {
+      },
       falseCallback: () => {
-        submit(null, {
-          method: "post",
-          action: `/login?path=mybid`,
-        });
+        navigate("/login?path=mybid");
       },
     });
 
@@ -61,6 +62,7 @@ export default function Index() {
       successCallback: (res: any) => {
         const kakaoAccount = res.kakao_account;
         if (kakaoAccount !== undefined) {
+          console.log(kakaoAccount);
           setPhoneNumber(kakaoAccount.phone_number);
         }
       },
@@ -68,9 +70,11 @@ export default function Index() {
   }, []);
 
   useEffect(() => {
-    const formData = new FormData(formRef.current ?? undefined);
-    formData.set("phone", phoneNumber);
-    submit(formData, { method: "post" });
+    if (phoneNumber !== "undefined") {
+      const formData = new FormData(formRef.current ?? undefined);
+      formData.set("phone", phoneNumber);
+      submit(formData, { method: "post" });
+    }
   }, [phoneNumber]);
 
   return (
