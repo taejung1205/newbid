@@ -10,7 +10,7 @@ import { doKakaoLogin } from "~/utils/kakao";
 const MainPageBox = styled.div`
   overflow: hidden;
   width: inherit;
-  background-color: #451BC8;
+  background-color: #451bc8;
   position: relative;
 `;
 
@@ -23,8 +23,7 @@ const Divider = styled.div`
 const MarqueeText = styled.div`
   font-size: 5vh;
   line-height: 6vh;
-  font-family: SDGretaSans;
-  font-weight: 400;
+  font-weight: 800;
   white-space: nowrap;
   color: #cccccc;
 `;
@@ -55,7 +54,6 @@ const BottomText = styled.text`
   line-height: 40px;
   display: block;
   text-align: left;
-  font-family: SDGretaSans;
 `;
 
 const EnterBox = styled.div`
@@ -142,12 +140,16 @@ export default function Index() {
       <MarqueeBox isScrolledDown={isScrolledDown}>
         <Divider />
         <Marquee duration={10}>
-          <MarqueeText>예술 시장은 성행하고 있지만 왜</MarqueeText>
+          <MarqueeText className="font_gretasans">
+            예술 시장은 성행하고 있지만 왜
+          </MarqueeText>
         </Marquee>
         <Divider />
         <Marquee duration={20} isReverse>
-          <MarqueeText>
-            아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
+          <MarqueeText className="font_gretasans">
+            <strong>
+              아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
+            </strong>
           </MarqueeText>
         </Marquee>
         <Divider />
@@ -209,7 +211,7 @@ export default function Index() {
               doKakaoLogin({ path: `/list` });
             }}
           />
-          <Space height={30}/>
+          <Space height={30} />
           <WithoutLoginLink />
         </EnterBox>
       </BottomBox>

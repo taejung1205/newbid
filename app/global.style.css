@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans:wght@400;900&family=Rubik:wght@600;700&family=Revalia&family=Raleway:wght@500&display=swap");
 
 * {
-  font-family: Noto Sans;
   text-align: center;
   box-sizing: border-box;
 }
@@ -21,4 +20,15 @@ body {
   body {
     width: 650px;
   }
+}
+
+.font_gretasans {
+  font-size: 50;
+  font-family: SDGretaSans;
+  font-weight: 800;
+}
+
+.font_gretasans strong {
+  font-size: 50;
+  font-weight: 900;
 }

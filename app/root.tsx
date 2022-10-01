@@ -73,7 +73,7 @@ sid=gAAAAABjNoKB7aPtIJAn5jRMcYaz_Y-KZ4K-EOCGwhpW61tp_3yG3hoZRHqphAYyOzHi66fHUcsF
 tX8_rDlpOm6sxviCz_ZE7i5XDWuDSAbLocnrxVOACMAMVnNpmKqp79fYvMTixVBI2YqQWISV5ZO5u_wcq
 Ilp_bSTMVr2u9-WNJutLtaBst"
             charSet="utf-8"
-          ></script>
+          />
           <LiveReload />
         </body>
       </html>
