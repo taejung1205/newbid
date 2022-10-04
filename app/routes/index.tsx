@@ -26,7 +26,6 @@ const MarqueeText = styled.div`
   line-height: 6vh;
   white-space: nowrap;
   color: #cccccc;
-  font-family: SDGretaSans;
 `;
 
 interface BoxProps {
@@ -125,7 +124,6 @@ export default function Index() {
         bottomScrollY.scrollIntoView();
       }
       prevScrollY.current = currentScrollY;
-      console.log(isScrolledDown, currentScrollY);
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -144,7 +142,7 @@ export default function Index() {
         <MarqueeBox isScrolledDown={isScrolledDown}>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText>예술 시장은 성행하고 있지만 왜</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장은 성행하고 있지만 왜</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={20} isReverse>
