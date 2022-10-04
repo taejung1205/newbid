@@ -95,14 +95,14 @@ export default function Index() {
           실제로 만나보실 수 있습니다.{" "}
         </TitleText2>
         <Space height={10} />
-        <Link
-          to={"https://booking.naver.com/booking/5/bizes/745944"}
+        <a
+          href={"https://booking.naver.com/booking/5/bizes/745944"}
           style={{ textDecoration: "none" }}
         >
           <LinkText className="font_gretasans_black">
             관람 예매하러 가기
           </LinkText>
-        </Link>
+        </a>
       </TopBox>
       <Space height={120} />
       <ItemDetail
@@ -166,21 +166,20 @@ export default function Index() {
               다가갈 수 있도록 연구하고 있습니다.
             </BodyText>
             <Space height={40} />
-            <Link
-              to="https://www.instagram.com/lofa_seoul"
+            <a href="https://www.instagram.com/lofa_seoul"
               style={{ textDecoration: "none" }}
             >
               <LinkText className="font_gretasans_black">인스타그램</LinkText>
-            </Link>
+            </a>
             <Space height={5} />
-            <Link
-              to="https://shoplostandfound.kr"
+            <a
+              href="https://shoplostandfound.kr"
               style={{ textDecoration: "none" }}
             >
               <LinkText className="font_gretasans_black">
                 공식 홈페이지
               </LinkText>
-            </Link>
+            </a>
             <Space height={40} />
             <LinkText className="font_gretasans_black">
               kyj@tabacpress.xyz
