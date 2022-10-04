@@ -29,5 +29,6 @@ body {
 }
 
 .font_gretasans_black {
+  font-family: SDGretaSans;
   font-weight: 900;
 }
