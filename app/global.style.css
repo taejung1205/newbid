@@ -25,12 +25,10 @@ body {
 }
 
 .font_gretasans {
-  font-size: 50;
   font-family: SDGretaSans;
   font-weight: 800;
 }
 
 .font_gretasans strong {
-  font-size: 50;
   font-weight: 900;
 }

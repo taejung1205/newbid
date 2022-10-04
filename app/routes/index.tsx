@@ -48,7 +48,6 @@ const BottomBox = styled.div<BoxProps>`
 `;
 
 const BottomText = styled.text`
-  font-weight: 400;
   color: white;
   font-size: 32px;
   line-height: 40px;
@@ -80,7 +79,7 @@ const WithoutLoginLinkText = styled(BottomText)`
 function WithoutLoginLink() {
   return (
     <Link to={"/list"}>
-      <WithoutLoginLinkText>둘러만 볼게요</WithoutLoginLinkText>
+      <WithoutLoginLinkText className="font_gretasans">둘러만 볼게요</WithoutLoginLinkText>
     </Link>
   );
 }
@@ -146,59 +145,59 @@ export default function Index() {
           </Marquee>
           <Divider />
           <Marquee duration={20} isReverse>
-            <MarqueeText>
+            <MarqueeText className="font_gretasans">
               아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText>예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans"><strong>예술 시장에 대한 의문점 의문점</strong></MarqueeText>
           </Marquee>
           <Divider />
         </MarqueeBox>
         <BottomBox isScrolledDown={isScrolledDown}>
           <div ref={bottomScrollY.targetRef} />
           <Space height={100} />
-          <BottomText>
+          <BottomText className="font_gretasans">
             뉴비드는 <br />
             새로운 세대를 위한 <br />
             아트 트레이딩 플랫폼 <br />
             입니다.
           </BottomText>
           <Space height={30} />
-          <BottomText>
+          <BottomText className="font_gretasans">
             뉴비드와 함께할 <br />
             준비가 되셨나요?
           </BottomText>
