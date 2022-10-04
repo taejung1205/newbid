@@ -65,21 +65,33 @@ const EnterBox = styled.div`
   right: 0;
 `;
 
-const KakaoLoginButton = styled.img`
-  width: 175px;
-  height: 43px;
-  cursor: pointer;
-`;
 const WithoutLoginLinkText = styled(BottomText)`
   font-size: 25px;
   line-height: 16px;
   text-decoration: underline;
 `;
 
+const LoginButton = styled.div`
+  font-size: 24px;
+  line-height: 30px;
+  background-color: #d9d9d9;
+  width: 200px;
+  height: 30px;
+  color: #451bc8;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 110px;
+  vertical-align: bottom;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 function WithoutLoginLink() {
   return (
     <Link to={"/list"}>
-      <WithoutLoginLinkText className="font_gretasans">둘러만 볼게요</WithoutLoginLinkText>
+      <WithoutLoginLinkText className="font_gretasans">
+        둘러만 볼게요
+      </WithoutLoginLinkText>
     </Link>
   );
 }
@@ -141,49 +153,69 @@ export default function Index() {
         <MarqueeBox isScrolledDown={isScrolledDown}>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">예술 시장은 성행하고 있지만 왜</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              공예와 예술이 대중화 되고,
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={20} isReverse>
             <MarqueeText className="font_gretasans">
-              아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
+              자주 회자 되는 아티스트들의 연령 대가 점차 낮아지며
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              예술품 시장은 바야흐로 ‘새로운 세대’를 맞이하고 있다.
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              하지만 여전히 대다수의 작품들은
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              이전 세대의 갤러리와 경매를 통해 거래된다.
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              이전 세대의 진입의 벽은 아티스트들 뿐만 아니라,
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              예술을 새로이 향유하고자 하는 개인들에게도
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              너무나 높은 벽이다.
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              새로운 세대를 위한 예술품의 거래 형태는
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText className="font_gretasans">예술 시장에 대한 의문점 의문점</MarqueeText>
+            <MarqueeText className="font_gretasans">
+              어떤 모습을 취하고 있어야 할까?
+            </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans"><strong>예술 시장에 대한 의문점 의문점</strong></MarqueeText>
+            <MarqueeText className="font_gretasans">
+              뉴비드는 그러한 질문을 바탕으로 새로운 질문 을 던져본다.
+            </MarqueeText>
           </Marquee>
           <Divider />
         </MarqueeBox>
@@ -193,7 +225,7 @@ export default function Index() {
           <BottomText className="font_gretasans">
             뉴비드는 <br />
             새로운 세대를 위한 <br />
-            아트 트레이딩 플랫폼 <br />
+            예술품 경매 사이트 <br />
             입니다.
           </BottomText>
           <Space height={30} />
@@ -202,13 +234,15 @@ export default function Index() {
             준비가 되셨나요?
           </BottomText>
           <EnterBox>
-            <KakaoLoginButton
-              src={"/image/kakao_login_button.png"}
+            <LoginButton
               onClick={() => {
                 setIsLoading(true);
                 doKakaoLogin({ path: `/list` });
               }}
-            />
+              className="font_gretasans"
+            >
+              카카오 로그인
+            </LoginButton>
             <Space height={30} />
             <WithoutLoginLink />
           </EnterBox>
