@@ -70,7 +70,6 @@ function CountdownTimer({
 
   return (
     <TimerText
-      className="font_gretasans_black"
       isStartPage={isStartPage}
       isMenuOpen={isMenuOpen}
       onClick={onClick}

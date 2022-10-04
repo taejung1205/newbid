@@ -1,8 +1,7 @@
-import { useWindowScroll } from "@mantine/hooks";
+
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
 import styled from "styled-components";
-import { Item } from "~/components/Item";
 import { Space } from "~/components/Space";
 import itemsJson from "~/data/items.json";
 import { getBidderCount, getCurrentPrice } from "~/utils/firebase.server";

@@ -124,7 +124,7 @@ export default function Header({}: {}) {
           }
         }}
         isMenuOpen={isMenuOpen}
-        isPageBlue={pathname === "/about" || pathname === "/bidding"}
+        isPageBlue={pathname === "/bidding"}
         isPageWithoutHeader={pathname === "/"}
       />
       <div
@@ -139,7 +139,7 @@ export default function Header({}: {}) {
         }}
       >
         <Space height={10} />
-        <Link to="/">
+        <Link to="/about">
           <LinkText>관람 안내</LinkText>
         </Link>
         <Link to="/mybid" reloadDocument={pathname === "/mybid"}>
