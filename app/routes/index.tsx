@@ -26,6 +26,7 @@ const MarqueeText = styled.div`
   line-height: 6vh;
   white-space: nowrap;
   color: #cccccc;
+  font-family: SDGretaSans;
 `;
 
 interface BoxProps {
@@ -148,9 +149,7 @@ export default function Index() {
           <Divider />
           <Marquee duration={20} isReverse>
             <MarqueeText>
-              <strong>
-                아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
-              </strong>
+              아트 작품을 소유하고 컬렉팅하는 장벽은 여전히 높기만 하다
             </MarqueeText>
           </Marquee>
           <Divider />
