@@ -89,7 +89,7 @@ const LoginButton = styled.div`
 function WithoutLoginLink() {
   return (
     <Link to={"/list"}>
-      <WithoutLoginLinkText className="font_gretasans">
+      <WithoutLoginLinkText className="font_gretasans_black">
         둘러만 볼게요
       </WithoutLoginLinkText>
     </Link>
@@ -153,67 +153,67 @@ export default function Index() {
         <MarqueeBox isScrolledDown={isScrolledDown}>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               공예와 예술이 대중화 되고,
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={20} isReverse>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               자주 회자 되는 아티스트들의 연령 대가 점차 낮아지며
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               예술품 시장은 바야흐로 ‘새로운 세대’를 맞이하고 있다.
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               하지만 여전히 대다수의 작품들은
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               이전 세대의 갤러리와 경매를 통해 거래된다.
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               이전 세대의 진입의 벽은 아티스트들 뿐만 아니라,
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               예술을 새로이 향유하고자 하는 개인들에게도
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               너무나 높은 벽이다.
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               새로운 세대를 위한 예술품의 거래 형태는
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10} isReverse>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               어떤 모습을 취하고 있어야 할까?
             </MarqueeText>
           </Marquee>
           <Divider />
           <Marquee duration={10}>
-            <MarqueeText className="font_gretasans">
+            <MarqueeText className="font_gretasans_black">
               뉴비드는 그러한 질문을 바탕으로 새로운 질문 을 던져본다.
             </MarqueeText>
           </Marquee>
@@ -222,14 +222,14 @@ export default function Index() {
         <BottomBox isScrolledDown={isScrolledDown}>
           <div ref={bottomScrollY.targetRef} />
           <Space height={100} />
-          <BottomText className="font_gretasans">
+          <BottomText className="font_gretasans_black">
             뉴비드는 <br />
             새로운 세대를 위한 <br />
             예술품 경매 사이트 <br />
             입니다.
           </BottomText>
           <Space height={30} />
-          <BottomText className="font_gretasans">
+          <BottomText className="font_gretasans_black">
             뉴비드와 함께할 <br />
             준비가 되셨나요?
           </BottomText>
@@ -239,7 +239,7 @@ export default function Index() {
                 setIsLoading(true);
                 doKakaoLogin({ path: `/list` });
               }}
-              className="font_gretasans"
+              className="font_gretasans_black"
             >
               카카오 로그인
             </LoginButton>
