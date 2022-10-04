@@ -42,7 +42,7 @@ const ExplanationText = styled.text`
   font-size: 16px;
   line-height: 18px;
   font-family: Noto Sans KR, sans-serif;
-  color: white
+  color: white;
 `;
 
 const LinkText = styled.text`
@@ -70,6 +70,7 @@ function CountdownTimer({
 
   return (
     <TimerText
+      className="font_gretasans_black"
       isStartPage={isStartPage}
       isMenuOpen={isMenuOpen}
       onClick={onClick}
