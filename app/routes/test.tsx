@@ -23,7 +23,7 @@ export const loader: LoaderFunction = async () => {
 };
 
 export const action: ActionFunction = async () => {
-  createDatabase();
+  // createDatabase();
   return null;
 };
 

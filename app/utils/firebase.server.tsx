@@ -44,7 +44,7 @@ if (!firebaseApp?.apps.length || !firestore.apps.length) {
 }
 
 export async function createDatabase() {
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < itemsJson.items.length; i++) {
     try {
       // const docRef = await addDoc(collection(firestore, "users"), {
       //   first: "Ada",
@@ -52,7 +52,7 @@ export async function createDatabase() {
       //   born: 1815,
       // });
       const docRef = await setDoc(doc(firestore, "items", `item-${i}`), {
-        currentPrice: 30000,
+        currentPrice: itemsJson.items[i].startPrice,
         itemName: itemsJson.items[i].title,
       });
       console.log("Document written: ", i);
