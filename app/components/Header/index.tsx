@@ -139,14 +139,14 @@ export default function Header({}: {}) {
         }}
       >
         <Space height={10} />
-        <a href="https://newbid.netlify.app/about">
-          <LinkText>관람 안내</LinkText>
-        </a>
+        <Link to="/about">
+          <LinkText className="font_gretasans_black">관람 안내</LinkText>
+        </Link>
         <Link to="/mybid" reloadDocument={pathname === "/mybid"}>
-          <LinkText>나의 비딩내역</LinkText>
+          <LinkText className="font_gretasans_black">나의 비딩내역</LinkText>
         </Link>
         <Link to="/list" reloadDocument={pathname === "/list"}>
-          <LinkText>리스트 보기</LinkText>
+          <LinkText className="font_gretasans_black">리스트 보기</LinkText>
         </Link>
       </div>
     </HeaderBox>

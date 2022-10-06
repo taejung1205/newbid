@@ -23,7 +23,7 @@ const RequireLoginText = styled.text`
   font-size: 16px;
   line-height: 18px;
   font-weight: 400;
-  font-family: "Noto Sans KR";
+  font-family: Noto Sans KR;
 `;
 
 const KakaoLoginButton = styled.img`
@@ -44,7 +44,7 @@ function WithoutLoginLink() {
   return (
     <Link
       to={"/list"}
-      style={{ position: "absolute", bottom: "120px", color: "black" }}
+      style={{ position: "absolute", bottom: "160px", color: "black" }}
     >
       <WithoutLoginLinkText>둘러만 볼게요</WithoutLoginLinkText>
     </Link>

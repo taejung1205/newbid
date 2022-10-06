@@ -1,6 +1,6 @@
 import { Loader } from "@mantine/core";
 import { ActionFunction, redirect } from "@remix-run/node";
-import { useSubmit } from "@remix-run/react";
+import { useNavigate, useSubmit } from "@remix-run/react";
 import { useEffect } from "react";
 import { Space } from "~/components/Space";
 import { requestTokens } from "~/utils/kakao";
@@ -10,7 +10,7 @@ export const action: ActionFunction = async () => {
 };
 
 export default function Index() {
-  const submit = useSubmit();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const params = new URL(window.location.href).searchParams;
@@ -23,7 +23,7 @@ export default function Index() {
     } else {
       console.log(`error: ${error}`);
     }
-    submit(null, { method: "post", action: redirectPath });
+    navigate(redirectPath);
   }, []);
 
   return <>

@@ -181,14 +181,14 @@ export function MyItem({
             <MyBidKRW className="font_gretasans_black"> KRW</MyBidKRW>
           </span>
           <Space height={40} />
-          <a
-            href={`/bidding?index=${index}`}
+          <Link
+            to={`/bidding?index=${index}`}
             style={{ textDecoration: "none" }}
           >
             <BidButton className="font_gretasans_black">
               다시 비딩하기
             </BidButton>
-          </a>
+          </Link>
           <Space height={50} />
         </>
       ) : (
