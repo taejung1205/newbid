@@ -388,19 +388,19 @@ export default function Index() {
       </Modal>
       <BiddingPageBox onScroll={() => console.log("scroll")}>
         <TopBox>
-          <TitleText>{itemsJson.items[data.index].title}</TitleText>
+          <TitleText className="font_gretasans_black">{itemsJson.items[data.index].title}</TitleText>
           <Space height={2} />
-          <TitleText>{itemsJson.items[data.index].artist}</TitleText>
+          <TitleText className="font_gretasans_black">{itemsJson.items[data.index].artist}</TitleText>
           <Space height={20} />
-          <CurrentlyText>CURRENTLY</CurrentlyText>
+          <CurrentlyText className="font_gretasans_black">CURRENTLY</CurrentlyText>
           <span>
-            <CurrentPrice>{data.currentPrice}</CurrentPrice>
-            <KRWText> KRW</KRWText>
+            <CurrentPrice className="font_gretasans_black">{data.currentPrice}</CurrentPrice>
+            <KRWText className="font_gretasans_black"> KRW</KRWText>
           </span>
         </TopBox>
         <CenterBox>
-          <MyBidPrice>{myBidPrice}</MyBidPrice>
-          <MyBidKRWText>KRW</MyBidKRWText>
+          <MyBidPrice className="font_gretasans_black">{myBidPrice}</MyBidPrice>
+          <MyBidKRWText className="font_gretasans_black">KRW</MyBidKRWText>
           <div
             style={{
               display: "flex",
@@ -415,12 +415,13 @@ export default function Index() {
             onClick={() => {
               setIsPriceModalOpen(true);
             }}
+            className="font_gretasans_black"
           >
             비딩하기
           </BidButton>
         </CenterBox>
         <BottomBox>
-          <NoticeText>{noticeText}</NoticeText>
+          <NoticeText className="font_gretasans_black">{noticeText}</NoticeText>
         </BottomBox>
       </BiddingPageBox>
     </>
