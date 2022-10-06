@@ -73,10 +73,10 @@ const WithoutLoginLinkText = styled(BottomText)`
 
 const LoginButton = styled.div`
   font-size: 24px;
-  line-height: 30px;
+  line-height: 36px;
   background-color: #d9d9d9;
   width: 200px;
-  height: 30px;
+  height: 36px;
   color: #451bc8;
   cursor: pointer;
   text-decoration: none;

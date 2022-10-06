@@ -85,10 +85,10 @@ const BidPriceButton = styled.text`
 
 const BidButton = styled.div`
   font-size: 26px;
-  line-height: 30px;
+  line-height: 36px;
   background-color: #d9d9d9;
   width: 160px;
-  height: 30px;
+  height: 36px;
   color: #451bc8;
   cursor: pointer;
   text-decoration: none;
@@ -119,7 +119,7 @@ const TermsModalText = styled(ModalText)`
   font-size: 16px;
 `;
 const TermsModalOkButton = styled(ModalOkButton)`
-  width: 80px;
+  width: 120px;
   font-size: 16px;
   margin-right: 0;
 `;
