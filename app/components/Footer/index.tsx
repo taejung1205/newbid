@@ -75,7 +75,7 @@ function CountdownTimer({
       isStartPage={isStartPage}
       isMenuOpen={isMenuOpen}
       onClick={onClick}
-      isTime7Digitss = {(hours.length >= 3)}
+      isTime7Digits = {(hours.length >= 3)}
     >
       {hours}:{minutes}:{seconds}
     </TimerText>
