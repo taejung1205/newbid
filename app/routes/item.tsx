@@ -14,11 +14,11 @@ import "swiper/css/pagination";
 const ItemPageBox = styled.div`
   width: inherit;
   height: inherit;
-  overflow-x: hidden;
 
   .swiper {
     position: relative;
   }
+
   .swiper-wrapper {
     display: flex;
   }
@@ -44,13 +44,13 @@ const ItemPageBox = styled.div`
     width: 16px;
     height: 16px;
     margin: 8px;
-    background-color: #FFFFFF80;
+    background-color: #ffffff80;
     border-radius: 8px;
-  } 
+  }
 
   .swiper-pagination-bullet-active {
     background-color: #451bc880;
-  } 
+  }
 `;
 
 const NotFoundBox = styled.div`
@@ -213,23 +213,35 @@ export default function Index() {
   return (
     <ItemPageBox>
       <Space height={70} />
-      <Swiper
-        modules={[Navigation, Pagination]}
-        spaceBetween={50}
-        slidesPerView={"auto"}
-        centeredSlides
-        navigation
-        pagination
+      <div
+        style={{
+          overflowX: "hidden",
+          position: "sticky",
+          display: "flex",
+          backgroundColor: "white",
+          top: "-280px",
+          left: "0px",
+          right: "0px",
+          paddingBottom: "5px",
+        }}
       >
-        {item.images.map((src, index) => {
-          return (
-            <SwiperSlide>
-              <ItemImage src={src} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-      <div style={{}} />
+        <Swiper
+          modules={[Navigation, Pagination]}
+          spaceBetween={50}
+          slidesPerView={"auto"}
+          centeredSlides
+          navigation
+          pagination
+        >
+          {item.images.map((src, index) => {
+            return (
+              <SwiperSlide>
+                <ItemImage src={src} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
       <Space height={15} />
       <TitleText className="font_gretasans_black" isLeft={false}>
         {item.title}
