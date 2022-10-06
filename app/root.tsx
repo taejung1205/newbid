@@ -55,7 +55,7 @@ export default function App() {
         <body onLoad={() => window.scrollTo(0, 1)}>
           <script
             type="text/javascript"
-            src="https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjNoKB7aPtIJAn5jRMcYaz_Y-KZ4K-EOCGwhpW61tp_3yG3hoZRHqp-hAYyOzHi66fHUcsFs3gmIKAs3PK5K9MRVur0OOZR-1VNcmmUbFmkTom1C9u3WDjsk7A6-ZSpEGb_AdG6c_ksWhWQSzEFQrOS31--tX8_rDlpOm6sx-viCz_ZE7i5XDWuDSAbLocnrxVOACMAMVnNpmKqp79fYvMTixVBI2YqQWISV5ZO5u_wcqIlp_bSTMVr2u9-WNJutLtaBst"
+            src="https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjPoC_JMc6khC0oXKFGZhw3QT3PTAh6xbDIp_rhtFBo6rDNMNaDWvR5zSBJf-x297PjLW6HwtprzGvgJcs_pfNFE-hQ4Kjs9txMocfISExbFqJY5FfrRlmASw5B5QkI-9f3VLswdp2YDEIUDxzfMQzkYMsr-PgjHRVMh0rzY3Ivps4yl0SWoWdBS9di60wYPk1unOUPK87EQA1MstiCXMpacbKj3WOQQ7yLrZAy0JXp99j1_80SzVyTBDq5b_3PDoUnyAA"
             charSet="utf-8"
           />
           <Header />
