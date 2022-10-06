@@ -183,12 +183,12 @@ export default function Index() {
         <Space height={5} />
         <CurrentPrice className="font_gretasans_black">{data.currentPrice} KRW</CurrentPrice>
         <Space height={30} />
-        <Link
-          to={`/bidding?index=${data.index}`}
+        <a
+          href={`/bidding?index=${data.index}`}
           style={{ textDecoration: "none" }}
         >
           <BidButton className="font_gretasans_black">비딩하기</BidButton>
-        </Link>
+        </a>
       </BidBox>
       <ItemDetail
         leftElement={

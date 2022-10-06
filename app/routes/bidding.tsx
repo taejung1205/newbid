@@ -164,13 +164,13 @@ function PriceModalContent({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <ModalText>
+      <ModalText className="font_gretasans_black">
         {itemTitle}에 대해 {bidPrice}원을 비딩하는 것이 맞으실까요?
       </ModalText>
       <Space height={40} />
-      <ModalOkButton onClick={onNext}>네, 맞아요</ModalOkButton>
+      <ModalOkButton className="font_gretasans_black" onClick={onNext}>네, 맞아요</ModalOkButton>
       <Space height={10} />
-      <ModalText onClick={onClose}>다시 생각해볼게요</ModalText>
+      <ModalText className="font_gretasans_black" onClick={onClose}>다시 생각해볼게요</ModalText>
     </div>
   );
 }
@@ -184,7 +184,7 @@ function TermsModalContent({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <TermsModalText>
+      <TermsModalText className="font_gretasans_black">
         뉴비드는 모두가 만족하는 안전하고 행복한 공예 문화를 만들기 위해 아래와
         같은 규정을 가지고 있습니다. 꼼꼼히 확인해보시고 동의해주셔야만 비딩이
         완료됩니다.
@@ -199,8 +199,8 @@ function TermsModalContent({
           alignItems: "end",
         }}
       >
-        <TermsModalText onClick={onClose}>다시 생각할게요</TermsModalText>
-        <TermsModalOkButton onClick={onNext}>동의합니다</TermsModalOkButton>
+        <TermsModalText className="font_gretasans_black" onClick={onClose}>다시 생각할게요</TermsModalText>
+        <TermsModalOkButton className="font_gretasans_black" onClick={onNext}>동의합니다</TermsModalOkButton>
       </div>
     </div>
   );
@@ -209,13 +209,13 @@ function TermsModalContent({
 function CompleteModalContent({ onClose }: { onClose: () => void }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <ModalText>완료되었습니다.</ModalText>
+      <ModalText className="font_gretasans_black">완료되었습니다.</ModalText>
       <Space height={20} />
-      <ModalText>
+      <ModalText className="font_gretasans_black">
         더 높은 금액에 비딩이 이루어질 경우 카카오톡을 통해 노티스 됩니다.
       </ModalText>
       <Space height={30} />
-      <ModalOkButton onClick={onClose}>확인</ModalOkButton>
+      <ModalOkButton className="font_gretasans_black" onClick={onClose}>확인</ModalOkButton>
     </div>
   );
 }
