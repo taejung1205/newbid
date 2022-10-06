@@ -139,9 +139,9 @@ export default function Header({}: {}) {
         }}
       >
         <Space height={10} />
-        <Link to="/about">
+        <a href="https://newbid.netlify.app/about">
           <LinkText>관람 안내</LinkText>
-        </Link>
+        </a>
         <Link to="/mybid" reloadDocument={pathname === "/mybid"}>
           <LinkText>나의 비딩내역</LinkText>
         </Link>
