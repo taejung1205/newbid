@@ -32,6 +32,7 @@ export function links() {
     {
       rel: "stylesheet",
       href: globalStyle,
+      as: "style"
     },
   ];
 }
