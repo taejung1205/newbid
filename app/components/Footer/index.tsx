@@ -31,7 +31,7 @@ const FooterBox = styled.div<FooterBoxProps>`
 `;
 
 const TimerText = styled.text<TimerTextProps>`
-  font-size: ${(props) => (props.isTime7Digits ? "12vw" : "18vw")};
+  font-size: ${(props) => (props.isTime7Digits ? "15vw" : "18vw")};
   cursor: pointer;
   @media (min-width: 750px) {
     font-size: ${(props) => (props.isTime7Digits ? "85px" : "100px")};
