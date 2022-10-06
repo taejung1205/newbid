@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export function useCountdown(targetDate: Date | undefined) {
   if (targetDate === undefined || typeof targetDate === "undefined") {
-    return [-1, -1, -1];
+    return ["00", "00", "00"];
   }
   const countDownDate = new Date(targetDate).getTime();
 
@@ -23,7 +23,7 @@ export function useCountdown(targetDate: Date | undefined) {
 
 function getReturnValues(countDown: number) {
   // calculate time left
-  const hours = Math.floor(countDown / (1000 * 60 * 60)) % 100;
+  const hours = Math.floor(countDown / (1000 * 60 * 60));
   const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((countDown % (1000 * 60)) / 1000);
 

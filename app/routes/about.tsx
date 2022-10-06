@@ -55,6 +55,7 @@ const SponsorText = styled.text`
   font-size: 16px;
   text-align: left;
   margin: 30px;
+  color: #451bc8;
 `;
 
 function ItemDetail({
@@ -66,9 +67,9 @@ function ItemDetail({
 }) {
   return (
     <DetailBox>
-      <div style={{ flex: 2, textAlign: "left" }}>{leftElement}</div>
+      <div style={{ flex: 3, textAlign: "left" }}>{leftElement}</div>
       <div style={{ flex: 1 }}></div>
-      <div style={{ flex: 6, textAlign: "left" }}>{rightElement}</div>
+      <div style={{ flex: 8, textAlign: "left" }}>{rightElement}</div>
     </DetailBox>
   );
 }

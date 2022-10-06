@@ -7,6 +7,7 @@ import { Space } from "../Space";
 interface TimerTextProps {
   isStartPage: boolean;
   isMenuOpen: boolean;
+  isTime7Digits: boolean;
 }
 
 interface FooterBoxProps {
@@ -30,10 +31,10 @@ const FooterBox = styled.div<FooterBoxProps>`
 `;
 
 const TimerText = styled.text<TimerTextProps>`
-  font-size: 18vw;
+  font-size: ${(props) => (props.isTime7Digits ? "13vw" : "18vw")};
   cursor: pointer;
   @media (min-width: 750px) {
-    font-size: 100px;
+    font-size: ${(props) => (props.isTime7Digits ? "85px" : "100px")};
   }
   color: #e5e5e5;
 `;
@@ -74,6 +75,7 @@ function CountdownTimer({
       isStartPage={isStartPage}
       isMenuOpen={isMenuOpen}
       onClick={onClick}
+      isTime7Digitss = {(hours.length >= 3)}
     >
       {hours}:{minutes}:{seconds}
     </TimerText>
@@ -87,7 +89,7 @@ export default function Footer() {
   const pathname = location.pathname;
 
   useEffect(() => {
-    const target = new Date(2022, 10, 14);
+    const target = new Date(2022, 10, 17, 0, 0);
     setTargetTime(target);
   }, []);
 
