@@ -1,14 +1,56 @@
-
 import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
 import styled from "styled-components";
+import { Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Space } from "~/components/Space";
 import itemsJson from "~/data/items.json";
 import { getBidderCount, getCurrentPrice } from "~/utils/firebase.server";
 
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 const ItemPageBox = styled.div`
   width: inherit;
   height: inherit;
+  overflow-x: hidden;
+
+  .swiper {
+    position: relative;
+  }
+  .swiper-wrapper {
+    display: flex;
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: center;
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet {
+    width: 16px;
+    height: 16px;
+    margin: 8px;
+    background-color: #FFFFFF80;
+    border-radius: 8px;
+  } 
+
+  .swiper-pagination-bullet-active {
+    background-color: #451bc880;
+  } 
 `;
 
 const NotFoundBox = styled.div`
@@ -25,7 +67,6 @@ const ItemImage = styled.img`
   width: 100%;
   height: 350px;
   object-fit: contain;
-  border-bottom: 2px solid #451bc8;
   background-color: white;
   position: sticky;
   top: -280px;
@@ -55,7 +96,7 @@ const BodyText = styled.text`
 const BodyTitleText = styled(BodyText)`
   word-break: keep-all;
   font-size: 23px;
-`
+`;
 
 interface TextAlignProp {
   isLeft: boolean;
@@ -104,7 +145,7 @@ const DetailBox = styled.div<BorderBottomProp>`
   padding: 8px;
   border-bottom: ${(props) =>
     props.isBorderBottom ? "2px solid #451bc8" : "none"};
-  text-align: left!important;;
+  text-align: left !important;
   min-height: 110px;
 `;
 
@@ -137,8 +178,8 @@ function ItemDetail({
   return (
     <DetailBox isBorderBottom={!noBottomBorder}>
       <div style={{ flex: 2, textAlign: "left" }}>{leftElement}</div>
-      <div style={{ flex: 1}}></div>
-      <div style={{ flex: 6, textAlign: "left"}}>{rightElement}</div>
+      <div style={{ flex: 1 }}></div>
+      <div style={{ flex: 6, textAlign: "left" }}>{rightElement}</div>
     </DetailBox>
   );
 }
@@ -172,16 +213,40 @@ export default function Index() {
   return (
     <ItemPageBox>
       <Space height={70} />
-      <ItemImage src={item.src} />
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={50}
+        slidesPerView={"auto"}
+        centeredSlides
+        navigation
+        pagination
+      >
+        {item.images.map((src, index) => {
+          return (
+            <SwiperSlide>
+              <ItemImage src={src} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+      <div style={{}} />
       <Space height={15} />
-      <TitleText className="font_gretasans_black" isLeft={false}>{item.title}</TitleText>
+      <TitleText className="font_gretasans_black" isLeft={false}>
+        {item.title}
+      </TitleText>
       <Space height={5} />
-      <TitleText className="font_gretasans_black" isLeft={false}>{item.artist}</TitleText>
+      <TitleText className="font_gretasans_black" isLeft={false}>
+        {item.artist}
+      </TitleText>
       <Space height={10} />
       <BidBox>
-        <CurrentlyText className="font_gretasans_black">CURRENTLY</CurrentlyText>
+        <CurrentlyText className="font_gretasans_black">
+          CURRENTLY
+        </CurrentlyText>
         <Space height={5} />
-        <CurrentPrice className="font_gretasans_black">{data.currentPrice} KRW</CurrentPrice>
+        <CurrentPrice className="font_gretasans_black">
+          {data.currentPrice} KRW
+        </CurrentPrice>
         <Space height={30} />
         <Link
           to={`/bidding?index=${data.index}`}
@@ -192,20 +257,24 @@ export default function Index() {
       </BidBox>
       <ItemDetail
         leftElement={
-            <BodyTitleText className="font_gretasans_black">정보</BodyTitleText>
+          <BodyTitleText className="font_gretasans_black">정보</BodyTitleText>
         }
         rightElement={
           <>
             <BodyText className="font_gretasans_black">{item.title}</BodyText>
             <Space height={10} />
-            <BodyText className="font_gretasans_black">{item.itemDetail}</BodyText>
+            <BodyText className="font_gretasans_black">
+              {item.itemDetail}
+            </BodyText>
             <Space height={40} />
           </>
         }
       />
       <ItemDetail
         leftElement={
-            <BodyTitleText className="font_gretasans_black">작품 소개</BodyTitleText>
+          <BodyTitleText className="font_gretasans_black">
+            작품 소개
+          </BodyTitleText>
         }
         rightElement={
           <>
@@ -216,22 +285,30 @@ export default function Index() {
       />
       <ItemDetail
         leftElement={
-            <BodyTitleText className="font_gretasans_black">작가 이력</BodyTitleText>
+          <BodyTitleText className="font_gretasans_black">
+            작가 이력
+          </BodyTitleText>
         }
         rightElement={
           <>
-            <BodyText className="font_gretasans_black">{item.artistDetail}</BodyText>
+            <BodyText className="font_gretasans_black">
+              {item.artistDetail}
+            </BodyText>
             <Space height={40} />
           </>
         }
       />
       <ItemDetail
         leftElement={
-            <BodyTitleText className="font_gretasans_black">작가 계정</BodyTitleText>
+          <BodyTitleText className="font_gretasans_black">
+            작가 계정
+          </BodyTitleText>
         }
         rightElement={
           <>
-            <BodyText className="font_gretasans_black">{item.artistAccount}</BodyText>
+            <BodyText className="font_gretasans_black">
+              {item.artistAccount}
+            </BodyText>
           </>
         }
         noBottomBorder

@@ -6,7 +6,8 @@ module.exports = {
       ? "./server.js"
       : undefined,
   ignoredRouteFiles: ["**/.*"],
-  // appDirectory: "app",
+  serverDependenciesToBundle: ["swiper", 'swiper/react','swiper/css', 'swiper/css/navigation', 'swiper/css/pagination', 'ssr-window', 'dom7']
+  // appDirectory: "app", 
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: ".netlify/functions-internal/server.js",
   // publicPath: "/build/",

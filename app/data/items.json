@@ -1,8 +1,13 @@
 {
   "items": [
     {
-      "src": "image/items/item_0.png",
-      "title": "Interlace - Romance Fantasy",
+      "thumbnail": "image/items/item_0_thumbnail.png",
+      "images": [
+        "image/items/item_0_image_0.jpg",
+        "image/items/item_0_image_1.jpg",
+        "image/items/item_0_image_2.jpg"
+      ],
+      "title": "Interlace - Romance Fantasy I",
       "body": "이수민 작가는 그래픽 디자인이나 일러스트레이션, 그리고 만화에 이르기까지,\n대체로 ‘평면 작업’이라 불리는 여러 시각 매체나 장르의 문법을 탐구하며 회화에 적응시켜 보는 작업을 진행하고 있습니다.\n작가는 만화의 패널과 패널(컷과 컷) 사이에 위치한 여백에 집중하며 복수의 캔버스를 나열하는 형태로 주로 작업하고 있습니다.\n\n특히 이번 신작 <Interlace>시리즈는 중세 북유럽 필사본에 장식적 요소로 등장하는 인터레이스 패턴에서 착안해 제작되었습니다. 본래 인터레이스는 엮이고 꼬인 복잡한 기하학적 패턴인데, 작가는 한국의 여성향 웹툰 장르인 “로맨스 판타지”의 클리셰적인 특징 (땋아내린 빨간 머리에 초록 눈의 캐릭터)을 추상 회화의 구성 속에 위치 시켜 구성하였습니다.\n\n추상과 기호, 이미지가 가진 분류들에 질문하며 만화의 구조가 회화의 구조로 바뀌는 과정을 유희적으로 표현하는데 집중하였습니다.",
       "startPrice": 50000,
       "artist": "이수민",
@@ -11,7 +16,12 @@
       "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
-      "src": "image/items/item_0.png",
+      "thumbnail": "image/items/item_1_thumbnail.png",
+      "images": [
+        "image/items/item_1_image_0.jpg",
+        "image/items/item_1_image_1.jpg",
+        "image/items/item_1_image_2.jpg"
+      ],
       "title": "Interlace - Romance Fantasy II",
       "body": "이수민 작가는 그래픽 디자인이나 일러스트레이션, 그리고 만화에 이르기까지,\n대체로 ‘평면 작업’이라 불리는 여러 시각 매체나 장르의 문법을 탐구하며 회화에 적응시켜 보는 작업을 진행하고 있습니다.\n작가는 만화의 패널과 패널(컷과 컷) 사이에 위치한 여백에 집중하며 복수의 캔버스를 나열하는 형태로 주로 작업하고 있습니다.\n\n특히 이번 신작 <Interlace>시리즈는 중세 북유럽 필사본에 장식적 요소로 등장하는 인터레이스 패턴에서 착안해 제작되었습니다. 본래 인터레이스는 엮이고 꼬인 복잡한 기하학적 패턴인데, 작가는 한국의 여성향 웹툰 장르인 “로맨스 판타지”의 클리셰적인 특징 (땋아내린 빨간 머리에 초록 눈의 캐릭터)을 추상 회화의 구성 속에 위치 시켜 구성하였습니다.\n\n추상과 기호, 이미지가 가진 분류들에 질문하며 만화의 구조가 회화의 구조로 바뀌는 과정을 유희적으로 표현하는데 집중하였습니다.",
       "startPrice": 560000,
@@ -21,7 +31,13 @@
       "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
-      "src": "image/items/item_0.png",
+      "thumbnail": "image/items/item_2_thumbnail.png",
+      "images": [
+        "image/items/item_2_image_0.jpg",
+        "image/items/item_2_image_1.jpg",
+        "image/items/item_2_image_2.jpg",
+        "image/items/item_2_image_3.jpg"
+      ],
       "title": "Blueprint",
       "body": "이수민 작가는 그래픽 디자인이나 일러스트레이션, 그리고 만화에 이르기까지,\n대체로 ‘평면 작업’이라 불리는 여러 시각 매체나 장르의 문법을 탐구하며 회화에 적응시켜 보는 작업을 진행하고 있습니다.\n작가는 만화의 패널과 패널(컷과 컷) 사이에 위치한 여백에 집중하며 복수의 캔버스를 나열하는 형태로 주로 작업하고 있습니다.\n\n<Blueprint> 시리즈는 작가의 개인전 <Blood in the Gutter>에서 처음 소개된 작업입니다. <Blood in the Gutter>은 직역하면 홈통에 흐르는 피라는 뜻인데, 만화나 그래픽 노블에서는 패널과 패널 사이에 위치한 여백을 말합니다. 작가는 스콧 맥클라우드의 표현을 인용하며, 패널과 패널 사이의 여백, 즉 홈통이 가지는 역할과 기능에 집중에 미학적 의미를 밝히는 것에 의의를 둡니다. 작가는 공간을 회화 피스를 구성하는 평면적 지지체로 다루며 캔버스 패널 사이의 여백에 관객의 상상이 개입할 수 있는 영역을 확보하고자 합니다. ",
       "startPrice": 560000,
@@ -31,7 +47,13 @@
       "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
-      "src": "image/items/item_0.png",
+      "thumbnail": "image/items/item_3_thumbnail.png",
+      "images": [
+        "image/items/item_3_image_0.jpg",
+        "image/items/item_3_image_1.jpg",
+        "image/items/item_3_image_2.jpg",
+        "image/items/item_3_image_3.jpg"
+      ],
       "title": "Blueprint II",
       "body": "이수민 작가는 그래픽 디자인이나 일러스트레이션, 그리고 만화에 이르기까지,\n대체로 ‘평면 작업’이라 불리는 여러 시각 매체나 장르의 문법을 탐구하며 회화에 적응시켜 보는 작업을 진행하고 있습니다.\n작가는 만화의 패널과 패널(컷과 컷) 사이에 위치한 여백에 집중하며 복수의 캔버스를 나열하는 형태로 주로 작업하고 있습니다.\n\n<Blueprint> 시리즈는 작가의 개인전 <Blood in the Gutter>에서 처음 소개된 작업입니다. <Blood in the Gutter>은 직역하면 홈통에 흐르는 피라는 뜻인데, 만화나 그래픽 노블에서는 패널과 패널 사이에 위치한 여백을 말합니다. 작가는 스콧 맥클라우드의 표현을 인용하며, 패널과 패널 사이의 여백, 즉 홈통이 가지는 역할과 기능에 집중에 미학적 의미를 밝히는 것에 의의를 둡니다. 작가는 공간을 회화 피스를 구성하는 평면적 지지체로 다루며 캔버스 패널 사이의 여백에 관객의 상상이 개입할 수 있는 영역을 확보하고자 합니다. ",
       "startPrice": 380000,
@@ -41,7 +63,12 @@
       "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
-      "src": "image/item_image_example.png",
+      "thumbnail": "image/items/item_4_thumbnail.png",
+      "images": [
+        "image/items/item_4_image_0.jpg",
+        "image/items/item_4_image_1.jpg",
+        "image/items/item_4_image_2.jpg"
+      ],
       "title": "Badass V (ottchil ver.)",
       "body": "이학민 작가는 서울을 기반으로 활동하는 디자이너이자 아티스트로 가구, 아트 토이, 일러스트 등 다양한 분야의 작업들을 선보이고 있습니다. 국내에서 금속공예를, 네덜란드에서 Contextual Design을 전공하였고, 그후 필라델피아로 건너가 Anthropologie 에서 홈데코 제품을 디자인하였으며 현재는 서울에서 독립 디자인 스튜디오 ‘스튜디오 학’을 운영 중입니다.\n\n​그의 작업을 이루는 아이덴티티는 Craftsmanship, Concept, Humor(장인정신, 개념, 유머)입니다. 이학민 작가는 컨셉에 기반을 둔 디자인과 공예적인 장인정신을 추구하고, 그로 인해 일상 속에  소소한 유머가 전파되길 바라며 작업을 전개합니다.\n\n​<Badass vase> 연작은 작가가 고전 미술의 소재와 주제를 차용하여 현대적인 맥락으로 재해석한 결과물로, 다양한 예술의 경계에 걸쳐 있으면서도 그 어느 곳 하나에 속하지 않습니다. 고전 미술의 인체상의 전형적인 포즈에서 벗어난 유희적이며 만화적인 포즈를 취하고 있는 화병들은 조각과 공예, 동시대 미술과 서브 컬쳐의 경계에 대한 작가의 실험과 탐구로부터 탄생하였습니다.",
       "startPrice": 600000,
@@ -51,7 +78,12 @@
       "artistAccount": "@hakmazing​"
     },
     {
-      "src": "image/item_image_example.png",
+      "thumbnail": "image/items/item_5_thumbnail.png",
+      "images": [
+        "image/items/item_5_image_0.jpg",
+        "image/items/item_5_image_1.jpg",
+        "image/items/item_5_image_2.jpg"
+      ],
       "title": "Please V (ottchil ver.)",
       "body": "이학민 작가는 서울을 기반으로 활동하는 디자이너이자 아티스트로 가구, 아트 토이, 일러스트 등 다양한 분야의 작업들을 선보이고 있습니다. 국내에서 금속공예를, 네덜란드에서 Contextual Design을 전공하였고, 그후 필라델피아로 건너가 Anthropologie 에서 홈데코 제품을 디자인하였으며 현재는 서울에서 독립 디자인 스튜디오 ‘스튜디오 학’을 운영 중입니다.\n\n​그의 작업을 이루는 아이덴티티는 Craftsmanship, Concept, Humor(장인정신, 개념, 유머)입니다. 이학민 작가는 컨셉에 기반을 둔 디자인과 공예적인 장인정신을 추구하고, 그로 인해 일상 속에  소소한 유머가 전파되길 바라며 작업을 전개합니다.\n\n​<Badass vase> 연작은 작가가 고전 미술의 소재와 주제를 차용하여 현대적인 맥락으로 재해석한 결과물로, 다양한 예술의 경계에 걸쳐 있으면서도 그 어느 곳 하나에 속하지 않습니다. 고전 미술의 인체상의 전형적인 포즈에서 벗어난 유희적이며 만화적인 포즈를 취하고 있는 화병들은 조각과 공예, 동시대 미술과 서브 컬쳐의 경계에 대한 작가의 실험과 탐구로부터 탄생하였습니다.",
       "startPrice": 500000,
@@ -61,7 +93,12 @@
       "artistAccount": "@hakmazing​"
     },
     {
-      "src": "image/item_image_example.png",
+      "thumbnail": "image/items/item_6_thumbnail.png",
+      "images": [
+        "image/items/item_6_image_0.jpg",
+        "image/items/item_6_image_1.jpg",
+        "image/items/item_6_image_2.jpg"
+      ],
       "title": "Single Paw Stool",
       "body": "이학민 작가는 서울을 기반으로 활동하는 디자이너이자 아티스트로 가구, 아트 토이, 일러스트 등 다양한 분야의 작업들을 선보이고 있습니다. 국내에서 금속공예를, 네덜란드에서 Contextual Design을 전공하였고, 그후 필라델피아로 건너가 Anthropologie 에서 홈데코 제품을 디자인하였으며 현재는 서울에서 독립 디자인 스튜디오 ‘스튜디오 학’을 운영 중입니다.\n\n​그의 작업을 이루는 아이덴티티는 Craftsmanship, Concept, Humor(장인정신, 개념, 유머)입니다. 이학민 작가는 컨셉에 기반을 둔 디자인과 공예적인 장인정신을 추구하고, 그로 인해 일상 속에  소소한 유머가 전파되길 바라며 작업을 전개합니다.\n\n동물의 발의 형태가 강조된 <Single Paw Stool>은 만화와 피규어 등 서브컬쳐에서 영감을 얻어 가구와 접목을 시도한 작업으로 전형적인 가구에 만화적인 상상력을 부여하고자 하는 시도에서 탄생한 작품입니다. 초현실적인 조각과 기능적인 가구의 경계에 걸쳐 있어 관객 혹은 사용자로 하여금 일상적인 공간에서 벗어나 상상 속 가상의 공간에 온 듯한 경험을 제공합니다.",
       "startPrice": 1800000,
@@ -71,7 +108,12 @@
       "artistAccount": "@hakmazing​"
     },
     {
-      "src": "image/item_image_example.png",
+      "thumbnail": "image/item_image_example.png",
+      "images": [
+        "image/items/item_0_image_0.jpg",
+        "image/items/item_0_image_1.jpg",
+        "image/items/item_0_image_2.jpg"
+      ],
       "title": "로아키 화병",
       "body": "나베나베페누아의 드로잉이 더해진 화병입니다.\n기존 로이키 시리즈와 다르게\n뉴비드 웹사이트에서만\n선보이는 리미티드 컬러만 제공합니다.",
       "startPrice": 50000,
@@ -81,7 +123,12 @@
       "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
-      "src": "image/autoscroll_dummy.jpg",
+      "thumbnail": "image/autoscroll_dummy.jpg",
+      "images": [
+        "image/items/item_0_image_0.jpg",
+        "image/items/item_0_image_1.jpg",
+        "image/items/item_0_image_2.jpg"
+      ],
       "title": "로아키 화병",
       "body": "나베나베페누아의 드로잉이 더해진 화병입니다.\n기존 로이키 시리즈와 다르게\n뉴비드 웹사이트에서만\n선보이는 리미티드 컬러만 제공합니다.",
       "startPrice": 50000,
@@ -91,7 +138,12 @@
       "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
-      "src": "image/item_image_example.png",
+      "thumbnail": "image/item_image_example.png",
+      "images": [
+        "image/items/item_0_image_0.jpg",
+        "image/items/item_0_image_1.jpg",
+        "image/items/item_0_image_2.jpg"
+      ],
       "title": "로아키 화병",
       "body": "나베나베페누아의 드로잉이 더해진 화병입니다.\n기존 로이키 시리즈와 다르게\n뉴비드 웹사이트에서만\n선보이는 리미티드 컬러만 제공합니다.",
       "startPrice": 50000,
@@ -101,7 +153,12 @@
       "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
-      "src": "image/item_image_example.png",
+      "thumbnail": "image/item_image_example.png",
+      "images": [
+        "image/items/item_0_image_0.jpg",
+        "image/items/item_0_image_1.jpg",
+        "image/items/item_0_image_2.jpg"
+      ],
       "title": "로아키 화병",
       "body": "나베나베페누아의 드로잉이 더해진 화병입니다.\n기존 로이키 시리즈와 다르게\n뉴비드 웹사이트에서만\n선보이는 리미티드 컬러만 제공합니다.",
       "startPrice": 50000,
@@ -111,7 +168,12 @@
       "artistAccount": "@maybesumin\n@moon_to_munto"
     },
     {
-      "src": "image/autoscroll_dummy.jpg",
+      "thumbnail": "image/autoscroll_dummy.jpg",
+      "images": [
+        "image/items/item_0_image_0.jpg",
+        "image/items/item_0_image_1.jpg",
+        "image/items/item_0_image_2.jpg"
+      ],
       "title": "로아키 화병",
       "body": "나베나베페누아의 드로잉이 더해진 화병입니다.\n기존 로이키 시리즈와 다르게\n뉴비드 웹사이트에서만\n선보이는 리미티드 컬러만 제공합니다.",
       "startPrice": 50000,

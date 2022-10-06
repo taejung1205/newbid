@@ -105,7 +105,7 @@ export default function Index() {
             <MyItem
               index={bidItem.index}
               key={`MyBidItem-${index}`}
-              imgSrc={thisItem.src}
+              imgSrc={thisItem.thumbnail}
               title={thisItem.title}
               artist={thisItem.artist}
               currentPrice={data.currentPriceList[bidItem.index]}

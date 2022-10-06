@@ -42,7 +42,7 @@ export default function Index() {
         return (
           <Item
             key={`ListItem-${index}`}
-            imgSrc={item.src}
+            imgSrc={item.thumbnail}
             title={item.title}
             artist={item.artist}
             currentPrice={result.currentPriceList[index]}
