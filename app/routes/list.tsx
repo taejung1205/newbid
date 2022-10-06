@@ -37,6 +37,7 @@ export default function Index() {
   return (
     <ListPageBox>
       <Space height={70} />
+      <p className="font_gretasans_black">Test</p>
       {result ? itemsJson.items.map((item, index) => {
         return (
           <Item
