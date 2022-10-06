@@ -25,6 +25,7 @@ const HighestBidStar = styled.img`
 const ItemTitleText = styled.text`
   font-size: 21px;
   line-height: 27px;
+  font-family: SDGretaSans;
   color: #451bc8;
 `;
 
@@ -47,9 +48,9 @@ const CurrentPrice = styled.text`
 `;
 
 const CurrentKRW = styled(CurrentPrice)`
-font-size: 31px;
+  font-size: 31px;
   line-height: 38px;
-`
+`;
 
 const MyBidText = styled(CurrentlyText)`
   color: #451bc880;
@@ -60,9 +61,9 @@ const MyBidPrice = styled(CurrentPrice)`
 `;
 
 const MyBidKRW = styled(MyBidPrice)`
-font-size: 31px;
+  font-size: 31px;
   line-height: 38px;
-`
+`;
 
 const BidButton = styled.div`
   font-size: 26px;
@@ -85,7 +86,7 @@ export function Item({
   title,
   artist,
   currentPrice,
-  onClick
+  onClick,
 }: {
   imgSrc: string;
   title: string;
@@ -96,21 +97,26 @@ export function Item({
   return (
     <div>
       <script
-            type="text/javascript"
-            src="https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjNoKB7aPtIJAn5jRMcYaz_Y-KZ4K-EOCGwhpW61tp_3yG3hoZRHqp-hAYyOzHi66fHUcsFs3gmIKAs3PK5K9MRVur0OOZR-1VNcmmUbFmkTom1C9u3WDjsk7A6-ZSpEGb_AdG6c_ksWhWQSzEFQrOS31--tX8_rDlpOm6sx-viCz_ZE7i5XDWuDSAbLocnrxVOACMAMVnNpmKqp79fYvMTixVBI2YqQWISV5ZO5u_wcqIlp_bSTMVr2u9-WNJutLtaBst"
-            charSet="utf-8"
-          />
+        type="text/javascript"
+        src="https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjNoKB7aPtIJAn5jRMcYaz_Y-KZ4K-EOCGwhpW61tp_3yG3hoZRHqp-hAYyOzHi66fHUcsFs3gmIKAs3PK5K9MRVur0OOZR-1VNcmmUbFmkTom1C9u3WDjsk7A6-ZSpEGb_AdG6c_ksWhWQSzEFQrOS31--tX8_rDlpOm6sx-viCz_ZE7i5XDWuDSAbLocnrxVOACMAMVnNpmKqp79fYvMTixVBI2YqQWISV5ZO5u_wcqIlp_bSTMVr2u9-WNJutLtaBst"
+        charSet="utf-8"
+      />
       <div style={{ position: "relative" }}>
         <ItemImage src={imgSrc} onClick={onClick} />
       </div>
       <Space height={30} />
-      <ItemTitleText  className="font_gretasans_black">{title}</ItemTitleText>
+      <ItemTitleText className="font_gretasans_black">{title}</ItemTitleText>
       <Space height={5} />
-      <ArtistText  className="font_gretasans_black">{artist}</ArtistText>
+      <ArtistText className="font_gretasans_black">{artist}</ArtistText>
       <Space height={23} />
-      <CurrentlyText  className="font_gretasans_black">CURRENTLY</CurrentlyText>
+      <CurrentlyText className="font_gretasans_black">CURRENTLY</CurrentlyText>
       <Space height={5} />
-      <span><CurrentPrice  className="font_gretasans_black">{currentPrice}</CurrentPrice><CurrentKRW  className="font_gretasans_black">{" "}KRW</CurrentKRW></span>
+      <span>
+        <CurrentPrice className="font_gretasans_black">
+          {currentPrice}
+        </CurrentPrice>
+        <CurrentKRW className="font_gretasans_black"> KRW</CurrentKRW>
+      </span>
       <Space height={20} />
     </div>
   );
@@ -124,7 +130,7 @@ export function MyItem({
   currentPrice,
   myBidPrice,
   isHighest,
-  onClick
+  onClick,
 }: {
   index: number;
   imgSrc: string;
@@ -138,10 +144,10 @@ export function MyItem({
   return (
     <div>
       <script
-            type="text/javascript"
-            src="https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjNoKB7aPtIJAn5jRMcYaz_Y-KZ4K-EOCGwhpW61tp_3yG3hoZRHqp-hAYyOzHi66fHUcsFs3gmIKAs3PK5K9MRVur0OOZR-1VNcmmUbFmkTom1C9u3WDjsk7A6-ZSpEGb_AdG6c_ksWhWQSzEFQrOS31--tX8_rDlpOm6sx-viCz_ZE7i5XDWuDSAbLocnrxVOACMAMVnNpmKqp79fYvMTixVBI2YqQWISV5ZO5u_wcqIlp_bSTMVr2u9-WNJutLtaBst"
-            charSet="utf-8"
-          />
+        type="text/javascript"
+        src="https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjNoKB7aPtIJAn5jRMcYaz_Y-KZ4K-EOCGwhpW61tp_3yG3hoZRHqp-hAYyOzHi66fHUcsFs3gmIKAs3PK5K9MRVur0OOZR-1VNcmmUbFmkTom1C9u3WDjsk7A6-ZSpEGb_AdG6c_ksWhWQSzEFQrOS31--tX8_rDlpOm6sx-viCz_ZE7i5XDWuDSAbLocnrxVOACMAMVnNpmKqp79fYvMTixVBI2YqQWISV5ZO5u_wcqIlp_bSTMVr2u9-WNJutLtaBst"
+        charSet="utf-8"
+      />
       <div style={{ position: "relative" }}>
         <ItemImage src={imgSrc} onClick={onClick} />
         {isHighest ? (
@@ -154,22 +160,39 @@ export function MyItem({
         )}
       </div>
       <Space height={30} />
-      <ItemTitleText  className="font_gretasans_black">{title}</ItemTitleText>
+      <ItemTitleText className="font_gretasans_black">{title}</ItemTitleText>
       <Space height={5} />
-      <ArtistText  className="font_gretasans_black">{artist}</ArtistText>
+      <ArtistText className="font_gretasans_black">{artist}</ArtistText>
       <Space height={23} />
-      <CurrentlyText  className="font_gretasans_black">CURRENTLY</CurrentlyText>
+      <CurrentlyText className="font_gretasans_black">CURRENTLY</CurrentlyText>
       <Space height={5} />
-      <span><CurrentPrice  className="font_gretasans_black">{currentPrice}</CurrentPrice><CurrentKRW  className="font_gretasans_black">{" "}KRW</CurrentKRW></span>
+      <span>
+        <CurrentPrice className="font_gretasans_black">
+          {currentPrice}
+        </CurrentPrice>
+        <CurrentKRW className="font_gretasans_black"> KRW</CurrentKRW>
+      </span>
       <Space height={20} />
       {!isHighest ? (
         <>
-          <MyBidText  className="font_gretasans_black">나의 이전 비딩 금액</MyBidText>
+          <MyBidText className="font_gretasans_black">
+            나의 이전 비딩 금액
+          </MyBidText>
           <Space height={5} />
-          <span><MyBidPrice  className="font_gretasans_black">{myBidPrice}</MyBidPrice><MyBidKRW  className="font_gretasans_black">{" "}KRW</MyBidKRW></span>
+          <span>
+            <MyBidPrice className="font_gretasans_black">
+              {myBidPrice}
+            </MyBidPrice>
+            <MyBidKRW className="font_gretasans_black"> KRW</MyBidKRW>
+          </span>
           <Space height={40} />
-          <Link to={`/bidding?index=${index}`} style={{textDecoration: "none"}}>
-            <BidButton  className="font_gretasans_black">다시 비딩하기</BidButton>
+          <Link
+            to={`/bidding?index=${index}`}
+            style={{ textDecoration: "none" }}
+          >
+            <BidButton className="font_gretasans_black">
+              다시 비딩하기
+            </BidButton>
           </Link>
           <Space height={50} />
         </>
