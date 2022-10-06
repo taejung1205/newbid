@@ -23,7 +23,7 @@ const RequireLoginText = styled.text`
   font-size: 16px;
   line-height: 18px;
   font-weight: 400;
-  font-family: Noto Sans KR;
+  font-family: "Noto Sans KR", sans-serif;
 `;
 
 const KakaoLoginButton = styled.img`
@@ -36,8 +36,7 @@ const WithoutLoginLinkText = styled.text`
   line-height: 18px;
   font-weight: 400;
   text-decoration: underline;
-
-  font-family: "Noto Sans KR";
+  font-family: "Noto Sans KR", sans-serif;
 `;
 
 function WithoutLoginLink() {
