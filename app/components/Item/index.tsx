@@ -99,13 +99,13 @@ export function Item({
         <ItemImage src={imgSrc} onClick={onClick} />
       </div>
       <Space height={30} />
-      <ItemTitleText>{title}</ItemTitleText>
+      <ItemTitleText  className="font_gretasans_black">{title}</ItemTitleText>
       <Space height={5} />
-      <ArtistText>{artist}</ArtistText>
+      <ArtistText  className="font_gretasans_black">{artist}</ArtistText>
       <Space height={23} />
-      <CurrentlyText>CURRENTLY</CurrentlyText>
+      <CurrentlyText  className="font_gretasans_black">CURRENTLY</CurrentlyText>
       <Space height={5} />
-      <span><CurrentPrice>{currentPrice}</CurrentPrice><CurrentKRW>{" "}KRW</CurrentKRW></span>
+      <span><CurrentPrice  className="font_gretasans_black">{currentPrice}</CurrentPrice><CurrentKRW  className="font_gretasans_black">{" "}KRW</CurrentKRW></span>
       <Space height={20} />
     </div>
   );
@@ -144,22 +144,22 @@ export function MyItem({
         )}
       </div>
       <Space height={30} />
-      <ItemTitleText>{title}</ItemTitleText>
+      <ItemTitleText  className="font_gretasans_black">{title}</ItemTitleText>
       <Space height={5} />
-      <ArtistText>{artist}</ArtistText>
+      <ArtistText  className="font_gretasans_black">{artist}</ArtistText>
       <Space height={23} />
-      <CurrentlyText>CURRENTLY</CurrentlyText>
+      <CurrentlyText  className="font_gretasans_black">CURRENTLY</CurrentlyText>
       <Space height={5} />
-      <span><CurrentPrice>{currentPrice}</CurrentPrice><CurrentKRW>{" "}KRW</CurrentKRW></span>
+      <span><CurrentPrice  className="font_gretasans_black">{currentPrice}</CurrentPrice><CurrentKRW  className="font_gretasans_black">{" "}KRW</CurrentKRW></span>
       <Space height={20} />
       {!isHighest ? (
         <>
-          <MyBidText>나의 이전 비딩 금액</MyBidText>
+          <MyBidText  className="font_gretasans_black">나의 이전 비딩 금액</MyBidText>
           <Space height={5} />
-          <span><MyBidPrice>{myBidPrice}</MyBidPrice><MyBidKRW>{" "}KRW</MyBidKRW></span>
+          <span><MyBidPrice  className="font_gretasans_black">{myBidPrice}</MyBidPrice><MyBidKRW  className="font_gretasans_black">{" "}KRW</MyBidKRW></span>
           <Space height={40} />
           <Link to={`/bidding?index=${index}`} style={{textDecoration: "none"}}>
-            <BidButton>다시 비딩하기</BidButton>
+            <BidButton  className="font_gretasans_black">다시 비딩하기</BidButton>
           </Link>
           <Space height={50} />
         </>

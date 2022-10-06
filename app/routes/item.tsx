@@ -120,7 +120,7 @@ const DetailText = styled.text`
 function NotFound() {
   return (
     <NotFoundBox>
-      <h4>아이템을 찾을 수 없습니다.</h4>
+      <h4 className="font_gretasans_black">아이템을 찾을 수 없습니다.</h4>
     </NotFoundBox>
   );
 }
@@ -174,75 +174,64 @@ export default function Index() {
       <Space height={70} />
       <ItemImage src={item.src} />
       <Space height={15} />
-      <TitleText isLeft={false}>{item.title}</TitleText>
+      <TitleText className="font_gretasans_black" isLeft={false}>{item.title}</TitleText>
       <Space height={5} />
-      <TitleText isLeft={false}>{item.artist}</TitleText>
+      <TitleText className="font_gretasans_black" isLeft={false}>{item.artist}</TitleText>
       <Space height={10} />
       <BidBox>
-        <CurrentlyText>CURRENTLY</CurrentlyText>
+        <CurrentlyText className="font_gretasans_black">CURRENTLY</CurrentlyText>
         <Space height={5} />
-        <CurrentPrice>{data.currentPrice} KRW</CurrentPrice>
+        <CurrentPrice className="font_gretasans_black">{data.currentPrice} KRW</CurrentPrice>
         <Space height={30} />
         <Link
           to={`/bidding?index=${data.index}`}
           style={{ textDecoration: "none" }}
         >
-          <BidButton>비딩하기</BidButton>
+          <BidButton className="font_gretasans_black">비딩하기</BidButton>
         </Link>
       </BidBox>
       <ItemDetail
         leftElement={
-            <BodyTitleText>정보</BodyTitleText>
+            <BodyTitleText className="font_gretasans_black">정보</BodyTitleText>
         }
         rightElement={
           <>
-            <BodyText>{item.title}</BodyText>
+            <BodyText className="font_gretasans_black">{item.title}</BodyText>
             <Space height={10} />
-            <BodyText>{item.itemDetail}</BodyText>
+            <BodyText className="font_gretasans_black">{item.itemDetail}</BodyText>
             <Space height={40} />
           </>
         }
       />
       <ItemDetail
         leftElement={
-            <BodyTitleText>작품 소개</BodyTitleText>
+            <BodyTitleText className="font_gretasans_black">작품 소개</BodyTitleText>
         }
         rightElement={
           <>
-            <BodyText>{item.body}</BodyText>
+            <BodyText className="font_gretasans_black">{item.body}</BodyText>
             <Space height={40} />
           </>
         }
       />
       <ItemDetail
         leftElement={
-            <BodyTitleText>작가 이력</BodyTitleText>
+            <BodyTitleText className="font_gretasans_black">작가 이력</BodyTitleText>
         }
         rightElement={
           <>
-            <BodyText>{item.artistDetail}</BodyText>
+            <BodyText className="font_gretasans_black">{item.artistDetail}</BodyText>
             <Space height={40} />
           </>
         }
       />
       <ItemDetail
         leftElement={
-            <BodyTitleText>코멘 터리</BodyTitleText>
+            <BodyTitleText className="font_gretasans_black">작가 계정</BodyTitleText>
         }
         rightElement={
           <>
-            <BodyText>{item.comment}</BodyText>
-            <Space height={40} />
-          </>
-        }
-      />
-      <ItemDetail
-        leftElement={
-            <BodyTitleText>작가 계정</BodyTitleText>
-        }
-        rightElement={
-          <>
-            <BodyText>{item.artistAccount}</BodyText>
+            <BodyText className="font_gretasans_black">{item.artistAccount}</BodyText>
           </>
         }
         noBottomBorder

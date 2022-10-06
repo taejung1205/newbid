@@ -57,7 +57,7 @@ const BottomText = styled.text`
 
 const EnterBox = styled.div`
   position: absolute;
-  bottom: 140px;
+  bottom: 170px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -24,6 +24,21 @@ const MyBidPageBox = styled.div`
   height: inherit;
 `;
 
+const NoItemBox = styled.div`
+  overflow: hidden;
+  width: inherit;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const NoItemText = styled.text`
+  color: #999999;
+  font-size: 20px;
+`
+
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const phone = formData.get("phone")?.toString() ?? "";
@@ -81,6 +96,9 @@ export default function Index() {
     <MyBidPageBox>
       <Space height={70} />
       {result ? (
+        result.list.length === 0 ? <NoItemBox>
+          <NoItemText className="font_gretasans_black">비딩한 아이템이 없습니다.</NoItemText>
+        </NoItemBox> : 
         result.list.map((bidItem: any, index: number) => {
           const thisItem = itemsJson.items[bidItem.index];
           return (
