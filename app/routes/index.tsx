@@ -88,7 +88,7 @@ const LoginButton = styled.div`
 
 function WithoutLoginLink() {
   return (
-    <Link to={"/list"}>
+    <Link to={"/list"} prefetch={"intent"}>
       <WithoutLoginLinkText className="font_gretasans_black">
         둘러만 볼게요
       </WithoutLoginLinkText>
