@@ -78,6 +78,19 @@ export default function App() {
           <script
             dangerouslySetInnerHTML={{
               __html: `if(navigator.userAgent.includes("Instagram")){
+                var copytoclipboard = function(val){
+                  var t = document.createElement("textarea");
+                  document.body.appendChild(t);
+                  t.value = val;
+                  t.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(t);
+                };
+                var inappbrowserout = function(){
+                  copytoclipboard(window.location.href);
+                  alert('URL주소가 복사되었습니다.\n\nSafari가 열리면 주소창을 길게 터치한 뒤, "붙여놓기 및 이동"를 누르면 정상적으로 이용하실 수 있습니다.');
+                  location.href='x-web-search://?';
+                }
                 if(navigator.userAgent.match(/iPhone|iPad/i)){
                   //모바일대응뷰포트강제설정
                   var mobile = document.createElement('meta');
