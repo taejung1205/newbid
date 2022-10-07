@@ -98,7 +98,15 @@ export default function Index() {
     },
   });
   const [isScrolledDown, setIsScrolledDown] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isInstagram, setIsInstagram] = useState<boolean>(false);
+
+  useEffect(() => {
+    if(window !== undefined && typeof window !== "undefined"){
+      if(navigator.userAgent.includes("Instagram")){
+        setIsInstagram(true);
+      }
+    }
+  }, [])
 
   useEffect(() => {
     function handleScroll(event: any) {
@@ -128,8 +136,12 @@ export default function Index() {
   }, [isScrolledDown]);
 
   return (
-    <>
-      <LoadingOverlay visible={isLoading} overlayBlur={2} />
+    <>{
+      isInstagram ? <>
+        <h3>
+          인앱브라우저 호환문제로 인해 다른 브라우저로 접속해야합니다. 
+        </h3>
+      </> :
       <MainPageBox>
         <div ref={topScrollY.targetRef} />
         <Space height={70} />
@@ -219,7 +231,6 @@ export default function Index() {
           <EnterBox>
             <LoginButton
               onClick={() => {
-                setIsLoading(true);
                 doKakaoLogin({ path: `/list` });
               }}
               className="font_gretasans_black"
@@ -230,6 +241,8 @@ export default function Index() {
           </EnterBox>
         </BottomBox>
       </MainPageBox>
+    }
+      
     </>
   );
 }
