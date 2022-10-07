@@ -65,17 +65,11 @@ const EnterBox = styled.div`
   right: 0;
 `;
 
-const WithoutLoginLinkText = styled(BottomText)`
-  font-size: 25px;
-  line-height: 16px;
-  text-decoration: underline;
-`;
-
 const LoginButton = styled.div`
   font-size: 24px;
   line-height: 36px;
   background-color: #d9d9d9;
-  width: 200px;
+  width: 260px;
   height: 36px;
   color: #451bc8;
   cursor: pointer;
@@ -86,15 +80,6 @@ const LoginButton = styled.div`
   margin-right: auto;
 `;
 
-function WithoutLoginLink() {
-  return (
-    <Link to={"/list"} prefetch={"intent"}>
-      <WithoutLoginLinkText className="font_gretasans_black">
-        둘러만 볼게요
-      </WithoutLoginLinkText>
-    </Link>
-  );
-}
 
 export const action: ActionFunction = async ({ request }) => {
   return null;
@@ -241,10 +226,9 @@ export default function Index() {
               }}
               className="font_gretasans_black"
             >
-              카카오 로그인
+              로그인 후 입장하기
             </LoginButton>
-            <Space height={30} />
-            <WithoutLoginLink />
+            <Space height={50} />
           </EnterBox>
         </BottomBox>
       </MainPageBox>

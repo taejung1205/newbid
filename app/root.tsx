@@ -34,6 +34,10 @@ export function links() {
       href: globalStyle,
       as: "style"
     },
+    {
+      rel: "icon",
+      href: "image/favicon.svg"
+    },
   ];
 }
 export const loader: LoaderFunction = async ({ request }) => {
