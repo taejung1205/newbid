@@ -75,6 +75,14 @@ export default function App() {
               __html: `window.ENV =  ${JSON.stringify(data.ENV)}`,
             }}
           />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `if(navigator.userAgent.includes("Instagram")){
+              window.location.href = "https://www.naver.com";
+          }`,
+            }}
+          />
+
           <LiveReload />
         </body>
       </html>
