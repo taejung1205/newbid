@@ -1,7 +1,6 @@
 import { LoadingOverlay } from "@mantine/core";
 import { useScrollIntoView } from "@mantine/hooks";
 import { ActionFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Marquee } from "~/components/Animated";
@@ -79,7 +78,6 @@ const LoginButton = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
-
 
 export const action: ActionFunction = async ({ request }) => {
   return null;

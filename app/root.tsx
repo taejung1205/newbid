@@ -27,7 +27,7 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-export function links() {
+export const links: LinksFunction = () => {
   return [
     {
       rel: "stylesheet",
@@ -37,9 +37,9 @@ export function links() {
     {
       rel: "icon",
       href: "image/favicon.svg"
-    },
+    }
   ];
-}
+};
 export const loader: LoaderFunction = async ({ request }) => {
   return json({
     ENV: getEnv(),
