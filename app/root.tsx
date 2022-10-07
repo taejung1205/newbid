@@ -62,11 +62,11 @@ export default function App() {
           <Footer />
           <ScrollRestoration />
           <Scripts />
-          <script
+          {/* <script
             type="text/javascript"
             src="https://z7z1yn5j64.execute-api.ap-northeast-2.amazonaws.com/V220930/api/fontstream/djs/?sid=gAAAAABjPoC_JMc6khC0oXKFGZhw3QT3PTAh6xbDIp_rhtFBo6rDNMNaDWvR5zSBJf-x297PjLW6HwtprzGvgJcs_pfNFE-hQ4Kjs9txMocfISExbFqJY5FfrRlmASw5B5QkI-9f3VLswdp2YDEIUDxzfMQzkYMsr-PgjHRVMh0rzY3Ivps4yl0SWoWdBS9di60wYPk1unOUPK87EQA1MstiCXMpacbKj3WOQQ7yLrZAy0JXp99j1_80SzVyTBDq5b_3PDoUnyAA"
             charSet="utf-8"
-          />
+          /> */}
           <script src="https://developers.kakao.com/sdk/js/kakao.js" />
           <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" />
           <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" />
