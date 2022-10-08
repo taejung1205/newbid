@@ -152,7 +152,7 @@ export default function Index() {
               인앱브라우저 호환문제로 인해 <br />다른 브라우저로 접속해야합니다.
             </h3>
             <p style={{fontFamily: "Noto Sans KR"}}>
-              우측 상단의 버튼을 클릭하여 다른 브라우저로 전환해주세요.
+              우측 상단의 버튼을 클릭하여 <br /> 다른 브라우저로 전환해주세요.
             </p>
           </div>
         </>
