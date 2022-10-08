@@ -74,12 +74,12 @@ export async function getCurrentPrice({ itemIndex }: { itemIndex: number }) {
   }
 }
 
-export async function getBidderCount({ itemIndex }: { itemIndex: number }) {
-  const querySnapshot = await getDocs(
-    collection(firestore, `items/item-${itemIndex}/bidLog`)
-  );
-  return querySnapshot.docs.length - 1;
-}
+// export async function getBidderCount({ itemIndex }: { itemIndex: number }) {
+//   const querySnapshot = await getDocs(
+//     collection(firestore, `items/item-${itemIndex}/bidLog`)
+//   );
+//   return querySnapshot.docs.length - 1;
+// }
 
 export async function getBiddingList({ phone }: { phone: string }) {
   const querySnapshot = await getDocs(

@@ -190,8 +190,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const index = Number(indexStr);
   console.log(index);
   const price = await getCurrentPrice({ itemIndex: index });
-  const bidderCount = await getBidderCount({ itemIndex: index });
-  return json({ index: index, currentPrice: price, bidderCount: bidderCount });
+  return json({ index: index, currentPrice: price});
 };
 
 export const action: ActionFunction = async () => {
