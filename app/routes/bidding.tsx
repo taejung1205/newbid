@@ -413,10 +413,10 @@ export default function Index() {
           </div>
           <BidButton
             onClick={() => {
-              if(Date.now() > new Date(2022, 10, 10, 0, 0).getTime()){
+              if(Date.now() > new Date(2022, 10, 9, 12, 0).getTime()){
                 setIsPriceModalOpen(true);
               } else {
-                setNoticeText("아직 경매에 비딩할 수 없습니다.\n비딩은 10월 10일부터 참여 가능합니다.");
+                setNoticeText("아직 경매에 비딩할 수 없습니다.\n비딩은 10월 9일 12시부터 참여 가능합니다.");
               }
             }}
             className="font_gretasans_black"
