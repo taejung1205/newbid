@@ -99,11 +99,15 @@ export default function Index() {
   });
   const [isScrolledDown, setIsScrolledDown] = useState<boolean>(false);
   const [isInstagram, setIsInstagram] = useState<boolean>(false);
+  const [isAndroid, setIsAndroid] = useState<boolean>(false);
 
   useEffect(() => {
     if (window !== undefined && typeof window !== "undefined") {
       if (navigator.userAgent.includes("Instagram")) {
         setIsInstagram(true);
+        if(/(android)/i.test(navigator.userAgent)){
+          setIsAndroid(true);
+        }
       }
     }
   }, []);
@@ -157,6 +161,8 @@ export default function Index() {
             <p style={{ fontFamily: "Noto Sans KR", color: "white" }}>
               우측 상단의 버튼을 클릭하여 <br /> 다른 브라우저로 전환해주세요.
             </p>
+            <div style={{height: "20px"}} />
+            <img src={`image/instagram_change_browser_${isAndroid ? "android" : "ios"}.png`} style={{width: "70vw"}}/>
           </div>
         </>
       ) : (
