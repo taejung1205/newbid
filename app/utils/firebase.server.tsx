@@ -43,24 +43,26 @@ if (!firebaseApp?.apps.length || !firestore.apps.length) {
   firebaseFunctions = getFunctions(firebaseApp, "asia-northeast1");
 }
 
-export async function createDatabase() {
-  for (let i = 0; i < itemsJson.items.length; i++) {
-    try {
-      // const docRef = await addDoc(collection(firestore, "users"), {
-      //   first: "Ada",
-      //   last: "Lovelace",
-      //   born: 1815,
-      // });
-      const docRef = await setDoc(doc(firestore, "items", `item-${i}`), {
-        currentPrice: itemsJson.items[i].startPrice,
-        itemName: itemsJson.items[i].title,
-      });
-      console.log("Document written: ", i);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  }
-}
+// export async function createDatabase() {
+//   for (let i = 0; i < itemsJson.items.length; i++) {
+//     try {
+//       // const docRef = await addDoc(collection(firestore, "users"), {
+//       //   first: "Ada",
+//       //   last: "Lovelace",
+//       //   born: 1815,
+//       // });
+//       if(i !== 8){
+//         const docRef = await setDoc(doc(firestore, "items", `item-${i}`), {
+//           currentPrice: itemsJson.items[i].startPrice,
+//           itemName: itemsJson.items[i].title,
+//         });
+//         console.log("Document written: ", i);
+//       }
+//     } catch (e) {
+//       console.error("Error adding document: ", e);
+//     }
+//   }
+// }
 
 export async function getCurrentPrice({ itemIndex }: { itemIndex: number }) {
   const docRef = doc(firestore, "items", `item-${itemIndex}`);
