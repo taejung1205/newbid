@@ -5,7 +5,7 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Space } from "~/components/Space";
 import itemsJson from "~/data/items.json";
-import { getBidderCount, getCurrentPrice } from "~/utils/firebase.server";
+import { getCurrentPrice } from "~/utils/firebase.server";
 
 import "swiper/css";
 import "swiper/css/navigation";
