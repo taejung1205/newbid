@@ -107,6 +107,7 @@ const ButtonIcon = styled.img`
 
 export default function Header({}: {}) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isInstagram, setIsInstagram] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("NO"); //For debug
   const location = useLocation();
   const pathname = location.pathname;
@@ -115,7 +116,16 @@ export default function Header({}: {}) {
     setIsMenuOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    if (window !== undefined && typeof window !== "undefined") {
+      if (navigator.userAgent.includes("Instagram")) {
+        setIsInstagram(true);
+      }
+    }
+  }, []);
+
   return (
+    isInstagram ? <></> :
     <HeaderBox isMenuOpen={isMenuOpen} isStartPage={pathname === "/"}>
       <HeaderLogo
         onClick={() => {

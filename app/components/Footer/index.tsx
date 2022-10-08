@@ -87,13 +87,20 @@ export default function Footer() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const location = useLocation();
   const pathname = location.pathname;
+  const [isInstagram, setIsInstagram] = useState<boolean>(false);
 
   useEffect(() => {
     const target = new Date(2022, 10, 17, 0, 0);
     setTargetTime(target);
+    if (window !== undefined && typeof window !== "undefined") {
+      if (navigator.userAgent.includes("Instagram")) {
+        setIsInstagram(true);
+      }
+    }
   }, []);
 
   return (
+    isInstagram ? <></> :
     <FooterBox isMenuOpen={isMenuOpen}>
       <Space height={30} />
       <CountdownTimer
