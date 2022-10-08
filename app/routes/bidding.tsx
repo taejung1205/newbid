@@ -225,7 +225,7 @@ export default function Index() {
   const data = useLoaderData();
   const result = useActionData();
   const [myBidPrice, setMyBidPrice] = useState<number>(
-    data.currentPrice + 1000
+    data.currentPrice + 10000
   );
   const [noticeText, setNoticeText] = useState<string>("");
   const [isPriceModalOpen, setIsPriceModalOpen] = useState<boolean>(false);
@@ -242,12 +242,12 @@ export default function Index() {
   const formRef = useRef<HTMLFormElement>(null);
 
   function onUpClick() {
-    if (myBidPrice + 1000 >= data.currentPrice * 1.2) {
+    if (myBidPrice >= data.currentPrice * 1.2) {
       setNoticeText(
         "진지하고 안전한 비딩을 위해\n현재 비딩가의 20% 이상의 금액을 비딩할 수 없습니다."
       );
     } else {
-      setMyBidPrice((prev) => prev + 1000);
+      setMyBidPrice((prev) => prev + 10000);
     }
   }
 
@@ -255,7 +255,7 @@ export default function Index() {
     if (myBidPrice - 1000 <= data.currentPrice) {
       setNoticeText("현재 비딩가보다\n낮은 금액을 비딩할 수 없습니다");
     } else {
-      setMyBidPrice((prev) => prev - 1000);
+      setMyBidPrice((prev) => prev - 10000);
     }
   }
 
