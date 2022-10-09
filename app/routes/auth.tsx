@@ -23,7 +23,7 @@ export default function Index() {
     } else {
       console.log(`error: ${error}`);
     }
-    addChannel();
+    // addChannel();
     navigate(redirectPath);
   }, []);
 
