@@ -90,7 +90,7 @@ export default function Footer() {
   const [isInstagram, setIsInstagram] = useState<boolean>(false);
 
   useEffect(() => {
-    const target = new Date(2022, 10, 17, 0, 0);
+    const target = new Date(2022, 9, 17, 0, 0);
     setTargetTime(target);
     if (window !== undefined && typeof window !== "undefined") {
       if (navigator.userAgent.includes("Instagram")) {
