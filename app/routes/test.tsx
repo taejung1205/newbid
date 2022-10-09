@@ -1,7 +1,9 @@
 import { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useSubmit } from "@remix-run/react";
+import { useEffect } from "react";
 import styled from "styled-components";
-import { createDatabase, getCurrentPrice } from "~/utils/firebase.server";
+import { getCurrentPrice } from "~/utils/firebase.server";
+import { checkChannel } from "~/utils/kakao";
 
 const TestPageBox = styled.div`
   overflow: hidden;
@@ -30,6 +32,16 @@ export const action: ActionFunction = async () => {
 export default function Index() {
   const submit = useSubmit();
   const data = useLoaderData();
+
+  useEffect(() => {
+    printChannel();
+  }, []);
+
+  async function printChannel(){
+    const result = await checkChannel();
+    console.log(result);
+  }
+
   return (
     <TestPageBox>
       <button

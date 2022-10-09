@@ -3,7 +3,7 @@ import { ActionFunction, redirect } from "@remix-run/node";
 import { useNavigate, useSubmit } from "@remix-run/react";
 import { useEffect } from "react";
 import { Space } from "~/components/Space";
-import { requestTokens } from "~/utils/kakao";
+import { addChannel, requestTokens } from "~/utils/kakao";
 
 export const action: ActionFunction = async () => {
   return null;
@@ -23,8 +23,11 @@ export default function Index() {
     } else {
       console.log(`error: ${error}`);
     }
+    addChannel();
     navigate(redirectPath);
   }, []);
+
+
 
   return <>
     <Space height={120} />

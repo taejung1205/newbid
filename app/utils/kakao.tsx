@@ -82,6 +82,41 @@ export function requestUser({
   });
 }
 
+export async function checkChannel(): Promise<boolean>{
+  const kakao = kakaoInit();
+  try {
+    const result = await kakao.API.request({
+      url: '/v1/api/talk/channels',
+    });
+  
+    if(result.channels !== undefined){
+      const channels = result.channels;
+      for(var i = 0; i < channels.length; i++){
+        const uuid = channels[i].channel_uuid;
+        const relation = channels[i].relation;
+        if(uuid === '@lofaseoul' && relation === 'ADDED' ){
+          return true;
+        }
+      }
+    }
+    return false;
+  } catch(error){
+    console.log(error);
+    return false;
+  }
+}
+
+export async function addChannel() {
+  const kakao = kakaoInit();
+  const isChannelAdded = await checkChannel();
+  if(!isChannelAdded){
+    console.log('try adding channel');
+    kakao.Channel.addChannel({
+      channelPublicId: '_xexaRpb'
+    })
+  }
+}
+
 export function requestLogout({
   successCallback,
 }: {
