@@ -82,38 +82,43 @@ export function requestUser({
   });
 }
 
-export async function checkChannel(): Promise<boolean>{
+export async function checkChannel(): Promise<boolean> {
   const kakao = kakaoInit();
   try {
     const result = await kakao.API.request({
-      url: '/v1/api/talk/channels',
+      url: "/v1/api/talk/channels",
     });
-  
-    if(result.channels !== undefined){
+
+    if (result.channels !== undefined) {
       const channels = result.channels;
-      for(var i = 0; i < channels.length; i++){
+      for (var i = 0; i < channels.length; i++) {
         const uuid = channels[i].channel_uuid;
         const relation = channels[i].relation;
-        if(uuid === '@lofaseoul' && relation === 'ADDED' ){
-          return true;
+        if (uuid === "@lofaseoul") {
+          if (relation === "ADDED") {
+            return true;
+          }
+          if (relation === "BLOCKED") {
+            return false;
+          }
         }
       }
     }
     return false;
-  } catch(error){
+  } catch (error) {
     console.log(error);
-    return false;
+    return true;
   }
 }
 
 export async function addChannel() {
   const kakao = kakaoInit();
   const isChannelAdded = await checkChannel();
-  if(!isChannelAdded){
-    console.log('try adding channel');
+  if (!isChannelAdded) {
+    console.log("try adding channel");
     kakao.Channel.addChannel({
-      channelPublicId: '_xexaRpb'
-    })
+      channelPublicId: "_xexaRpb",
+    });
   }
 }
 
