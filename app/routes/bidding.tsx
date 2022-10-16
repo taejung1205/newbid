@@ -413,10 +413,13 @@ export default function Index() {
           </div>
           <BidButton
             onClick={() => {
-              if(new Date() > new Date(2022, 10 - 1, 9, 12, 0)){
-                setIsPriceModalOpen(true);
-              } else {
+              if(new Date() < new Date(2022, 10 - 1, 9, 12, 0)){
                 setNoticeText("아직 경매에 비딩할 수 없습니다.\n비딩은 10월 9일 12시부터 참여 가능합니다.");
+                
+              } else if(new Date() > new Date(2022, 10 - 1, 17, 0, 0)){
+                setNoticeText("현재 경매에 비딩할 수 없습니다.\n이번 뉴비드 콜렉션 경매가 종료되었습니다.");
+              } else {
+                setIsPriceModalOpen(true);
               }
             }}
             className="font_gretasans_black"
